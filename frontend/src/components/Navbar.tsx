@@ -29,6 +29,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
     { name: "Fabric Mills", href: "#fabrics" },
     { name: "Suit Rentals", href: "#rentals" },
     { name: "The Process", href: "#process" },
+    { name: "Reviews", href: "#testimonials" },
     { name: "Panadura Atelier", href: "#contact" },
   ];
 

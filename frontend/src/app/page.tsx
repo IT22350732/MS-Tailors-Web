@@ -9,6 +9,7 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import LookbookSection from "@/components/LookbookSection";
 import FabricLibrarySection from "@/components/FabricLibrarySection";
 import SuitRentalSection from "@/components/SuitRentalSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import LocationContactSection from "@/components/LocationContactSection";
 import FloatingHotlineBar from "@/components/FloatingHotlineBar";
 import Footer from "@/components/Footer";
@@ -96,6 +97,9 @@ export default function Home() {
 
       {/* Suit Rental & Ready-Made Section */}
       <SuitRentalSection onOpenBooking={handleOpenBooking} />
+
+      {/* Client Endorsements & Testimonials (Mr. Murphy Style) */}
+      <TestimonialsSection />
 
       {/* Panadura Atelier Location & Direct Contact */}
       <LocationContactSection />
