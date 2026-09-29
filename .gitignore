@@ -1,0 +1,23 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# .NET Backend
+backend/**/bin/
+backend/**/obj/
+backend/**/*.user
+backend/**/*.lock.json
+
+# Node / Next.js Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# IDE & Logs
+.vscode/
+.idea/
+*.log

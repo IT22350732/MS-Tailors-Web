@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #08090C;
+    --foreground: #F8FAFC;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #08090C;
+    color: #F8FAFC;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #08090C;
+    color: #F8FAFC;
+    overflow-x: hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    background-color: rgba(197, 168, 128, 0.35);
+    color: #FDFBF7;
+  }
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08090C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E2738;
+  border-radius: 4px;
+  border: 1px solid rgba(197, 168, 128, 0.15);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A880;
+}
+
+/* Tailoring Hairline and Sheen Utilities */
+.gold-hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197, 168, 128, 0.4), transparent);
+}
+
+.gold-hairline-vertical {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(197, 168, 128, 0.4), transparent);
+}
+
+.card-luxury {
+  background: rgba(15, 18, 24, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 39, 56, 0.8);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-luxury:hover {
+  border-color: rgba(197, 168, 128, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(197, 168, 128, 0.15);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F3E8D6 0%, #C5A880 50%, #B08F60 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
