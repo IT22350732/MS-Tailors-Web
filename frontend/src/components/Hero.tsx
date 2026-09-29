@@ -1,316 +1,159 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import Image from "next/image";
-import { Scissors, Sparkles, MessageCircle, ChevronDown, CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
-import { getWhatsAppInquiryUrl } from "@/lib/api";
-import { Card3D } from "./Motion3D";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
+import { ArrowRight, Scissors } from "lucide-react";
+import { TailorCrest } from "@/components/Navbar";
 
 interface HeroProps {
   onOpenBooking: () => void;
 }
 
+const SLIDES = [
+  {
+    crestSubtitle: "SINCE 2026 • ATELIER",
+    welcome: "Hello and Welcome",
+    title: "Your Personal Tailor",
+    tagline: "Mastery in Every Stitch • 142 Galle Rd, Panadura",
+    buttonText: "SHOP NOW",
+  },
+  {
+    crestSubtitle: "BESPOKE SARTORIAL EXCELLENCE",
+    welcome: "Crafted for Distinction",
+    title: "Luxury Bespoke Suits",
+    tagline: "Authentic Horsehair Canvas • 30+ Precision Measurements",
+    buttonText: "BOOK APPOINTMENT",
+  },
+];
+
 export default function Hero({ onOpenBooking }: HeroProps) {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 3D Scroll-linked Parallax and Transforms
+  // 3D Parallax & Depth transforms
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
   const springScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 20 });
-  
-  // Background image 3D parallax depth and subtle zoom
-  const bgY = useTransform(springScroll, [0, 1], ["0%", "28%"]);
-  const bgScale = useTransform(springScroll, [0, 1], [1, 1.15]);
-  const heroContentY = useTransform(springScroll, [0, 1], ["0%", "18%"]);
-  const heroContentOpacity = useTransform(springScroll, [0, 0.75], [1, 0.2]);
-  const card3DY = useTransform(springScroll, [0, 1], [0, 40]);
+  const bgY = useTransform(springScroll, [0, 1], ["0%", "20%"]);
+  const bgScale = useTransform(springScroll, [0, 1], [1, 1.1]);
+  const heroContentY = useTransform(springScroll, [0, 1], ["0%", "14%"]);
+  const heroContentOpacity = useTransform(springScroll, [0, 0.8], [1, 0.15]);
+
+  const slide = SLIDES[currentSlide];
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[96vh] flex items-center justify-center overflow-hidden bg-black"
+      className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-black text-white"
     >
-      {/* HIGH-VISIBILITY BESPOKE TAILOR SHOP ATELIER BACKGROUND */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      {/* FULL-BLEED MR. MURPHY BACKGROUND (GENTLEMAN IN BESPOKE COAT & RUSTIC WOOD) */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <motion.div
           style={{ y: bgY, scale: bgScale }}
-          className="absolute -inset-12 bg-cover bg-center transition-all duration-300"
+          className="absolute -inset-10 bg-cover bg-center transition-all duration-300"
         >
-          {/* Master Tailor Shop Photography - 90% Opacity for High Visibility */}
           <div
-            className="absolute inset-0 bg-cover bg-center filter contrast-110 brightness-100"
+            className="absolute inset-0 bg-cover bg-center filter contrast-110 brightness-[0.88]"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=2600&q=90')`,
-              opacity: 0.90,
+              backgroundImage: `url('/images/mr_murphy_hero_bg.jpg')`,
             }}
           />
         </motion.div>
 
-        {/* Tailored Vignette Overlay - Keeps Tailor Shop Background Distinct & Highlighted */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/40" />
-        
-        {/* Subtle electric blue ambient pools */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue/20 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/3 right-1/4 w-[30rem] h-[30rem] bg-blue-light/15 rounded-full blur-[140px] pointer-events-none" />
+        {/* Cinematic Dark Vignette & Subtle Blue Ambient Tones */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/70" />
+
+        {/* Ambient Royal Blue Light Pools */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34rem] h-[34rem] bg-blue/20 rounded-full blur-[140px] pointer-events-none" />
       </div>
 
-      {/* FOREGROUND CONTENT CONTAINER */}
+      {/* CENTER-STAGED FOREGROUND CONTENT (EXACT MATCH FOR MR. MURPHY THEME) */}
       <motion.div
         style={{ y: heroContentY, opacity: heroContentOpacity }}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 w-full"
+        className="relative z-10 max-w-5xl mx-auto px-6 py-20 flex flex-col items-center justify-center text-center w-full"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Headline, Brand Story, CTAs */}
-          <div className="lg:col-span-7 flex flex-col items-start justify-center">
-            {/* Official Tailor Shop Brand Crest */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-sm border border-blue/60 bg-black/85 backdrop-blur-md mb-6 shadow-blue-glow group hover:border-blue transition-all"
-            >
-              <div className="relative w-8 h-8 rounded-sm overflow-hidden border border-blue/60 shrink-0 bg-black">
-                <Image
-                  src="/images/ms-tailors-logo.jpg"
-                  alt="MS Tailors"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <Scissors className="w-4 h-4 text-blue animate-pulse" />
-              <span className="text-white tracking-[0.22em] text-xs font-bold uppercase">
-                MS TAILORS • <span className="text-blue font-extrabold">BESPOKE TAILOR SHOP & ATELIER</span>
-              </span>
-            </motion.div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, y: 24, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.98 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center justify-center text-center"
+          >
+            {/* 1. Laurel Monogram Crest */}
+            <div className="mb-4 sm:mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)] hover:scale-105 transition-transform duration-500">
+              <TailorCrest
+                className="w-44 sm:w-52 md:w-60"
+                monogram="MS"
+                title="MS. TAILORS"
+                subtitle={slide.crestSubtitle}
+                variant="blue"
+              />
+            </div>
 
-            {/* Master Heading with High Visibility Contrast */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold text-white leading-[1.08] tracking-tight max-w-2xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]"
-            >
-              Panadura&apos;s Luxury <br />
-              <span className="text-blue-gradient italic font-serif">Bespoke Tailor Shop</span> & Suit House.
-            </motion.h1>
+            {/* 2. Cursive / Italic Serif Greeting */}
+            <p className="font-serif italic text-blue-light/95 text-xl sm:text-2xl lg:text-3xl tracking-wide font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] mb-2">
+              {slide.welcome}
+            </p>
 
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-6 text-base sm:text-lg lg:text-xl text-silk-silver max-w-xl font-light leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
-            >
-              Welcome to MS Tailors. Every suit is individually hand-crafted with over 30 precision measurements, authentic floating horsehair canvas, and the world&apos;s finest European wools.
-            </motion.p>
+            {/* 3. Majestic Grand Serif Headline */}
+            <h1 className="font-display font-semibold sm:font-bold text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] max-w-3xl drop-shadow-[0_6px_28px_rgba(0,0,0,0.95)]">
+              {slide.title}
+            </h1>
 
-            {/* Tailor Shop Badges */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.25 }}
-              className="mt-6 flex flex-wrap gap-2.5 text-xs"
-            >
-              <span className="px-3 py-1.5 rounded-sm bg-black/80 backdrop-blur-md border border-white/20 text-white font-medium flex items-center gap-1.5 shadow-md">
-                ✂️ Hand-Cut Bespoke Suits
-              </span>
-              <span className="px-3 py-1.5 rounded-sm bg-black/80 backdrop-blur-md border border-white/20 text-white font-medium flex items-center gap-1.5 shadow-md">
-                📏 30+ Anatomical Fitting Points
-              </span>
-              <span className="px-3 py-1.5 rounded-sm bg-blue-950/80 backdrop-blur-md border border-blue-500/50 text-blue-300 font-semibold flex items-center gap-1.5 shadow-blue-glow">
-                🤵 Wedding & Tuxedo Rentals
-              </span>
-            </motion.div>
+            {/* Tagline / Subtitle */}
+            <p className="mt-3 text-xs sm:text-sm md:text-base text-silk-silver/90 font-light tracking-[0.2em] uppercase max-w-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              {slide.tagline}
+            </p>
 
-            {/* Interactive CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-8 flex flex-wrap items-center gap-4 sm:gap-5"
-            >
+            {/* 4. Rectangular Outlined Action Buttons */}
+            <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+              {/* Primary Outlined Button matching Mr. Murphy [ SHOP NOW ] */}
               <button
                 onClick={onOpenBooking}
-                className="group relative overflow-hidden px-8 py-4 bg-blue-gradient text-white font-bold tracking-widest uppercase text-xs sm:text-sm rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all"
+                className="group relative px-9 sm:px-12 py-3.5 sm:py-4 border-2 border-blue bg-black/40 hover:bg-blue text-white text-xs sm:text-sm font-bold uppercase tracking-[0.28em] transition-all duration-300 backdrop-blur-md shadow-blue-glow hover:shadow-blue-glow-lg hover:scale-105"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  <Scissors className="w-4 h-4 text-white" />
-                  <span>Book Fitting & Measurement</span>
+                <span className="flex items-center gap-2">
+                  <span>{slide.buttonText}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <div className="absolute inset-0 bg-white/25 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               </button>
 
+              {/* Secondary Outlined Button */}
               <a
                 href="#lookbook"
-                className="px-7 py-4 border border-blue/50 hover:border-blue bg-black/85 hover:bg-black backdrop-blur-md text-white hover:text-blue font-medium tracking-widest uppercase text-xs sm:text-sm rounded-sm transition-all flex items-center gap-2 shadow-lg"
+                className="px-8 sm:px-10 py-3.5 sm:py-4 border border-white/40 hover:border-white bg-black/30 hover:bg-white/10 text-white/90 hover:text-white text-xs sm:text-sm font-medium uppercase tracking-[0.25em] transition-all duration-300 backdrop-blur-sm"
               >
-                <span>View Suit Lookbook</span>
+                VIEW LOOKBOOK
               </a>
-
-              <a
-                href={getWhatsAppInquiryUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-4 border border-emerald-500/50 bg-emerald-950/50 hover:bg-emerald-900/60 text-emerald-400 font-semibold tracking-wider text-xs sm:text-sm rounded-sm transition-all flex items-center gap-2 shadow-lg"
-              >
-                <MessageCircle className="w-4 h-4 text-emerald-400" />
-                <span>WhatsApp Hotline</span>
-              </a>
-            </motion.div>
-          </div>
-
-          {/* Right Column: Tailor Shop Atelier Showcase Card */}
-          <div className="lg:col-span-5 hidden lg:block">
-            <motion.div
-              style={{ y: card3DY }}
-              className="relative w-full max-w-md mx-auto"
-            >
-              <Card3D
-                zoomScale={1.05}
-                popY={-10}
-                className="card-luxury p-7 rounded-sm border border-blue/50 shadow-blue-glow-lg bg-black/90 backdrop-blur-xl"
-              >
-                {/* Visual Atelier Showcase Preview Image */}
-                <div className="relative h-44 rounded-sm overflow-hidden mb-5 border border-white/10 group">
-                  <img
-                    src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=900&q=85"
-                    alt="Bespoke Tailor Shop Panadura"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
-                  <div className="absolute top-3 left-3 bg-black/90 backdrop-blur-md px-2.5 py-1 rounded-sm border border-blue/50 text-[10px] text-blue font-bold uppercase tracking-wider shadow-blue-glow flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Master Tailor In Atelier</span>
-                  </div>
-                  <div className="absolute bottom-2.5 left-3 text-white text-xs font-semibold drop-shadow">
-                    142 Galle Road, Panadura
-                  </div>
-                </div>
-
-                {/* Brand Header */}
-                <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-10 h-10 rounded-sm overflow-hidden border border-blue/60 shadow-blue-glow shrink-0 bg-black">
-                      <Image
-                        src="/images/ms-tailors-logo.jpg"
-                        alt="MS Tailors Logo"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="font-display font-bold text-white text-base leading-tight">
-                        MS TAILORS
-                      </h3>
-                      <p className="text-[10px] text-blue font-bold tracking-[0.2em] uppercase">
-                        WEAR YOUR DREAMS
-                      </p>
-                    </div>
-                  </div>
-                  <span className="px-2.5 py-0.5 rounded-sm bg-blue/15 border border-blue/40 text-blue text-[10px] font-bold uppercase tracking-wider">
-                    Est. Panadura
-                  </span>
-                </div>
-
-                {/* Tailor Shop Specifications */}
-                <div className="space-y-2.5 mb-5 text-xs">
-                  <div className="flex items-center justify-between p-2.5 rounded-sm bg-black/70 border border-white/10">
-                    <span className="text-silk-muted">Tailoring Service:</span>
-                    <span className="text-white font-semibold">Bespoke Suits & Tuxedo Rentals</span>
-                  </div>
-
-                  <div className="flex items-center justify-between p-2.5 rounded-sm bg-black/70 border border-white/10">
-                    <span className="text-silk-muted">Chest Construction:</span>
-                    <span className="text-blue font-bold">100% Floating Horsehair Canvas</span>
-                  </div>
-
-                  <div className="flex items-center justify-between p-2.5 rounded-sm bg-black/70 border border-white/10">
-                    <span className="text-silk-muted">Fabric Selection:</span>
-                    <span className="text-white font-semibold">VBC • Scabal • Loro Piana</span>
-                  </div>
-
-                  <div className="flex items-center justify-between p-2.5 rounded-sm bg-black/70 border border-white/10">
-                    <span className="text-silk-muted">Delivery Turnaround:</span>
-                    <span className="text-emerald-400 font-semibold">Express 3-Day Suits & Rentals</span>
-                  </div>
-                </div>
-
-                {/* Card CTA */}
-                <button
-                  onClick={onOpenBooking}
-                  className="w-full py-3 bg-blue-gradient text-white text-xs font-bold uppercase tracking-widest rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all flex items-center justify-center gap-2"
-                >
-                  <Scissors className="w-4 h-4" />
-                  <span>Reserve Atelier Fitting Slot</span>
-                </button>
-              </Card3D>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Heritage Trust Badges with 3D Depth */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="mt-16 pt-8 border-t border-white/15 w-full grid grid-cols-2 md:grid-cols-4 gap-6 text-silk-muted"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-sm bg-obsidian-card border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow">
-              <CheckCircle2 className="w-5 h-5 text-blue" />
             </div>
-            <div>
-              <div className="text-white font-bold text-sm">30+ Measurements</div>
-              <div className="text-xs text-silk-muted">Anatomical precision cut</div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-sm bg-obsidian-card border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow">
-              <Sparkles className="w-5 h-5 text-blue" />
-            </div>
-            <div>
-              <div className="text-white font-bold text-sm">500+ Fine Fabrics</div>
-              <div className="text-xs text-silk-muted">VBC, Scabal & Loro Piana</div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-sm bg-obsidian-card border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow">
-              <Scissors className="w-5 h-5 text-blue" />
-            </div>
-            <div>
-              <div className="text-white font-bold text-sm">Floating Canvas</div>
-              <div className="text-xs text-silk-muted">Artisanal horsehair drape</div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-sm bg-obsidian-card border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow">
-              <ShieldCheck className="w-5 h-5 text-blue" />
-            </div>
-            <div>
-              <div className="text-white font-bold text-sm">Panadura & Islandwide</div>
-              <div className="text-xs text-silk-muted">Studio & traveling tailor</div>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </motion.div>
 
-      {/* Gentle Scroll Indicator */}
-      <a
-        href="#services"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-silk-muted hover:text-blue flex flex-col items-center gap-1 transition-colors z-20 group"
-      >
-        <span className="text-[10px] uppercase tracking-widest text-silk-silver group-hover:text-blue">Scroll to Explore</span>
-        <ChevronDown className="w-4 h-4 animate-bounce text-blue" />
-      </a>
+      {/* RIGHT-EDGE VERTICAL SLIDER PAGINATION INDICATORS (■ / □) */}
+      <div className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-3">
+        {SLIDES.map((_, idx) => {
+          const isActive = currentSlide === idx;
+          return (
+            <button
+              key={idx}
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`w-3.5 h-3.5 transition-all duration-300 ${
+                isActive
+                  ? "bg-blue shadow-blue-glow scale-110"
+                  : "bg-transparent border border-white/50 hover:border-white hover:scale-110"
+              }`}
+            />
+          );
+        })}
+      </div>
     </section>
   );
 }

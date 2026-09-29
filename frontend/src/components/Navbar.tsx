@@ -2,30 +2,100 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { Phone, MessageCircle, Calendar, Menu, X, Scissors, ShieldCheck, MapPin, Clock } from "lucide-react";
-import { MS_TAILORS_CONTACT, getWhatsAppInquiryUrl } from "@/lib/api";
+import { Scissors, ShieldCheck, MapPin, ChevronDown, Menu, X } from "lucide-react";
+import { MS_TAILORS_CONTACT } from "@/lib/api";
 
 interface NavbarProps {
   onOpenBooking: () => void;
+  isSidebarOpen?: boolean;
+  onToggleSidebar?: () => void;
 }
 
-export default function Navbar({ onOpenBooking }: NavbarProps) {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export function TailorCrest({
+  className = "w-36 h-28",
+  monogram = "MS",
+  title = "MS. TAILORS",
+  subtitle = "SINCE 2026 • ATELIER",
+  variant = "blue",
+}: {
+  className?: string;
+  monogram?: string;
+  title?: string;
+  subtitle?: string;
+  variant?: "blue" | "gold" | "white";
+}) {
+  const primaryColor = variant === "blue" ? "#3877F6" : variant === "gold" ? "#D4AF37" : "#FFFFFF";
+  const accentColor = variant === "blue" ? "#60A5FA" : variant === "gold" ? "#F5E6A3" : "#E2E8F0";
+
+  return (
+    <div className={`flex flex-col items-center justify-center text-center select-none ${className}`}>
+      {/* Laurel Flourish Shield */}
+      <svg viewBox="0 0 160 105" className="w-full h-auto" fill="none">
+        {/* Top Flourish Finial */}
+        <path d="M80 12 C76 6, 84 6, 80 2 C76 6, 84 6, 80 12 Z" fill={primaryColor} />
+        <circle cx="80" cy="4" r="1.5" fill={accentColor} />
+
+        {/* Laurel wreath left */}
+        <g fill={primaryColor}>
+          <path d="M52 44 C44 38, 46 25, 61 20 C59 27, 49 32, 55 41 Z" />
+          <path d="M44 58 C36 50, 40 37, 54 34 C52 41, 44 45, 48 54 Z" />
+          <path d="M42 74 C34 66, 40 53, 54 51 C50 58, 44 62, 46 72 Z" />
+          <path d="M50 88 C44 81, 50 70, 61 70 C56 77, 52 81, 54 88 Z" />
+        </g>
+
+        {/* Laurel wreath right */}
+        <g fill={primaryColor}>
+          <path d="M108 44 C116 38, 114 25, 99 20 C101 27, 111 32, 105 41 Z" />
+          <path d="M116 58 C124 50, 120 37, 106 34 C108 41, 116 45, 112 54 Z" />
+          <path d="M118 74 C126 66, 120 53, 106 51 C110 58, 116 62, 114 72 Z" />
+          <path d="M110 88 C116 81, 110 70, 99 70 C104 77, 108 81, 106 88 Z" />
+        </g>
+
+        {/* Central Oval Shield */}
+        <ellipse cx="80" cy="50" rx="23" ry="29" fill="#0A0E17" stroke={primaryColor} strokeWidth="1.8" />
+        <ellipse cx="80" cy="50" rx="20" ry="26" fill="none" stroke={accentColor} strokeWidth="0.8" strokeDasharray="2,2" />
+
+        {/* Center Monogram */}
+        <text
+          x="80"
+          y="57"
+          textAnchor="middle"
+          fontFamily="Cinzel, serif"
+          fontSize={monogram.length > 1 ? "18" : "22"}
+          fontWeight="700"
+          fill="#FFFFFF"
+          letterSpacing="0.05em"
+        >
+          {monogram}
+        </text>
+      </svg>
+
+      {/* Brand Title */}
+      <span className="font-display tracking-[0.25em] text-white font-bold text-sm sm:text-base -mt-1 block uppercase">
+        {title}
+      </span>
+      <span className="text-[9px] tracking-[0.3em] uppercase text-blue font-semibold block mt-0.5">
+        {subtitle}
+      </span>
+    </div>
+  );
+}
+
+export default function Navbar({ onOpenBooking, isSidebarOpen = true, onToggleSidebar }: NavbarProps) {
+  const [internalOpen, setInternalOpen] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
+
+  const sidebarOpen = onToggleSidebar !== undefined ? isSidebarOpen : internalOpen;
+  const toggleSidebar = onToggleSidebar || (() => setInternalOpen(!internalOpen));
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-
-      // Simple active link spy
       const sections = ["services", "craftsmanship", "process", "lookbook", "fabrics", "rentals", "testimonials", "contact"];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 200 && rect.bottom >= 200) {
+          if (rect.top <= 250 && rect.bottom >= 250) {
             setActiveSection(section);
             return;
           }
@@ -41,211 +111,132 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: "HOME", href: "#" },
-    { name: "SERVICES", href: "#services" },
-    { name: "CRAFTSMANSHIP", href: "#craftsmanship" },
-    { name: "PROCESS", href: "#process" },
-    { name: "LOOKBOOK", href: "#lookbook" },
-    { name: "FABRIC MILLS", href: "#fabrics" },
-    { name: "RENTALS", href: "#rentals" },
-    { name: "REVIEWS", href: "#testimonials" },
-    { name: "ATELIER", href: "#contact" },
+    { name: "Home", href: "#", hasDropdown: true, key: "home" },
+    { name: "Features", href: "#services", hasDropdown: true, key: "services" },
+    { name: "About Me", href: "#craftsmanship", hasDropdown: false, key: "craftsmanship" },
+    { name: "Services", href: "#services", hasDropdown: true, key: "services-list" },
+    { name: "My Works", href: "#lookbook", hasDropdown: true, key: "lookbook" },
+    { name: "News", href: "#testimonials", hasDropdown: true, key: "testimonials" },
+    { name: "Shop", href: "#rentals", hasDropdown: false, key: "rentals" },
+    { name: "Contacts", href: "#contact", hasDropdown: false, key: "contact" },
   ];
 
   return (
     <>
-      {/* Top Utility Bar - Mr. Murphy Bespoke Tailoring Style */}
-      <div className="bg-black border-b border-white/10 text-silk-muted text-xs py-2 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-          {/* Left: Location & Atelier Fitting Hours */}
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 sm:gap-6 text-[11px]">
-            <span className="flex items-center gap-1.5 text-silk-silver">
-              <MapPin className="w-3.5 h-3.5 text-blue" />
-              <span>142 Galle Road, Panadura, Sri Lanka</span>
-            </span>
-            <span className="hidden sm:inline text-white/20">•</span>
-            <span className="flex items-center gap-1.5 text-silk-silver">
-              <Clock className="w-3.5 h-3.5 text-blue" />
-              <span>Mon – Sat: 9:00 AM – 7:30 PM (Sun: by Appt)</span>
-            </span>
-          </div>
-
-          {/* Right: Phone Hotline & WhatsApp Concierge */}
-          <div className="flex items-center gap-4 text-[11px]">
-            <a
-              href={`tel:${MS_TAILORS_CONTACT.hotlineMobileRaw}`}
-              className="flex items-center gap-1.5 text-silk-silver hover:text-blue transition-colors font-medium"
-            >
-              <Phone className="w-3.5 h-3.5 text-blue" />
-              <span>Hotline: <strong className="text-white font-semibold">{MS_TAILORS_CONTACT.hotlineMobileDisplay}</strong></span>
-            </a>
-            <span className="text-white/20">•</span>
-            <a
-              href={getWhatsAppInquiryUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors font-semibold"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>WhatsApp Chat</span>
-            </a>
-            <span className="hidden lg:inline text-white/20">•</span>
-            <Link
-              href="/admin"
-              className="hidden lg:flex items-center gap-1 text-silk-muted hover:text-blue transition-colors"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-blue" />
-              <span>Admin Portal</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Luxury Header Navigation Bar */}
-      <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
-          scrolled
-            ? "bg-black/95 backdrop-blur-md border-b border-blue/40 shadow-2xl py-3"
-            : "bg-black/90 backdrop-blur-md border-b border-white/10 py-4"
+      {/* VERTICAL LEFT SIDEBAR (MR. MURPHY ICONIC NAVIGATION) */}
+      <aside
+        className={`fixed top-0 bottom-0 left-0 z-50 flex transition-all duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-72"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Brand Identity / Logo Emblem */}
-          <Link href="/" className="flex items-center gap-3.5 group">
-            <div className="relative w-12 h-12 rounded-sm overflow-hidden border border-blue/50 shadow-blue-glow group-hover:border-blue transition-all bg-black shrink-0">
-              <Image
-                src="/images/ms-tailors-logo.jpg"
-                alt="MS Tailors Logo"
-                fill
-                className="object-cover"
-                priority
-              />
+        {/* Main Sidebar Drawer Area */}
+        <div className="w-72 bg-[#0c1017] text-white border-r border-white/10 flex flex-col justify-between overflow-y-auto select-none shadow-2xl relative">
+          <div>
+            {/* Top Close Button (Desktop & Mobile) */}
+            <div className="flex justify-end p-4">
+              <button
+                onClick={toggleSidebar}
+                className="w-8 h-8 rounded-full border border-white/10 bg-black/60 text-white/80 hover:text-white hover:border-blue flex items-center justify-center transition-all"
+                title="Collapse Menu"
+              >
+                <X className="w-4 h-4 text-blue" />
+              </button>
             </div>
-            <div>
-              <span className="font-display text-xl sm:text-2xl font-bold tracking-[0.25em] text-white block leading-none group-hover:text-blue transition-colors">
-                MS TAILORS
-              </span>
-              <span className="text-[10px] tracking-[0.28em] uppercase text-blue font-bold block mt-1">
-                CUSTOM TAILORING & BESPOKE ATELIER
-              </span>
-            </div>
-          </Link>
 
-          {/* Desktop Navigation Links (Mr. Murphy Centered Layout) */}
-          <nav className="hidden xl:flex items-center space-x-6 text-[12px] font-bold tracking-[0.2em]">
-            {navLinks.map((link) => {
-              const isActive =
-                (link.href === "#" && activeSection === "home") ||
-                link.href === `#${activeSection}`;
+            {/* Mr. Murphy / MS Tailors Monogram Crest */}
+            <Link href="/" className="px-6 py-2 block">
+              <TailorCrest className="w-full" />
+            </Link>
 
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`transition-all py-1.5 relative group uppercase ${
-                    isActive ? "text-blue font-extrabold" : "text-white/80 hover:text-white"
-                  }`}
-                >
-                  <span>{link.name}</span>
-                  {/* Active / Hover Laser Underline */}
-                  <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-blue transition-all duration-300 shadow-blue-glow ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
+            {/* Vertical Menu Navigation List */}
+            <nav className="mt-8 flex flex-col">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.key || (link.key === "home" && activeSection === "home");
+
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => {
+                      if (window.innerWidth < 1024) toggleSidebar();
+                    }}
+                    className={`flex items-center justify-between px-8 py-3.5 text-sm sm:text-base font-display font-medium transition-all ${
+                      isActive
+                        ? "bg-blue text-white font-bold shadow-blue-glow border-l-4 border-white"
+                        : "text-white/85 hover:bg-white/5 hover:text-blue hover:pl-9"
                     }`}
-                  />
-                </a>
-              );
-            })}
-          </nav>
-
-          {/* Action CTAs (Mr. Murphy Iconic Style with Pop-up Zoom) */}
-          <div className="hidden sm:flex items-center gap-3">
-            <a
-              href={getWhatsAppInquiryUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-sm border border-emerald-500/50 bg-emerald-950/40 text-emerald-400 hover:bg-emerald-900/50 text-xs font-semibold tracking-wider transition-all shadow-sm hover:scale-105"
-            >
-              <MessageCircle className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">WhatsApp Inquire</span>
-            </a>
-
-            <button
-              onClick={onOpenBooking}
-              className="relative group overflow-hidden px-5 py-2.5 rounded-sm bg-blue-gradient text-white font-bold text-xs tracking-widest uppercase shadow-blue-glow hover:shadow-blue-glow-lg transition-all hover:scale-105 active:scale-95"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                <Scissors className="w-3.5 h-3.5 text-white" />
-                <span>Book Appointment</span>
-              </span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </button>
+                  >
+                    <span>{link.name}</span>
+                    {link.hasDropdown && (
+                      <ChevronDown className={`w-3.5 h-3.5 opacity-70 ${isActive ? "text-white" : "text-blue"}`} />
+                    )}
+                  </a>
+                );
+              })}
+            </nav>
           </div>
 
-          {/* Mobile Menu Trigger */}
-          <div className="xl:hidden flex items-center gap-2">
+          {/* Sidebar Footer Area */}
+          <div className="p-6 border-t border-white/10 space-y-3 bg-black/40">
             <button
               onClick={onOpenBooking}
-              className="sm:hidden px-3 py-1.5 text-xs bg-blue text-white font-bold uppercase tracking-wider rounded-sm shadow-blue-glow"
+              className="w-full py-3 bg-blue-gradient text-white text-xs font-bold uppercase tracking-widest rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all flex items-center justify-center gap-2 hover:scale-[1.02]"
             >
-              Book
+              <Scissors className="w-4 h-4" />
+              <span>Book Appointment</span>
             </button>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-white hover:text-blue focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+
+            <div className="pt-2 text-center text-xs text-silk-muted space-y-1">
+              <div className="flex items-center justify-center gap-1.5 text-white/90">
+                <MapPin className="w-3.5 h-3.5 text-blue" />
+                <span>142 Galle Rd, Panadura</span>
+              </div>
+              <a
+                href={`tel:${MS_TAILORS_CONTACT.hotlineMobileRaw}`}
+                className="block text-blue font-semibold hover:underline"
+              >
+                Hotline: {MS_TAILORS_CONTACT.hotlineMobileDisplay}
+              </a>
+              <Link
+                href="/admin"
+                className="inline-flex items-center gap-1 text-[11px] text-silk-muted hover:text-blue pt-2 transition-colors"
+              >
+                <ShieldCheck className="w-3 h-3" />
+                <span>Admin Login</span>
+              </Link>
+            </div>
           </div>
         </div>
 
-        {/* Mobile Slide-out Drawer */}
-        {mobileMenuOpen && (
-          <div className="xl:hidden bg-black/98 border-b border-blue/40 px-6 py-6 transition-all shadow-2xl">
-            <div className="flex flex-col space-y-3.5">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-white hover:text-blue text-sm tracking-[0.18em] py-2 border-b border-white/10 font-bold"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <div className="pt-4 flex flex-col gap-3">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenBooking();
-                  }}
-                  className="w-full py-3.5 bg-blue-gradient text-white font-bold tracking-widest uppercase text-center rounded-sm shadow-blue-glow text-xs flex items-center justify-center gap-2"
-                >
-                  <Scissors className="w-4 h-4" />
-                  <span>Book Atelier Appointment</span>
-                </button>
-                <a
-                  href={getWhatsAppInquiryUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 border border-emerald-500/50 bg-emerald-950/40 text-emerald-400 text-center rounded-sm font-semibold flex items-center justify-center gap-2 text-xs"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>Chat on WhatsApp (+94 77 555 1888)</span>
-                </a>
-                <Link
-                  href="/admin"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-center text-xs text-silk-muted hover:text-blue py-1"
-                >
-                  Atelier Admin Login
-                </Link>
-              </div>
-            </div>
+        {/* Attached Vertical MENU Toggle Tab Strip (always visible on screen) */}
+        <div
+          className="flex flex-col items-center justify-between py-6 px-2.5 bg-black/95 border-r border-blue/40 cursor-pointer text-white shadow-2xl hover:bg-black transition-colors"
+          onClick={toggleSidebar}
+        >
+          <button
+            aria-label="Toggle Navigation Sidebar"
+            className="w-8 h-8 rounded-sm bg-obsidian-surface border border-blue/50 flex items-center justify-center text-blue shadow-blue-glow hover:scale-105 transition-all"
+          >
+            {sidebarOpen ? <X className="w-4 h-4 text-blue" /> : <Menu className="w-4 h-4 text-blue" />}
+          </button>
+
+          {/* Vertical Rotated Text: ≡ MENU */}
+          <div className="my-auto py-8 [writing-mode:vertical-rl] rotate-180 text-[11px] font-bold tracking-[0.35em] text-white hover:text-blue transition-colors flex items-center gap-2">
+            <span>MENU</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-blue animate-pulse" />
           </div>
-        )}
-      </header>
+
+          <Scissors className="w-4 h-4 text-blue rotate-45" />
+        </div>
+      </aside>
+
+      {/* Backdrop overlay for mobile */}
+      {sidebarOpen && (
+        <div
+          onClick={toggleSidebar}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 lg:hidden"
+        />
+      )}
     </>
   );
 }

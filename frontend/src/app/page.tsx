@@ -60,54 +60,63 @@ export default function Home() {
     setIsBookingOpen(true);
   };
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   return (
     <main className="min-h-screen bg-obsidian text-silk-pearl selection:bg-blue/30 selection:text-white">
       {/* 3D Global Laser Scroll Progress Bar */}
       <ScrollProgressBar />
 
-      {/* Sticky Luxury Navbar */}
-      <Navbar onOpenBooking={handleOpenBooking} />
-
-      {/* Hero Section */}
-      <Hero onOpenBooking={handleOpenBooking} />
-
-      {/* Craftsmanship & Sartorial Heritage */}
-      <CraftsmanshipStory />
-
-      {/* Services Showcase */}
-      <ServicesSection
-        services={services}
-        onOpenBookingWithService={handleOpenBookingWithService}
-      />
-
-      {/* 5-Step Process Timeline */}
-      <ProcessTimeline />
-
-      {/* Curated Lookbook Portfolio */}
-      <LookbookSection
-        items={lookbookItems}
-        onOpenBookingWithLook={handleOpenBookingWithLook}
-      />
-
-      {/* European Fabric & Mill Library */}
-      <FabricLibrarySection
-        fabrics={fabrics}
+      {/* Mr. Murphy Iconic Left Navigation Bar */}
+      <Navbar
         onOpenBooking={handleOpenBooking}
+        isSidebarOpen={isSidebarOpen}
+        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
       />
 
-      {/* Suit Rental & Ready-Made Section */}
-      <SuitRentalSection onOpenBooking={handleOpenBooking} />
+      {/* Main Content Area — Smoothly shifts when sidebar opens/closes */}
+      <div className={`transition-all duration-300 ${isSidebarOpen ? "lg:pl-72" : "lg:pl-12"}`}>
+        {/* Hero Section */}
+        <Hero onOpenBooking={handleOpenBooking} />
 
-      {/* Client Endorsements & Testimonials (Mr. Murphy Style) */}
-      <TestimonialsSection />
+        {/* Craftsmanship & Sartorial Heritage */}
+        <CraftsmanshipStory />
 
-      {/* Panadura Atelier Location & Direct Contact */}
-      <LocationContactSection />
+        {/* Services Showcase */}
+        <ServicesSection
+          services={services}
+          onOpenBookingWithService={handleOpenBookingWithService}
+        />
 
-      {/* Footer */}
-      <Footer />
+        {/* 5-Step Process Timeline */}
+        <ProcessTimeline />
 
-      {/* Mobile Floating Hotline Bar */}
+        {/* Curated Lookbook Portfolio */}
+        <LookbookSection
+          items={lookbookItems}
+          onOpenBookingWithLook={handleOpenBookingWithLook}
+        />
+
+        {/* European Fabric & Mill Library */}
+        <FabricLibrarySection
+          fabrics={fabrics}
+          onOpenBooking={handleOpenBooking}
+        />
+
+        {/* Suit Rental & Ready-Made Section */}
+        <SuitRentalSection onOpenBooking={handleOpenBooking} />
+
+        {/* Client Endorsements & Testimonials (Mr. Murphy Style) */}
+        <TestimonialsSection />
+
+        {/* Panadura Atelier Location & Direct Contact */}
+        <LocationContactSection />
+
+        {/* Footer */}
+        <Footer />
+      </div>
+
+      {/* Floating Chat with Us Widget & Hotline */}
       <FloatingHotlineBar onOpenBooking={handleOpenBooking} />
 
       {/* Interactive Consultation & Measurement Modal */}
