@@ -21,15 +21,15 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
     : fabrics.filter((f) => f.colorFamily.toLowerCase() === selectedColor.toLowerCase());
 
   return (
-    <section id="fabrics" className="py-24 bg-obsidian-surface relative border-t border-b border-obsidian-border/80">
+    <section id="fabrics" className="py-24 bg-black relative border-t border-b border-obsidian-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <span className="text-gold tracking-[0.25em] text-xs font-semibold uppercase block mb-3">
+            <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3">
               European Mill Partnerships
             </span>
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-silk-ivory">
+            <h2 className="text-3xl sm:text-5xl font-display font-bold text-white">
               The Fabric & Mill Library
             </h2>
             <p className="mt-4 text-silk-muted max-w-xl text-sm sm:text-base font-light">
@@ -43,10 +43,10 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
               <button
                 key={col}
                 onClick={() => setSelectedColor(col)}
-                className={`px-4 py-2 rounded-sm text-xs uppercase tracking-wider font-medium transition-all ${
+                className={`px-4 py-2 rounded-sm text-xs uppercase tracking-wider font-semibold transition-all ${
                   selectedColor === col
-                    ? "bg-gold text-obsidian font-bold shadow-gold-glow"
-                    : "bg-obsidian border border-obsidian-border text-silk-silver hover:border-gold/40 hover:text-silk-ivory"
+                    ? "bg-blue text-white shadow-blue-glow font-bold"
+                    : "bg-obsidian border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
                 }`}
               >
                 {col}
@@ -65,7 +65,7 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="card-luxury rounded-sm overflow-hidden flex flex-col justify-between group"
+                className="card-luxury rounded-sm overflow-hidden flex flex-col justify-between group hover:border-blue/60 hover:shadow-blue-glow"
               >
                 {/* Texture Visual */}
                 <div className="relative h-48 overflow-hidden bg-obsidian-elevated">
@@ -74,10 +74,10 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
                     alt={fabric.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
                   {/* Mill Stamp */}
-                  <div className="absolute top-3 left-3 bg-obsidian/90 backdrop-blur-md px-3 py-1 rounded-sm border border-gold/40 text-gold text-[10px] uppercase font-bold tracking-widest">
+                  <div className="absolute top-3 left-3 bg-black/90 backdrop-blur-md px-3 py-1 rounded-sm border border-blue/40 text-blue text-[10px] uppercase font-bold tracking-widest shadow-blue-glow">
                     {fabric.country}
                   </div>
 
@@ -90,10 +90,10 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
 
                   {/* Technical Badge Bar */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-silk-silver">
-                    <span className="bg-obsidian/90 backdrop-blur-md px-2 py-0.5 rounded-sm border border-white/10 font-mono">
+                    <span className="bg-black/90 backdrop-blur-md px-2 py-0.5 rounded-sm border border-white/10 font-mono">
                       {fabric.code}
                     </span>
-                    <span className="bg-obsidian/90 backdrop-blur-md px-2 py-0.5 rounded-sm border border-gold/30 text-gold font-medium">
+                    <span className="bg-black/90 backdrop-blur-md px-2 py-0.5 rounded-sm border border-blue/40 text-blue font-semibold">
                       {fabric.weightGsm} GSM • {fabric.season}
                     </span>
                   </div>
@@ -102,10 +102,10 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
                 {/* Swatch Details */}
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <div className="text-[11px] text-gold uppercase tracking-wider font-semibold mb-1">
+                    <div className="text-[11px] text-blue uppercase tracking-wider font-bold mb-1">
                       {fabric.millOrigin}
                     </div>
-                    <h3 className="font-display font-bold text-silk-ivory text-base mb-2 group-hover:text-gold transition-colors">
+                    <h3 className="font-display font-bold text-white text-base mb-2 group-hover:text-blue transition-colors">
                       {fabric.name}
                     </h3>
 
@@ -113,20 +113,20 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
                       {fabric.description}
                     </p>
 
-                    <div className="bg-obsidian p-3 rounded-sm border border-obsidian-border space-y-1.5 text-xs text-silk-silver mb-4">
+                    <div className="bg-black p-3 rounded-sm border border-obsidian-border space-y-1.5 text-xs text-silk-silver mb-4">
                       <div className="flex justify-between">
                         <span className="text-silk-muted">Composition:</span>
-                        <span className="font-medium text-silk-ivory">{fabric.composition}</span>
+                        <span className="font-medium text-white">{fabric.composition}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-silk-muted">Weave Type:</span>
-                        <span className="font-medium text-silk-ivory">{fabric.weave}</span>
+                        <span className="font-medium text-white">{fabric.weave}</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="pt-3 border-t border-obsidian-border flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-[11px] text-emerald-400">
+                    <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       <span>Available in Atelier</span>
                     </div>
@@ -137,7 +137,7 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-gold hover:text-white flex items-center gap-1 transition-colors"
+                      className="text-xs text-blue hover:text-white flex items-center gap-1 transition-colors font-semibold"
                     >
                       <span>Inquire Swatch</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -150,9 +150,9 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
         </div>
 
         {/* Mill Trust Banner */}
-        <div className="mt-16 p-8 rounded-sm bg-obsidian border border-gold/30 text-center max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-16 p-8 rounded-sm bg-obsidian-surface border border-blue/40 shadow-blue-glow text-center max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-left">
-            <h4 className="text-lg font-display font-bold text-silk-ivory mb-1">
+            <h4 className="text-lg font-display font-bold text-white mb-1">
               Desire a Specific Mill or Pattern?
             </h4>
             <p className="text-xs sm:text-sm text-silk-muted font-light">
@@ -161,7 +161,7 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
           </div>
           <button
             onClick={onOpenBooking}
-            className="px-6 py-3 bg-gold-gradient text-obsidian font-bold text-xs uppercase tracking-widest rounded-sm shadow-gold-glow hover:shadow-gold-glow-lg transition-all shrink-0"
+            className="px-6 py-3 bg-blue-gradient text-white font-bold text-xs uppercase tracking-widest rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all shrink-0"
           >
             Schedule Swatch Viewing
           </button>

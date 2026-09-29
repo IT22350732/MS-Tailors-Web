@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Calendar,
   Layers,
@@ -62,7 +63,7 @@ export default function AdminPage() {
     if (saved) {
       try {
         setSession(JSON.parse(saved));
-      } catch (e) {
+      } catch {
         localStorage.removeItem("mstailors_admin_session");
       }
     }
@@ -243,18 +244,27 @@ export default function AdminPage() {
   // ----------------------------------------------------
   if (!session) {
     return (
-      <div className="min-h-screen bg-obsidian flex items-center justify-center p-4">
-        <div className="card-luxury w-full max-w-md p-8 rounded-sm border border-gold/40 shadow-2xl relative">
+      <div className="min-h-screen bg-black flex items-center justify-center p-4">
+        <div className="card-luxury w-full max-w-md p-8 rounded-sm border border-blue/40 shadow-blue-glow relative">
           <div className="text-center mb-8">
-            <div className="w-14 h-14 rounded-full border border-gold/50 flex items-center justify-center bg-obsidian-surface mx-auto mb-4 shadow-gold-glow">
-              <span className="font-display font-bold text-gold text-2xl">MS</span>
+            <div className="relative w-20 h-20 rounded-sm overflow-hidden border border-blue/50 mx-auto mb-4 shadow-blue-glow bg-black">
+              <Image
+                src="/images/ms-tailors-logo.jpg"
+                alt="MS Tailors Logo"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
-            <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-bold block mb-1">
+            <span className="text-[10px] tracking-[0.25em] text-blue uppercase font-bold block mb-1">
               Atelier Management Console
             </span>
-            <h1 className="font-display text-2xl sm:text-3xl font-bold text-silk-ivory">
+            <h1 className="font-display text-2xl sm:text-3xl font-bold text-white">
               MS Tailors — Panadura
             </h1>
+            <p className="text-xs text-blue tracking-widest uppercase font-semibold mt-1">
+              WEAR YOUR DREAMS
+            </p>
             <p className="text-xs text-silk-muted mt-2">
               Sign in to manage appointments, lookbook items, customer inquiries, and fabric swatches.
             </p>
@@ -276,7 +286,7 @@ export default function AdminPage() {
                 required
                 value={loginForm.username}
                 onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
-                className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
               />
             </div>
 
@@ -289,25 +299,25 @@ export default function AdminPage() {
                 required
                 value={loginForm.password}
                 onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-                className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
               />
             </div>
 
-            <div className="p-3 rounded-sm bg-obsidian-surface border border-gold/20 text-[11px] text-silk-muted">
-              <span className="text-gold font-semibold block mb-0.5">Default Admin Credentials:</span>
-              Username: <span className="text-silk-ivory font-mono">admin</span> | Password: <span className="text-silk-ivory font-mono">Admin@MsTailors2026</span>
+            <div className="p-3 rounded-sm bg-obsidian-surface border border-blue/30 text-[11px] text-silk-muted">
+              <span className="text-blue font-semibold block mb-0.5">Default Admin Credentials:</span>
+              Username: <span className="text-white font-mono">admin</span> | Password: <span className="text-white font-mono">Admin@MsTailors2026</span>
             </div>
 
             <button
               type="submit"
               disabled={loginLoading}
-              className="w-full py-3.5 bg-gold-gradient text-obsidian font-bold tracking-widest uppercase text-xs rounded-sm shadow-gold-glow hover:shadow-gold-glow-lg transition-all disabled:opacity-50"
+              className="w-full py-3.5 bg-blue-gradient text-white font-bold tracking-widest uppercase text-xs rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all disabled:opacity-50"
             >
               {loginLoading ? "Authenticating Master Key..." : "Enter Atelier CMS"}
             </button>
 
             <div className="text-center pt-2">
-              <Link href="/" className="text-xs text-silk-muted hover:text-gold transition-colors">
+              <Link href="/" className="text-xs text-silk-muted hover:text-blue transition-colors">
                 ← Return to Public Website
               </Link>
             </div>
@@ -321,26 +331,31 @@ export default function AdminPage() {
   // AUTHENTICATED ADMIN DASHBOARD
   // ----------------------------------------------------
   return (
-    <div className="min-h-screen bg-obsidian text-silk-pearl flex flex-col">
+    <div className="min-h-screen bg-black text-silk-pearl flex flex-col">
       {/* Top Admin Header */}
-      <header className="bg-obsidian-card border-b border-obsidian-border px-6 py-4 flex items-center justify-between sticky top-0 z-30">
+      <header className="bg-black border-b border-obsidian-border px-6 py-3 flex items-center justify-between sticky top-0 z-30">
         <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-full border border-gold/50 flex items-center justify-center bg-obsidian-surface">
-              <span className="font-display font-bold text-gold text-sm">MS</span>
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-9 h-9 rounded-sm overflow-hidden border border-blue/50 shadow-blue-glow shrink-0 bg-black">
+              <Image
+                src="/images/ms-tailors-logo.jpg"
+                alt="MS Tailors Logo"
+                fill
+                className="object-cover"
+              />
             </div>
             <div>
-              <span className="font-display text-base font-bold tracking-wider text-silk-ivory">
+              <span className="font-display text-base font-bold tracking-wider text-white block leading-none">
                 MS TAILORS
               </span>
-              <span className="text-[10px] text-gold tracking-widest block font-sans">
-                Atelier CMS Console
+              <span className="text-[10px] text-blue tracking-widest block font-sans font-bold mt-0.5">
+                WEAR YOUR DREAMS • CMS
               </span>
             </div>
           </Link>
           <span className="hidden sm:inline text-obsidian-border">|</span>
           <span className="hidden sm:inline text-xs text-silk-muted">
-            Logged in as <strong className="text-silk-ivory">{session.fullName}</strong> ({session.role})
+            Logged in as <strong className="text-white">{session.fullName}</strong> ({session.role})
           </span>
         </div>
 
@@ -348,7 +363,7 @@ export default function AdminPage() {
           <Link
             href="/"
             target="_blank"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-obsidian border border-obsidian-border text-xs text-silk-silver hover:text-gold transition-colors"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-obsidian-surface border border-blue/30 text-xs text-silk-silver hover:text-blue transition-colors"
           >
             <span>Live Site</span>
             <ExternalLink className="w-3.5 h-3.5" />
@@ -356,10 +371,10 @@ export default function AdminPage() {
 
           <button
             onClick={fetchAdminData}
-            className="p-2 rounded-sm bg-obsidian border border-obsidian-border text-silk-silver hover:text-gold transition-colors"
+            className="p-2 rounded-sm bg-obsidian-surface border border-obsidian-border text-silk-silver hover:text-blue transition-colors"
             title="Refresh Data"
           >
-            <RefreshCw className={`w-4 h-4 ${loadingData ? "animate-spin text-gold" : ""}`} />
+            <RefreshCw className={`w-4 h-4 ${loadingData ? "animate-spin text-blue" : ""}`} />
           </button>
 
           <button
@@ -378,10 +393,10 @@ export default function AdminPage() {
         <div className="flex flex-wrap gap-2 border-b border-obsidian-border pb-4 mb-8">
           <button
             onClick={() => setActiveTab("overview")}
-            className={`px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "overview"
-                ? "bg-gold text-obsidian shadow-gold-glow"
-                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-gold/40"
+                ? "bg-blue text-white shadow-blue-glow"
+                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
             }`}
           >
             <Sparkles className="w-4 h-4" />
@@ -390,10 +405,10 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab("appointments")}
-            className={`px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "appointments"
-                ? "bg-gold text-obsidian shadow-gold-glow"
-                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-gold/40"
+                ? "bg-blue text-white shadow-blue-glow"
+                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
             }`}
           >
             <Calendar className="w-4 h-4" />
@@ -402,10 +417,10 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab("lookbook")}
-            className={`px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "lookbook"
-                ? "bg-gold text-obsidian shadow-gold-glow"
-                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-gold/40"
+                ? "bg-blue text-white shadow-blue-glow"
+                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
             }`}
           >
             <Layers className="w-4 h-4" />
@@ -414,10 +429,10 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab("fabrics")}
-            className={`px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "fabrics"
-                ? "bg-gold text-obsidian shadow-gold-glow"
-                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-gold/40"
+                ? "bg-blue text-white shadow-blue-glow"
+                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
             }`}
           >
             <Scissors className="w-4 h-4" />
@@ -426,10 +441,10 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab("inquiries")}
-            className={`px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "inquiries"
-                ? "bg-gold text-obsidian shadow-gold-glow"
-                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-gold/40"
+                ? "bg-blue text-white shadow-blue-glow"
+                : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
             }`}
           >
             <Inbox className="w-4 h-4" />
@@ -442,15 +457,15 @@ export default function AdminPage() {
           <div className="space-y-8">
             {/* KPI Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="card-luxury p-6 rounded-sm border-l-4 border-l-gold">
+              <div className="card-luxury p-6 rounded-sm border-l-4 border-l-blue">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs uppercase text-silk-muted tracking-wider">Bookings</span>
-                  <Calendar className="w-5 h-5 text-gold" />
+                  <Calendar className="w-5 h-5 text-blue" />
                 </div>
-                <div className="text-3xl font-display font-bold text-silk-ivory">
+                <div className="text-3xl font-display font-bold text-white">
                   {stats?.appointments.total ?? appointments.length}
                 </div>
-                <div className="text-xs text-gold mt-1">
+                <div className="text-xs text-blue font-semibold mt-1">
                   {stats?.appointments.pending ?? 0} Pending Confirmation
                 </div>
               </div>
@@ -460,10 +475,10 @@ export default function AdminPage() {
                   <span className="text-xs uppercase text-silk-muted tracking-wider">Inquiries</span>
                   <Inbox className="w-5 h-5 text-emerald-400" />
                 </div>
-                <div className="text-3xl font-display font-bold text-silk-ivory">
+                <div className="text-3xl font-display font-bold text-white">
                   {stats?.inquiries.total ?? inquiries.length}
                 </div>
-                <div className="text-xs text-emerald-400 mt-1">
+                <div className="text-xs text-emerald-400 font-semibold mt-1">
                   {stats?.inquiries.pending ?? 0} New Messages
                 </div>
               </div>
@@ -473,10 +488,10 @@ export default function AdminPage() {
                   <span className="text-xs uppercase text-silk-muted tracking-wider">Lookbook Items</span>
                   <Layers className="w-5 h-5 text-blue-400" />
                 </div>
-                <div className="text-3xl font-display font-bold text-silk-ivory">
+                <div className="text-3xl font-display font-bold text-white">
                   {lookbookItems.length}
                 </div>
-                <div className="text-xs text-blue-400 mt-1">
+                <div className="text-xs text-blue-400 font-semibold mt-1">
                   {lookbookItems.filter((i) => i.isRental).length} Rental Ready Looks
                 </div>
               </div>
@@ -486,10 +501,10 @@ export default function AdminPage() {
                   <span className="text-xs uppercase text-silk-muted tracking-wider">European Fabrics</span>
                   <Scissors className="w-5 h-5 text-purple-400" />
                 </div>
-                <div className="text-3xl font-display font-bold text-silk-ivory">
+                <div className="text-3xl font-display font-bold text-white">
                   {fabrics.length}
                 </div>
-                <div className="text-xs text-purple-400 mt-1">
+                <div className="text-xs text-purple-400 font-semibold mt-1">
                   Italy, UK & Ireland Mills
                 </div>
               </div>
@@ -500,12 +515,12 @@ export default function AdminPage() {
               {/* Recent Bookings */}
               <div className="card-luxury p-6 rounded-sm">
                 <div className="flex items-center justify-between mb-4 border-b border-obsidian-border pb-3">
-                  <h3 className="font-display font-bold text-lg text-silk-ivory">
+                  <h3 className="font-display font-bold text-lg text-white">
                     Recent Consultation Requests
                   </h3>
                   <button
                     onClick={() => setActiveTab("appointments")}
-                    className="text-xs text-gold hover:underline flex items-center gap-1"
+                    className="text-xs text-blue hover:underline flex items-center gap-1 font-semibold"
                   >
                     <span>View All</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -524,7 +539,7 @@ export default function AdminPage() {
                         className="p-3 rounded-sm bg-obsidian-surface border border-obsidian-border flex items-center justify-between text-xs"
                       >
                         <div>
-                          <div className="font-semibold text-silk-ivory">{app.customerName}</div>
+                          <div className="font-semibold text-white">{app.customerName}</div>
                           <div className="text-silk-muted text-[11px]">
                             {app.serviceType} • {new Date(app.appointmentDate).toLocaleDateString()} ({app.preferredTimeSlot})
                           </div>
@@ -549,12 +564,12 @@ export default function AdminPage() {
               {/* Recent Inquiries */}
               <div className="card-luxury p-6 rounded-sm">
                 <div className="flex items-center justify-between mb-4 border-b border-obsidian-border pb-3">
-                  <h3 className="font-display font-bold text-lg text-silk-ivory">
+                  <h3 className="font-display font-bold text-lg text-white">
                     Customer Inquiries Feed
                   </h3>
                   <button
                     onClick={() => setActiveTab("inquiries")}
-                    className="text-xs text-gold hover:underline flex items-center gap-1"
+                    className="text-xs text-blue hover:underline flex items-center gap-1 font-semibold"
                   >
                     <span>View All</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -615,10 +630,10 @@ export default function AdminPage() {
                   <button
                     key={status}
                     onClick={() => setAppointmentFilter(status)}
-                    className={`px-3 py-1.5 rounded-sm text-xs font-medium uppercase tracking-wider transition-all ${
+                    className={`px-3 py-1.5 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all ${
                       appointmentFilter === status
-                        ? "bg-gold text-obsidian font-bold shadow-gold-glow"
-                        : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-gold/40"
+                        ? "bg-blue text-white font-bold shadow-blue-glow"
+                        : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
                     }`}
                   >
                     {status}
@@ -651,8 +666,8 @@ export default function AdminPage() {
                     appointments.map((app) => (
                       <tr key={app.id || app.referenceCode} className="hover:bg-obsidian-surface/60 transition-colors">
                         <td className="p-3.5">
-                          <span className="font-mono text-gold font-bold block">{app.referenceCode || "MST-PENDING"}</span>
-                          <span className="text-silk-ivory font-semibold">{app.customerName}</span>
+                          <span className="font-mono text-blue font-bold block">{app.referenceCode || "MST-PENDING"}</span>
+                          <span className="text-white font-semibold">{app.customerName}</span>
                         </td>
                         <td className="p-3.5">
                           <div className="text-silk-ivory">{app.serviceType}</div>
@@ -743,7 +758,7 @@ export default function AdminPage() {
               </div>
               <button
                 onClick={() => setShowAddLookbook(true)}
-                className="px-4 py-2 bg-gold-gradient text-obsidian text-xs font-bold uppercase tracking-wider rounded-sm shadow-gold-glow flex items-center gap-1.5"
+                className="px-4 py-2 bg-blue-gradient text-white text-xs font-bold uppercase tracking-wider rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg flex items-center gap-1.5 transition-all"
               >
                 <Plus className="w-4 h-4" />
                 <span>Add New Look</span>
@@ -753,26 +768,26 @@ export default function AdminPage() {
             {/* Lookbook Items Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {lookbookItems.map((item) => (
-                <div key={item.id || item.title} className="card-luxury rounded-sm overflow-hidden flex flex-col justify-between">
+                <div key={item.id || item.title} className="card-luxury rounded-sm overflow-hidden flex flex-col justify-between hover:border-blue/50 hover:shadow-blue-glow">
                   <div className="relative h-56 bg-obsidian-elevated">
                     <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover" />
                     <div className="absolute top-3 left-3 flex gap-2">
-                      <span className="px-2 py-0.5 rounded-sm bg-obsidian/90 text-gold text-[10px] font-bold uppercase">
+                      <span className="px-2 py-0.5 rounded-sm bg-black/90 text-blue text-[10px] font-bold uppercase border border-blue/40">
                         {item.category}
                       </span>
                       {item.isRental && (
-                        <span className="px-2 py-0.5 rounded-sm bg-blue-950/90 text-blue-300 text-[10px] font-bold uppercase">
+                        <span className="px-2 py-0.5 rounded-sm bg-blue-950/90 text-blue-300 text-[10px] font-bold uppercase border border-blue-500/40">
                           Rental
                         </span>
                       )}
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="font-display font-bold text-silk-ivory text-base mb-1">{item.title}</h3>
+                    <h3 className="font-display font-bold text-white text-base mb-1">{item.title}</h3>
                     <p className="text-xs text-silk-muted line-clamp-2 mb-3">{item.description}</p>
                     <div className="flex items-center justify-between pt-3 border-t border-obsidian-border text-xs">
                       <span className="text-silk-muted">{item.fabricDetails.split("(")[0]}</span>
-                      {item.priceLkr && <span className="text-gold font-bold">{formatLkr(item.priceLkr)}</span>}
+                      {item.priceLkr && <span className="text-blue font-bold font-display">{formatLkr(item.priceLkr)}</span>}
                     </div>
                   </div>
                 </div>
@@ -781,9 +796,9 @@ export default function AdminPage() {
 
             {/* Add Lookbook Modal */}
             {showAddLookbook && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/85 backdrop-blur-md">
-                <div className="card-luxury w-full max-w-lg p-6 rounded-sm border border-gold/40 shadow-2xl relative">
-                  <h3 className="font-display font-bold text-xl text-silk-ivory mb-4 border-b border-obsidian-border pb-3">
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+                <div className="card-luxury w-full max-w-lg p-6 rounded-sm border border-blue/40 shadow-blue-glow relative">
+                  <h3 className="font-display font-bold text-xl text-white mb-4 border-b border-obsidian-border pb-3">
                     Add Lookbook Item
                   </h3>
                   <form onSubmit={handleCreateLookbook} className="space-y-4 text-xs">
@@ -795,7 +810,7 @@ export default function AdminPage() {
                         value={newLook.title}
                         onChange={(e) => setNewLook({ ...newLook, title: e.target.value })}
                         placeholder="e.g. Sovereign Black Tie Dinner Suit"
-                        className="w-full bg-obsidian border border-obsidian-border px-3 py-2 rounded-sm text-silk-ivory outline-none focus:border-gold"
+                        className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
                       />
                     </div>
 
@@ -805,7 +820,7 @@ export default function AdminPage() {
                         <select
                           value={newLook.category}
                           onChange={(e) => setNewLook({ ...newLook, category: e.target.value })}
-                          className="w-full bg-obsidian border border-obsidian-border px-3 py-2 rounded-sm text-silk-ivory outline-none focus:border-gold"
+                          className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
                         >
                           <option value="Bespoke">Bespoke</option>
                           <option value="Wedding">Wedding</option>
@@ -822,7 +837,7 @@ export default function AdminPage() {
                           value={newLook.priceLkr || ""}
                           onChange={(e) => setNewLook({ ...newLook, priceLkr: Number(e.target.value) })}
                           placeholder="e.g. 110000"
-                          className="w-full bg-obsidian border border-obsidian-border px-3 py-2 rounded-sm text-silk-ivory outline-none focus:border-gold"
+                          className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
                         />
                       </div>
                     </div>
@@ -834,7 +849,7 @@ export default function AdminPage() {
                         required
                         value={newLook.imageUrl}
                         onChange={(e) => setNewLook({ ...newLook, imageUrl: e.target.value })}
-                        className="w-full bg-obsidian border border-obsidian-border px-3 py-2 rounded-sm text-silk-ivory outline-none focus:border-gold"
+                        className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
                       />
                     </div>
 
@@ -844,7 +859,7 @@ export default function AdminPage() {
                         rows={2}
                         value={newLook.description}
                         onChange={(e) => setNewLook({ ...newLook, description: e.target.value })}
-                        className="w-full bg-obsidian border border-obsidian-border px-3 py-2 rounded-sm text-silk-ivory outline-none focus:border-gold"
+                        className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
                       />
                     </div>
 
@@ -853,7 +868,7 @@ export default function AdminPage() {
                         type="checkbox"
                         checked={newLook.isRental}
                         onChange={(e) => setNewLook({ ...newLook, isRental: e.target.checked })}
-                        className="text-gold"
+                        className="text-blue"
                       />
                       <span className="text-silk-silver">Enable as Suit Rental Option</span>
                     </label>
@@ -868,7 +883,7 @@ export default function AdminPage() {
                       </button>
                       <button
                         type="submit"
-                        className="flex-1 py-2.5 bg-gold-gradient text-obsidian font-bold rounded-sm shadow-gold-glow"
+                        className="flex-1 py-2.5 bg-blue-gradient text-white font-bold rounded-sm shadow-blue-glow"
                       >
                         Publish Look
                       </button>
@@ -897,13 +912,13 @@ export default function AdminPage() {
                 <div key={fab.code} className="card-luxury p-5 rounded-sm flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-gold text-xs">{fab.code}</span>
-                      <span className="text-[10px] text-silk-muted uppercase bg-obsidian px-2 py-0.5 rounded-sm border border-obsidian-border">
+                      <span className="font-mono text-blue font-bold text-xs">{fab.code}</span>
+                      <span className="text-[10px] text-silk-muted uppercase bg-black px-2 py-0.5 rounded-sm border border-obsidian-border">
                         {fab.country}
                       </span>
                     </div>
-                    <h3 className="font-display font-bold text-silk-ivory text-base mb-1">{fab.name}</h3>
-                    <p className="text-xs text-gold/80 mb-2">{fab.millOrigin}</p>
+                    <h3 className="font-display font-bold text-white text-base mb-1">{fab.name}</h3>
+                    <p className="text-xs text-blue font-semibold mb-2">{fab.millOrigin}</p>
                     <p className="text-xs text-silk-muted font-light mb-3">{fab.description}</p>
                   </div>
                   <div className="pt-3 border-t border-obsidian-border flex items-center justify-between text-xs">
@@ -920,7 +935,7 @@ export default function AdminPage() {
         {activeTab === "inquiries" && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-display font-bold text-silk-ivory">
+              <h2 className="text-2xl font-display font-bold text-white">
                 Customer Direct Inquiries
               </h2>
               <p className="text-xs text-silk-muted">
@@ -949,16 +964,16 @@ export default function AdminPage() {
                   ) : (
                     inquiries.map((inq) => (
                       <tr key={inq.id} className="hover:bg-obsidian-surface/60 transition-colors">
-                        <td className="p-3.5 font-semibold text-silk-ivory">{inq.customerName}</td>
+                        <td className="p-3.5 font-semibold text-white">{inq.customerName}</td>
                         <td className="p-3.5">
-                          <div className="text-silk-ivory">{inq.phone}</div>
+                          <div className="text-white">{inq.phone}</div>
                           {inq.email && <div className="text-[11px] text-silk-muted">{inq.email}</div>}
                         </td>
                         <td className="p-3.5 max-w-sm">
-                          <div className="font-medium text-silk-ivory">{inq.subject}</div>
+                          <div className="font-medium text-white">{inq.subject}</div>
                           <div className="text-silk-muted text-[11px] line-clamp-2">{inq.message}</div>
                         </td>
-                        <td className="p-3.5 text-gold font-medium">{inq.preferredContactMethod}</td>
+                        <td className="p-3.5 text-blue font-semibold">{inq.preferredContactMethod}</td>
                         <td className="p-3.5 text-right">
                           <a
                             href={getWhatsAppInquiryUrl(

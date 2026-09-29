@@ -22,15 +22,15 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
     : items.filter((item) => item.category.toLowerCase() === selectedCategory.toLowerCase());
 
   return (
-    <section id="lookbook" className="py-24 bg-obsidian relative">
+    <section id="lookbook" className="py-24 bg-black relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <span className="text-gold tracking-[0.25em] text-xs font-semibold uppercase block mb-3">
+            <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3">
               Curated Sartorial Portfolio
             </span>
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-silk-ivory">
+            <h2 className="text-3xl sm:text-5xl font-display font-bold text-white">
               The Lookbook Collection
             </h2>
             <p className="mt-4 text-silk-muted max-w-xl text-sm sm:text-base font-light">
@@ -44,10 +44,10 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-sm text-xs uppercase tracking-wider font-medium transition-all ${
+                className={`px-4 py-2 rounded-sm text-xs uppercase tracking-wider font-semibold transition-all ${
                   selectedCategory === cat
-                    ? "bg-gold text-obsidian font-bold shadow-gold-glow"
-                    : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-gold/40 hover:text-silk-ivory"
+                    ? "bg-blue text-white shadow-blue-glow font-bold"
+                    : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
                 }`}
               >
                 {cat}
@@ -66,7 +66,7 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="card-luxury rounded-sm overflow-hidden group cursor-pointer"
+                className="card-luxury rounded-sm overflow-hidden group cursor-pointer hover:border-blue/60 hover:shadow-blue-glow"
                 onClick={() => setActiveModalItem(item)}
               >
                 {/* Image Container */}
@@ -76,23 +76,23 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
 
                   {/* Badges */}
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
-                    <span className="px-2.5 py-1 rounded-sm bg-obsidian/90 backdrop-blur-md border border-gold/40 text-gold text-[10px] font-bold uppercase tracking-widest">
+                    <span className="px-2.5 py-1 rounded-sm bg-black/90 backdrop-blur-md border border-blue/40 text-blue text-[10px] font-bold uppercase tracking-widest shadow-blue-glow">
                       {item.category}
                     </span>
                     {item.isRental && (
-                      <span className="px-2.5 py-1 rounded-sm bg-blue-950/90 backdrop-blur-md border border-blue-500/40 text-blue-300 text-[10px] font-bold uppercase tracking-widest">
+                      <span className="px-2.5 py-1 rounded-sm bg-blue-950/90 backdrop-blur-md border border-blue-500/50 text-blue-300 text-[10px] font-bold uppercase tracking-widest">
                         Rental Ready
                       </span>
                     )}
                   </div>
 
                   {/* Hover Overlay Button */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-obsidian/40 backdrop-blur-[2px]">
-                    <div className="px-4 py-2 bg-gold-gradient text-obsidian text-xs font-bold uppercase tracking-wider rounded-sm shadow-gold-glow flex items-center gap-2">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 backdrop-blur-[2px]">
+                    <div className="px-4 py-2 bg-blue-gradient text-white text-xs font-bold uppercase tracking-wider rounded-sm shadow-blue-glow flex items-center gap-2">
                       <Eye className="w-4 h-4" />
                       <span>View Specifications</span>
                     </div>
@@ -102,7 +102,7 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                 {/* Card Footer Info */}
                 <div className="p-5 bg-obsidian-card">
                   <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="font-display font-bold text-silk-ivory text-lg group-hover:text-gold transition-colors">
+                    <h3 className="font-display font-bold text-white text-lg group-hover:text-blue transition-colors">
                       {item.title}
                     </h3>
                   </div>
@@ -116,7 +116,7 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                       {item.fabricDetails.split("(")[0]}
                     </span>
                     {item.priceLkr && (
-                      <span className="text-gold font-bold font-display">
+                      <span className="text-blue font-bold font-display text-sm">
                         {formatLkr(item.priceLkr)}
                       </span>
                     )}
@@ -131,17 +131,17 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
       {/* Look Detail Modal */}
       <AnimatePresence>
         {activeModalItem && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/85 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="card-luxury w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-sm border border-gold/40 shadow-2xl relative"
+              className="card-luxury w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-sm border border-blue/40 shadow-blue-glow relative"
             >
               {/* Close Button */}
               <button
                 onClick={() => setActiveModalItem(null)}
-                className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-obsidian-card border border-gold/30 text-silk-silver hover:text-gold flex items-center justify-center transition-colors"
+                className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-obsidian-card border border-blue/40 text-silk-silver hover:text-white flex items-center justify-center transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -155,7 +155,7 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-obsidian/90 backdrop-blur-md border border-gold/40 text-gold text-xs font-bold uppercase tracking-wider rounded-sm">
+                    <span className="px-3 py-1 bg-black/90 backdrop-blur-md border border-blue/40 text-blue text-xs font-bold uppercase tracking-wider rounded-sm shadow-blue-glow">
                       {activeModalItem.category}
                     </span>
                   </div>
@@ -164,13 +164,13 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                 {/* Modal Details */}
                 <div className="flex flex-col justify-between">
                   <div>
-                    <h3 className="text-2xl sm:text-3xl font-display font-bold text-silk-ivory mb-2">
+                    <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-2">
                       {activeModalItem.title}
                     </h3>
 
                     <div className="flex flex-wrap items-center gap-3 mb-6">
                       {activeModalItem.priceLkr && (
-                        <div className="text-xl font-display font-bold text-gold">
+                        <div className="text-xl font-display font-bold text-blue">
                           {formatLkr(activeModalItem.priceLkr)}
                           <span className="text-xs text-silk-muted font-sans font-normal ml-1">Bespoke Commission</span>
                         </div>
@@ -190,26 +190,26 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                     <div className="bg-obsidian-surface p-4 rounded-sm border border-obsidian-border space-y-2.5 text-xs mb-6">
                       <div className="flex items-start justify-between">
                         <span className="text-silk-muted">Cloth & Mill:</span>
-                        <span className="text-silk-ivory font-medium text-right max-w-[200px]">
+                        <span className="text-white font-medium text-right max-w-[200px]">
                           {activeModalItem.fabricDetails}
                         </span>
                       </div>
                       {activeModalItem.lapelStyle && (
                         <div className="flex items-center justify-between">
                           <span className="text-silk-muted">Lapel Style:</span>
-                          <span className="text-silk-ivory font-medium">{activeModalItem.lapelStyle}</span>
+                          <span className="text-white font-medium">{activeModalItem.lapelStyle}</span>
                         </div>
                       )}
                       {activeModalItem.fitType && (
                         <div className="flex items-center justify-between">
                           <span className="text-silk-muted">Cut & Silhouette:</span>
-                          <span className="text-silk-ivory font-medium">{activeModalItem.fitType}</span>
+                          <span className="text-white font-medium">{activeModalItem.fitType}</span>
                         </div>
                       )}
                       {activeModalItem.availableSizes && activeModalItem.availableSizes.length > 0 && (
                         <div className="flex items-center justify-between">
                           <span className="text-silk-muted">Sizes Available:</span>
-                          <span className="text-gold font-medium">
+                          <span className="text-blue font-semibold">
                             {activeModalItem.availableSizes.join(", ")}
                           </span>
                         </div>
@@ -239,7 +239,7 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                         setActiveModalItem(null);
                         onOpenBookingWithLook(title);
                       }}
-                      className="flex-1 py-3 bg-gold-gradient text-obsidian font-bold text-xs uppercase tracking-wider rounded-sm shadow-gold-glow hover:shadow-gold-glow-lg transition-all"
+                      className="flex-1 py-3 bg-blue-gradient text-white font-bold text-xs uppercase tracking-wider rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all"
                     >
                       Book Consultation for This Look
                     </button>
@@ -250,7 +250,7 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-3 border border-emerald-500/50 bg-emerald-950/30 hover:bg-emerald-950/50 text-emerald-400 font-medium text-xs rounded-sm transition-all flex items-center justify-center gap-2"
+                      className="px-4 py-3 border border-emerald-500/50 bg-emerald-950/30 hover:bg-emerald-950/50 text-emerald-400 font-semibold text-xs rounded-sm transition-all flex items-center justify-center gap-2"
                     >
                       <MessageCircle className="w-4 h-4" />
                       <span>WhatsApp Inquire</span>

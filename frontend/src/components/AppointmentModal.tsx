@@ -86,26 +86,26 @@ export default function AppointmentModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/90 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
-        className="card-luxury w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-sm border border-gold/40 shadow-2xl relative"
+        className="card-luxury w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-sm border border-blue/40 shadow-blue-glow relative"
       >
         {/* Header Bar */}
         <div className="p-6 border-b border-obsidian-border flex items-center justify-between sticky top-0 bg-obsidian-card z-10">
           <div>
-            <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-bold block mb-1">
+            <span className="text-[10px] tracking-[0.25em] text-blue uppercase font-bold block mb-1">
               Atelier Private Fitting
             </span>
-            <h3 className="font-display font-bold text-xl sm:text-2xl text-silk-ivory">
+            <h3 className="font-display font-bold text-xl sm:text-2xl text-white">
               Book Your Sartorial Consultation
             </h3>
           </div>
           <button
             onClick={handleReset}
-            className="w-8 h-8 rounded-full bg-obsidian-elevated border border-obsidian-border text-silk-silver hover:text-gold flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-obsidian-elevated border border-obsidian-border text-silk-silver hover:text-white flex items-center justify-center transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -116,13 +116,13 @@ export default function AppointmentModal({
           {submittedRef ? (
             /* Success State */
             <div className="text-center py-8">
-              <div className="w-16 h-16 rounded-full bg-gold/15 border-2 border-gold flex items-center justify-center text-gold mx-auto mb-6 shadow-gold-glow">
-                <CheckCircle2 className="w-8 h-8" />
+              <div className="w-16 h-16 rounded-full bg-blue/15 border-2 border-blue flex items-center justify-center text-blue mx-auto mb-6 shadow-blue-glow">
+                <CheckCircle2 className="w-8 h-8 text-blue" />
               </div>
-              <span className="text-gold uppercase tracking-[0.25em] text-xs font-bold block mb-2">
+              <span className="text-blue uppercase tracking-[0.25em] text-xs font-bold block mb-2">
                 Booking Request Confirmed
               </span>
-              <h4 className="text-2xl font-display font-bold text-silk-ivory mb-2">
+              <h4 className="text-2xl font-display font-bold text-white mb-2">
                 We Await Your Visit at MS Tailors
               </h4>
               <p className="text-sm text-silk-muted max-w-md mx-auto mb-6">
@@ -130,9 +130,9 @@ export default function AppointmentModal({
               </p>
 
               {/* Reference Ticket Box */}
-              <div className="max-w-xs mx-auto p-4 rounded-sm bg-obsidian-surface border border-gold/30 mb-8">
+              <div className="max-w-xs mx-auto p-4 rounded-sm bg-black border border-blue/40 shadow-blue-glow mb-8">
                 <div className="text-[10px] uppercase text-silk-muted tracking-wider">Booking Reference</div>
-                <div className="font-mono text-xl font-bold text-gold tracking-widest mt-1">
+                <div className="font-mono text-xl font-bold text-blue tracking-widest mt-1">
                   {submittedRef}
                 </div>
               </div>
@@ -144,14 +144,14 @@ export default function AppointmentModal({
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-emerald-700 hover:bg-emerald-600 text-white font-medium text-xs uppercase tracking-wider rounded-sm flex items-center justify-center gap-2 transition-colors"
+                  className="px-6 py-3 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-xs uppercase tracking-wider rounded-sm flex items-center justify-center gap-2 transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Notify Atelier on WhatsApp</span>
                 </a>
                 <button
                   onClick={handleReset}
-                  className="px-6 py-3 bg-gold-gradient text-obsidian font-bold text-xs uppercase tracking-wider rounded-sm"
+                  className="px-6 py-3 bg-blue-gradient text-white font-bold text-xs uppercase tracking-wider rounded-sm shadow-blue-glow"
                 >
                   Done
                 </button>
@@ -170,7 +170,7 @@ export default function AppointmentModal({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-silk-silver mb-1.5 font-medium">
-                    Full Name <span className="text-gold">*</span>
+                    Full Name <span className="text-blue">*</span>
                   </label>
                   <input
                     type="text"
@@ -178,13 +178,13 @@ export default function AppointmentModal({
                     value={formData.customerName}
                     onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
                     placeholder="e.g. Ruwan Mendis"
-                    className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-silk-silver mb-1.5 font-medium">
-                    WhatsApp / Phone <span className="text-gold">*</span>
+                    WhatsApp / Phone <span className="text-blue">*</span>
                   </label>
                   <input
                     type="tel"
@@ -192,7 +192,7 @@ export default function AppointmentModal({
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="e.g. +94 77 123 4567"
-                    className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -206,7 +206,7 @@ export default function AppointmentModal({
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="e.g. client@example.com"
-                  className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                  className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                 />
               </div>
 
@@ -218,7 +218,7 @@ export default function AppointmentModal({
                 <select
                   value={formData.serviceType}
                   onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                  className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                  className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                 >
                   {serviceOptions.map((opt) => (
                     <option key={opt} value={opt} className="bg-obsidian-card">
@@ -237,8 +237,8 @@ export default function AppointmentModal({
                   <label
                     className={`flex items-start gap-3 p-3.5 rounded-sm border cursor-pointer transition-all ${
                       formData.fittingLocation === "InStudioPanadura"
-                        ? "bg-gold/10 border-gold shadow-gold-glow"
-                        : "bg-obsidian border-obsidian-border hover:border-gold/40"
+                        ? "bg-blue/15 border-blue shadow-blue-glow"
+                        : "bg-black border-obsidian-border hover:border-blue/40"
                     }`}
                   >
                     <input
@@ -247,10 +247,10 @@ export default function AppointmentModal({
                       value="InStudioPanadura"
                       checked={formData.fittingLocation === "InStudioPanadura"}
                       onChange={() => setFormData({ ...formData, fittingLocation: "InStudioPanadura" })}
-                      className="mt-1 text-gold"
+                      className="mt-1 text-blue"
                     />
                     <div>
-                      <div className="text-xs font-bold text-silk-ivory">Panadura Studio Atelier</div>
+                      <div className="text-xs font-bold text-white">Panadura Studio Atelier</div>
                       <div className="text-[11px] text-silk-muted">No. 142 Galle Road, Panadura</div>
                     </div>
                   </label>
@@ -258,8 +258,8 @@ export default function AppointmentModal({
                   <label
                     className={`flex items-start gap-3 p-3.5 rounded-sm border cursor-pointer transition-all ${
                       formData.fittingLocation === "TravelingTailor"
-                        ? "bg-gold/10 border-gold shadow-gold-glow"
-                        : "bg-obsidian border-obsidian-border hover:border-gold/40"
+                        ? "bg-blue/15 border-blue shadow-blue-glow"
+                        : "bg-black border-obsidian-border hover:border-blue/40"
                     }`}
                   >
                     <input
@@ -268,10 +268,10 @@ export default function AppointmentModal({
                       value="TravelingTailor"
                       checked={formData.fittingLocation === "TravelingTailor"}
                       onChange={() => setFormData({ ...formData, fittingLocation: "TravelingTailor" })}
-                      className="mt-1 text-gold"
+                      className="mt-1 text-blue"
                     />
                     <div>
-                      <div className="text-xs font-bold text-silk-ivory">Traveling Master Tailor</div>
+                      <div className="text-xs font-bold text-white">Traveling Master Tailor</div>
                       <div className="text-[11px] text-silk-muted">Private home or office (Colombo/Western Prov.)</div>
                     </div>
                   </label>
@@ -282,7 +282,7 @@ export default function AppointmentModal({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-silk-silver mb-1.5 font-medium flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-gold" />
+                    <Calendar className="w-3.5 h-3.5 text-blue" />
                     <span>Preferred Date</span>
                   </label>
                   <input
@@ -290,19 +290,19 @@ export default function AppointmentModal({
                     required
                     value={formData.appointmentDate}
                     onChange={(e) => setFormData({ ...formData, appointmentDate: e.target.value })}
-                    className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-silk-silver mb-1.5 font-medium flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-gold" />
+                    <Clock className="w-3.5 h-3.5 text-blue" />
                     <span>Time Slot</span>
                   </label>
                   <select
                     value={formData.preferredTimeSlot}
                     onChange={(e) => setFormData({ ...formData, preferredTimeSlot: e.target.value })}
-                    className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                   >
                     {timeSlots.map((slot) => (
                       <option key={slot} value={slot} className="bg-obsidian-card">
@@ -323,7 +323,7 @@ export default function AppointmentModal({
                   value={formData.specialNotes}
                   onChange={(e) => setFormData({ ...formData, specialNotes: e.target.value })}
                   placeholder="e.g. Upcoming wedding on December 15th, looking for a double-breasted tuxedo in Vitale Barberis wool..."
-                  className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                  className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2 rounded-sm text-sm text-white outline-none transition-colors"
                 />
               </div>
 
@@ -332,7 +332,7 @@ export default function AppointmentModal({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 bg-gold-gradient text-obsidian font-bold tracking-widest uppercase text-xs sm:text-sm rounded-sm shadow-gold-glow hover:shadow-gold-glow-lg transition-all disabled:opacity-50"
+                  className="w-full py-4 bg-blue-gradient text-white font-bold tracking-widest uppercase text-xs sm:text-sm rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all disabled:opacity-50"
                 >
                   {loading ? "Scheduling Atelier Session..." : "Confirm Consultation Request"}
                 </button>

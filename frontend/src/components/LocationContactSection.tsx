@@ -33,17 +33,17 @@ export default function LocationContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-obsidian relative">
+    <section id="contact" className="py-24 bg-black relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-gold tracking-[0.25em] text-xs font-semibold uppercase block mb-3">
+          <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3">
             Visit Our Atelier
           </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-bold text-silk-ivory">
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white">
             The Panadura Showroom & Atelier
           </h2>
-          <div className="w-20 h-0.5 bg-gold/50 mx-auto mt-6" />
+          <div className="w-20 h-0.5 bg-blue mx-auto mt-6 shadow-blue-glow" />
           <p className="mt-6 text-silk-muted text-base sm:text-lg font-light">
             Conveniently situated along Galle Road in Panadura, welcoming clients from Moratuwa, Wadduwa, Kalutara, Colombo, and across Sri Lanka.
           </p>
@@ -54,16 +54,16 @@ export default function LocationContactSection() {
           {/* Left Column: Contact Cards & Map */}
           <div className="lg:col-span-6 space-y-6">
             <div className="card-luxury p-7 rounded-sm space-y-6">
-              <h3 className="font-display font-bold text-2xl text-silk-ivory mb-4 border-b border-obsidian-border pb-4">
+              <h3 className="font-display font-bold text-2xl text-white mb-4 border-b border-obsidian-border pb-4">
                 Atelier Coordinates
               </h3>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-sm bg-obsidian border border-gold/30 flex items-center justify-center text-gold shrink-0 mt-0.5">
-                  <MapPin className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-sm bg-black border border-blue/40 flex items-center justify-center text-blue shrink-0 mt-0.5 shadow-blue-glow">
+                  <MapPin className="w-5 h-5 text-blue" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-silk-ivory">Atelier Address</h4>
+                  <h4 className="text-sm font-semibold text-white">Atelier Address</h4>
                   <p className="text-xs text-silk-muted leading-relaxed mt-0.5">
                     {MS_TAILORS_CONTACT.address}
                   </p>
@@ -71,21 +71,21 @@ export default function LocationContactSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-sm bg-obsidian border border-gold/30 flex items-center justify-center text-gold shrink-0 mt-0.5">
-                  <Phone className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-sm bg-black border border-blue/40 flex items-center justify-center text-blue shrink-0 mt-0.5 shadow-blue-glow">
+                  <Phone className="w-5 h-5 text-blue" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-silk-ivory">Telephone Hotline</h4>
+                  <h4 className="text-sm font-semibold text-white">Telephone Hotline</h4>
                   <div className="flex flex-wrap gap-x-4 gap-y-1 mt-0.5">
                     <a
                       href={`tel:${MS_TAILORS_CONTACT.phoneRaw}`}
-                      className="text-xs text-silk-silver hover:text-gold transition-colors font-medium"
+                      className="text-xs text-silk-silver hover:text-blue transition-colors font-medium"
                     >
                       Landline: {MS_TAILORS_CONTACT.phoneDisplay}
                     </a>
                     <a
                       href={`tel:${MS_TAILORS_CONTACT.hotlineMobileRaw}`}
-                      className="text-xs text-gold hover:underline font-medium"
+                      className="text-xs text-blue hover:underline font-semibold"
                     >
                       Mobile: {MS_TAILORS_CONTACT.hotlineMobileDisplay}
                     </a>
@@ -94,11 +94,11 @@ export default function LocationContactSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-sm bg-obsidian border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-sm bg-black border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-silk-ivory">WhatsApp Concierge</h4>
+                  <h4 className="text-sm font-semibold text-white">WhatsApp Concierge</h4>
                   <p className="text-xs text-silk-muted mt-0.5 mb-2">
                     Instant answers for measurement appointments, fabric questions, and rental bookings.
                   </p>
@@ -114,11 +114,11 @@ export default function LocationContactSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-sm bg-obsidian border border-gold/30 flex items-center justify-center text-gold shrink-0 mt-0.5">
-                  <Clock className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-sm bg-black border border-blue/40 flex items-center justify-center text-blue shrink-0 mt-0.5 shadow-blue-glow">
+                  <Clock className="w-5 h-5 text-blue" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-silk-ivory">Fitting Hours</h4>
+                  <h4 className="text-sm font-semibold text-white">Fitting Hours</h4>
                   <p className="text-xs text-silk-muted mt-0.5 leading-relaxed">
                     {MS_TAILORS_CONTACT.hours}
                   </p>
@@ -144,8 +144,8 @@ export default function LocationContactSection() {
 
           {/* Right Column: Interactive Direct Inquiry Form */}
           <div className="lg:col-span-6">
-            <div className="card-luxury p-7 sm:p-8 rounded-sm">
-              <h3 className="font-display font-bold text-2xl text-silk-ivory mb-2">
+            <div className="card-luxury p-7 sm:p-8 rounded-sm hover:border-blue/40">
+              <h3 className="font-display font-bold text-2xl text-white mb-2">
                 Send Direct Inquiry
               </h3>
               <p className="text-xs sm:text-sm text-silk-muted font-light mb-6">
@@ -157,7 +157,7 @@ export default function LocationContactSection() {
                   <div className="w-14 h-14 rounded-full bg-emerald-950/60 border border-emerald-500 flex items-center justify-center text-emerald-400 mx-auto mb-4">
                     <CheckCircle2 className="w-7 h-7" />
                   </div>
-                  <h4 className="text-xl font-display font-bold text-silk-ivory mb-2">
+                  <h4 className="text-xl font-display font-bold text-white mb-2">
                     Inquiry Received
                   </h4>
                   <p className="text-xs text-silk-muted max-w-sm mx-auto mb-6">
@@ -175,7 +175,7 @@ export default function LocationContactSection() {
                         preferredContactMethod: "WhatsApp",
                       });
                     }}
-                    className="px-5 py-2.5 bg-obsidian-surface border border-gold/40 text-gold text-xs font-semibold uppercase tracking-wider rounded-sm hover:bg-gold hover:text-obsidian transition-all"
+                    className="px-5 py-2.5 bg-obsidian-surface border border-blue/40 text-blue text-xs font-semibold uppercase tracking-wider rounded-sm hover:bg-blue hover:text-white transition-all shadow-blue-glow"
                   >
                     Send Another Message
                   </button>
@@ -190,7 +190,7 @@ export default function LocationContactSection() {
 
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-silk-silver mb-1 font-medium">
-                      Your Name <span className="text-gold">*</span>
+                      Your Name <span className="text-blue">*</span>
                     </label>
                     <input
                       type="text"
@@ -198,14 +198,14 @@ export default function LocationContactSection() {
                       value={inquiryForm.customerName}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, customerName: e.target.value })}
                       placeholder="e.g. Priyantha Fernando"
-                      className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                      className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs uppercase tracking-wider text-silk-silver mb-1 font-medium">
-                        Phone / WhatsApp <span className="text-gold">*</span>
+                        Phone / WhatsApp <span className="text-blue">*</span>
                       </label>
                       <input
                         type="tel"
@@ -213,7 +213,7 @@ export default function LocationContactSection() {
                         value={inquiryForm.phone}
                         onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
                         placeholder="+94 7X XXX XXXX"
-                        className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                        className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                       />
                     </div>
 
@@ -226,7 +226,7 @@ export default function LocationContactSection() {
                         value={inquiryForm.email}
                         onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
                         placeholder="client@example.com"
-                        className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                        className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -240,7 +240,7 @@ export default function LocationContactSection() {
                       value={inquiryForm.subject}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, subject: e.target.value })}
                       placeholder="e.g. Wedding Suit Consultation / Corporate Uniforms"
-                      className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2.5 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                      className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
                     />
                   </div>
 
@@ -254,7 +254,7 @@ export default function LocationContactSection() {
                       value={inquiryForm.message}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
                       placeholder="Share your requirements, date of your occasion, or any specific styling nuances..."
-                      className="w-full bg-obsidian border border-obsidian-border focus:border-gold px-3.5 py-2 rounded-sm text-sm text-silk-ivory outline-none transition-colors"
+                      className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2 rounded-sm text-sm text-white outline-none transition-colors"
                     />
                   </div>
 
@@ -271,7 +271,7 @@ export default function LocationContactSection() {
                             value={method}
                             checked={inquiryForm.preferredContactMethod === method}
                             onChange={() => setInquiryForm({ ...inquiryForm, preferredContactMethod: method })}
-                            className="text-gold"
+                            className="text-blue"
                           />
                           <span>{method}</span>
                         </label>
@@ -283,7 +283,7 @@ export default function LocationContactSection() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-3.5 bg-gold-gradient text-obsidian font-bold tracking-widest uppercase text-xs sm:text-sm rounded-sm shadow-gold-glow hover:shadow-gold-glow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="w-full py-3.5 bg-blue-gradient text-white font-bold tracking-widest uppercase text-xs sm:text-sm rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       <Send className="w-4 h-4" />
                       <span>{loading ? "Transmitting..." : "Send Message to Atelier"}</span>
