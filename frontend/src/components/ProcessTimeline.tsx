@@ -96,14 +96,15 @@ export default function ProcessTimeline() {
               return (
                 <motion.div
                   key={step.num}
-                  initial={{ opacity: 0, y: 35, rotateY: 15 }}
-                  whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+                  initial={{ opacity: 0, y: 25, scale: 0.94 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.12 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 24, delay: idx * 0.1 }}
                 >
                   <Card3D
-                    intensity={15}
-                    className="card-luxury p-6 rounded-sm flex flex-col justify-between relative group hover:border-blue/60 hover:shadow-blue-glow bg-black/85 backdrop-blur-xl h-full"
+                    zoomScale={1.06}
+                    popY={-8}
+                    className="card-luxury p-6 rounded-sm flex flex-col justify-between relative group hover:border-blue/80 hover:shadow-blue-glow bg-black/85 backdrop-blur-xl h-full"
                   >
                     <div>
                       {/* Step Number & Icon */}

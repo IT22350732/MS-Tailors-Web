@@ -100,14 +100,15 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
           {rentalPackages.map((pkg, idx) => (
             <motion.div
               key={pkg.title}
-              initial={{ opacity: 0, y: 35, rotateY: idx === 0 ? -8 : idx === 2 ? 8 : 0 }}
-              whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+              initial={{ opacity: 0, y: 25, scale: 0.94 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              transition={{ type: "spring", stiffness: 320, damping: 24, delay: idx * 0.1 }}
             >
               <Card3D
-                intensity={18}
-                className={`card-luxury rounded-sm p-8 flex flex-col justify-between relative group hover:border-blue/70 hover:shadow-blue-glow-lg bg-black/85 backdrop-blur-xl h-full ${
+                zoomScale={1.05}
+                popY={-8}
+                className={`card-luxury rounded-sm p-8 flex flex-col justify-between relative group hover:border-blue/80 hover:shadow-blue-glow-lg bg-black/85 backdrop-blur-xl h-full ${
                   idx === 0 ? "border-blue/60 shadow-blue-glow" : ""
                 }`}
               >

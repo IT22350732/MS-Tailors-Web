@@ -71,92 +71,82 @@ export function ParallaxBackground({
   );
 }
 
-// Interactive 3D Tilt Card Component
+// Interactive Pop-Up / Zooming Card Component (No Rotation)
 interface Card3DProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   glowColor?: string;
   intensity?: number;
   glare?: boolean;
+  zoomScale?: number;
+  popY?: number;
 }
 
 export function Card3D({
   children,
   className = "",
-  glowColor = "rgba(56, 119, 246, 0.3)",
+  glowColor = "rgba(56, 119, 246, 0.45)",
   intensity = 15,
   glare = true,
+  zoomScale = 1.04,
+  popY = -8,
   ...props
 }: Card3DProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-  const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const [glarePos, setGlarePos] = useState({ x: 50, y: 50 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotX = ((y - centerY) / centerY) * -intensity;
-    const rotY = ((x - centerX) / centerX) * intensity;
-
-    setRotateX(rotX);
-    setRotateY(rotY);
-    setGlarePos({
-      x: (x / rect.width) * 100,
-      y: (y / rect.height) * 100,
-      opacity: 0.18,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
-    setGlarePos((prev) => ({ ...prev, opacity: 0 }));
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setGlarePos({ x, y });
   };
 
   return (
     <motion.div
-      ref={cardRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       animate={{
-        rotateX,
-        rotateY,
-        transformPerspective: 1000,
+        scale: isHovered ? zoomScale : 1,
+        y: isHovered ? popY : 0,
+        zIndex: isHovered ? 25 : 1,
       }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      transition={{
+        type: "spring",
+        stiffness: 380,
+        damping: 24,
+        mass: 0.6,
+      }}
+      className={`relative rounded-sm cursor-pointer will-change-transform ${className}`}
       style={{
-        transformStyle: "preserve-3d",
+        boxShadow: isHovered
+          ? "0 22px 45px -12px rgba(0, 0, 0, 0.95), 0 0 30px -4px rgba(56, 119, 246, 0.45)"
+          : "0 4px 15px -3px rgba(0, 0, 0, 0.7)",
       }}
-      className={`relative rounded-sm transition-shadow duration-300 ${className}`}
       {...(props as any)}
     >
-      {/* Dynamic 3D Glare Light */}
+      {/* Dynamic Glare Specular Light on Zoom */}
       {glare && (
         <div
           className="absolute inset-0 rounded-sm pointer-events-none transition-opacity duration-300 z-20"
           style={{
-            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, 0.15) 0%, transparent 60%)`,
-            opacity: glarePos.opacity,
+            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, 0.18) 0%, transparent 65%)`,
+            opacity: isHovered ? 1 : 0,
           }}
         />
       )}
 
-      {/* 3D Ambient Glow */}
+      {/* Electric Blue Pop-Up Ambient Glow */}
       <div
-        className="absolute -inset-1 rounded-sm blur-md -z-10 transition-opacity duration-300 pointer-events-none"
+        className="absolute -inset-0.5 rounded-sm blur-md -z-10 transition-opacity duration-300 pointer-events-none"
         style={{
           background: glowColor,
-          opacity: glarePos.opacity > 0 ? 0.8 : 0,
+          opacity: isHovered ? 0.9 : 0,
         }}
       />
 
-      <div style={{ transform: "translateZ(20px)" }} className="relative z-10 h-full">
+      <div className="relative z-10 h-full">
         {children}
       </div>
     </motion.div>

@@ -88,10 +88,11 @@ export default function AppointmentModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 15 }}
+        initial={{ opacity: 0, scale: 0.88, y: 25 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 15 }}
-        className="card-luxury w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-sm border border-blue/40 shadow-blue-glow relative"
+        exit={{ opacity: 0, scale: 0.9, y: 15 }}
+        transition={{ type: "spring", stiffness: 380, damping: 25, mass: 0.7 }}
+        className="card-luxury w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-sm border border-blue/50 shadow-blue-glow-lg relative bg-black/95 backdrop-blur-2xl"
       >
         {/* Header Bar */}
         <div className="p-6 border-b border-obsidian-border flex items-center justify-between sticky top-0 bg-obsidian-card z-10">

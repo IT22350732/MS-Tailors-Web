@@ -105,14 +105,15 @@ export default function ServicesSection({ services, onOpenBookingWithService }: 
             return (
               <motion.div
                 key={service.slug || service.title}
-                initial={{ opacity: 0, y: 35, rotateX: 10 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                initial={{ opacity: 0, y: 25, scale: 0.94 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                transition={{ type: "spring", stiffness: 320, damping: 24, delay: idx * 0.1 }}
               >
                 <Card3D
-                  intensity={16}
-                  className="card-luxury rounded-sm flex flex-col justify-between overflow-hidden group hover:border-blue/60 hover:shadow-blue-glow bg-black/85 backdrop-blur-xl h-full"
+                  zoomScale={1.05}
+                  popY={-8}
+                  className="card-luxury rounded-sm flex flex-col justify-between overflow-hidden group hover:border-blue/80 hover:shadow-blue-glow bg-black/85 backdrop-blur-xl h-full"
                 >
                   {/* Visual Header with rich photography */}
                   <div className="relative h-60 overflow-hidden">

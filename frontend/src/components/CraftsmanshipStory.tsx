@@ -111,14 +111,15 @@ export default function CraftsmanshipStory() {
               return (
                 <motion.div
                   key={pillar.title}
-                  initial={{ opacity: 0, y: 30, rotateX: 15 }}
-                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                  initial={{ opacity: 0, y: 25, scale: 0.94 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 24, delay: idx * 0.1 }}
                 >
                   <Card3D
-                    intensity={15}
-                    className="card-luxury p-7 rounded-sm relative overflow-hidden group hover:border-blue/60 hover:shadow-blue-glow bg-black/85 backdrop-blur-md"
+                    zoomScale={1.05}
+                    popY={-8}
+                    className="card-luxury p-7 rounded-sm relative overflow-hidden group hover:border-blue/80 hover:shadow-blue-glow bg-black/85 backdrop-blur-md"
                   >
                     <div className="w-12 h-12 rounded-sm bg-obsidian-elevated border border-blue/40 flex items-center justify-center text-blue mb-5 group-hover:border-blue group-hover:bg-blue group-hover:text-white transition-all shadow-blue-glow">
                       <Icon className="w-5 h-5" />

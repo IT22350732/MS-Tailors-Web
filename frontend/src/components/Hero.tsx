@@ -27,14 +27,12 @@ export default function Hero({ onOpenBooking }: HeroProps) {
   const bgScale = useTransform(springScroll, [0, 1], [1, 1.15]);
   const heroContentY = useTransform(springScroll, [0, 1], ["0%", "18%"]);
   const heroContentOpacity = useTransform(springScroll, [0, 0.75], [1, 0.2]);
-  const card3DRotate = useTransform(springScroll, [0, 1], [0, -18]);
-  const card3DY = useTransform(springScroll, [0, 1], [0, 60]);
+  const card3DY = useTransform(springScroll, [0, 1], [0, 40]);
 
   return (
     <section
       ref={containerRef}
       className="relative min-h-[96vh] flex items-center justify-center overflow-hidden bg-black"
-      style={{ perspective: 1200 }}
     >
       {/* 3D PARALLAX BACKGROUND: HIGH VISIBILITY BESPOKE ATELIER PHOTOGRAPHY */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -149,14 +147,15 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             </motion.div>
           </div>
 
-          {/* Right Column: Interactive 3D Holographic Atelier Card */}
+          {/* Right Column: Interactive Pop-up / Zooming Atelier Card */}
           <div className="lg:col-span-5 hidden lg:block">
             <motion.div
-              style={{ rotateY: card3DRotate, y: card3DY }}
+              style={{ y: card3DY }}
               className="relative w-full max-w-md mx-auto"
             >
               <Card3D
-                intensity={20}
+                zoomScale={1.05}
+                popY={-12}
                 className="card-luxury p-8 rounded-sm border border-blue/50 shadow-blue-glow-lg bg-black/85 backdrop-blur-xl"
               >
                 {/* 3D Holographic Header */}

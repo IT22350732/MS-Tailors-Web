@@ -60,9 +60,9 @@ export default function LocationContactSection() {
 
         {/* 2-Column Split: Contact & Map on Left, Quick Inquiry Form on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Contact Cards & Map with 3D Tilt */}
+          {/* Left Column: Contact Cards & Map with Zoom Pop-Up */}
           <div className="lg:col-span-6 space-y-6">
-            <Card3D intensity={6} glare={true}>
+            <Card3D zoomScale={1.02} popY={-6} glare={true}>
               <div className="card-luxury p-7 sm:p-8 rounded-sm space-y-6 bg-black/85 backdrop-blur-md hover:border-blue/70">
                 <h3 className="font-display font-bold text-2xl text-white mb-4 border-b border-white/10 pb-4">
                   Atelier Coordinates
@@ -153,9 +153,9 @@ export default function LocationContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Interactive Direct Inquiry Form with 3D Tilt */}
+          {/* Right Column: Interactive Direct Inquiry Form with Zoom Pop-Up */}
           <div className="lg:col-span-6">
-            <Card3D intensity={6} glare={true}>
+            <Card3D zoomScale={1.02} popY={-6} glare={true}>
               <div className="card-luxury p-7 sm:p-8 rounded-sm bg-black/85 backdrop-blur-md hover:border-blue/70">
                 <h3 className="font-display font-bold text-2xl text-white mb-2">
                   Send Direct Inquiry
