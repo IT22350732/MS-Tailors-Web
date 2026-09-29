@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import AppointmentModal from "@/components/AppointmentModal";
 import { ServiceItem, LookbookItem, FabricSwatch } from "@/lib/types";
 import { getServices, getLookbook, getFabrics, FALLBACK_SERVICES, FALLBACK_LOOKBOOK, FALLBACK_FABRICS } from "@/lib/api";
+import { ScrollProgressBar } from "@/components/Motion3D";
 
 export default function Home() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -59,7 +60,10 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-obsidian text-silk-pearl selection:bg-gold/30 selection:text-white">
+    <main className="min-h-screen bg-obsidian text-silk-pearl selection:bg-blue/30 selection:text-white">
+      {/* 3D Global Laser Scroll Progress Bar */}
+      <ScrollProgressBar />
+
       {/* Sticky Luxury Navbar */}
       <Navbar onOpenBooking={handleOpenBooking} />
 

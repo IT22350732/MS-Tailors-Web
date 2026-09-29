@@ -74,6 +74,7 @@ export default function AdminPage() {
     if (session) {
       fetchAdminData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session, activeTab, appointmentFilter]);
 
   const handleLogin = async (e: React.FormEvent) => {

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MapPin, Phone, MessageCircle, Clock, Send, CheckCircle2 } from "lucide-react";
 import { MS_TAILORS_CONTACT, getWhatsAppInquiryUrl, createInquiry } from "@/lib/api";
+import { ParallaxBackground, Card3D } from "@/components/Motion3D";
 
 export default function LocationContactSection() {
   const [inquiryForm, setInquiryForm] = useState({
@@ -33,30 +34,39 @@ export default function LocationContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-black relative">
+    <section id="contact" className="py-28 bg-black relative overflow-hidden border-t border-obsidian-border">
+      {/* 3D Visible Parallax Atelier Architecture Background */}
+      <ParallaxBackground
+        imageUrl="https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?auto=format&fit=crop&w=2200&q=85"
+        alt="MS Tailors Panadura Atelier"
+        opacity={0.65}
+        speed={0.16}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3">
             Visit Our Atelier
           </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white">
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white drop-shadow-md">
             The Panadura Showroom & Atelier
           </h2>
           <div className="w-20 h-0.5 bg-blue mx-auto mt-6 shadow-blue-glow" />
-          <p className="mt-6 text-silk-muted text-base sm:text-lg font-light">
+          <p className="mt-6 text-silk-silver text-base sm:text-lg font-light">
             Conveniently situated along Galle Road in Panadura, welcoming clients from Moratuwa, Wadduwa, Kalutara, Colombo, and across Sri Lanka.
           </p>
         </div>
 
         {/* 2-Column Split: Contact & Map on Left, Quick Inquiry Form on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Contact Cards & Map */}
+          {/* Left Column: Contact Cards & Map with 3D Tilt */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="card-luxury p-7 rounded-sm space-y-6">
-              <h3 className="font-display font-bold text-2xl text-white mb-4 border-b border-obsidian-border pb-4">
-                Atelier Coordinates
-              </h3>
+            <Card3D intensity={6} glare={true}>
+              <div className="card-luxury p-7 sm:p-8 rounded-sm space-y-6 bg-black/85 backdrop-blur-md hover:border-blue/70">
+                <h3 className="font-display font-bold text-2xl text-white mb-4 border-b border-white/10 pb-4">
+                  Atelier Coordinates
+                </h3>
 
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-sm bg-black border border-blue/40 flex items-center justify-center text-blue shrink-0 mt-0.5 shadow-blue-glow">
@@ -119,15 +129,16 @@ export default function LocationContactSection() {
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-white">Fitting Hours</h4>
-                  <p className="text-xs text-silk-muted mt-0.5 leading-relaxed">
+                  <p className="text-xs text-silk-silver mt-0.5 leading-relaxed">
                     {MS_TAILORS_CONTACT.hours}
                   </p>
                 </div>
               </div>
             </div>
+            </Card3D>
 
             {/* Embedded Visual Map Preview */}
-            <div className="card-luxury rounded-sm overflow-hidden p-2 border border-obsidian-border">
+            <div className="card-luxury rounded-sm overflow-hidden p-2 border border-white/10 bg-black/85 backdrop-blur-md">
               <div className="relative h-64 w-full rounded-sm overflow-hidden bg-obsidian-elevated">
                 <iframe
                   title="MS Tailors Panadura Location Map"
@@ -142,15 +153,16 @@ export default function LocationContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Interactive Direct Inquiry Form */}
+          {/* Right Column: Interactive Direct Inquiry Form with 3D Tilt */}
           <div className="lg:col-span-6">
-            <div className="card-luxury p-7 sm:p-8 rounded-sm hover:border-blue/40">
-              <h3 className="font-display font-bold text-2xl text-white mb-2">
-                Send Direct Inquiry
-              </h3>
-              <p className="text-xs sm:text-sm text-silk-muted font-light mb-6">
-                Have questions regarding wedding packages, custom uniform contracts, or rental dates? Send our master tailors a direct message.
-              </p>
+            <Card3D intensity={6} glare={true}>
+              <div className="card-luxury p-7 sm:p-8 rounded-sm bg-black/85 backdrop-blur-md hover:border-blue/70">
+                <h3 className="font-display font-bold text-2xl text-white mb-2">
+                  Send Direct Inquiry
+                </h3>
+                <p className="text-xs sm:text-sm text-silk-silver font-light mb-6">
+                  Have questions regarding wedding packages, custom uniform contracts, or rental dates? Send our master tailors a direct message.
+                </p>
 
               {sent ? (
                 <div className="text-center py-12">
@@ -292,6 +304,7 @@ export default function LocationContactSection() {
                 </form>
               )}
             </div>
+            </Card3D>
           </div>
         </div>
       </div>
