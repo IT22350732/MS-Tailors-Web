@@ -41,11 +41,11 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
             <span className="flex items-center gap-1.5 text-blue font-semibold">
               <Scissors className="w-3.5 h-3.5 rotate-45 text-blue" />
               <span className="tracking-[0.2em] uppercase text-white font-medium text-[11px]">
-                MS TAILORS — WEAR YOUR DREAMS
+                MS TAILORS — BESPOKE TAILOR SHOP & ATELIER
               </span>
             </span>
             <span className="hidden md:inline text-obsidian-border">•</span>
-            <span className="hidden md:inline text-silk-muted">Panadura Atelier, Western Province, Sri Lanka</span>
+            <span className="hidden md:inline text-silk-muted">142 Galle Road, Panadura, Sri Lanka</span>
           </div>
           <div className="flex items-center gap-4 text-xs">
             <a
