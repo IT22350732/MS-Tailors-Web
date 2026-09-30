@@ -14,7 +14,7 @@ public static class DbSeeder
             var admin = new User
             {
                 Username = "admin",
-                Email = "atelier@mstailors.lk",
+                Email = "Mstailorspdura@gmail.com",
                 FullName = "Master Tailor — MS Tailors",
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin@MsTailors2026"),
                 Role = "Admin",

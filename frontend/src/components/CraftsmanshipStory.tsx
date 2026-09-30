@@ -39,7 +39,7 @@ export default function CraftsmanshipStory() {
         overlayGradient="from-black/85 via-black/55 to-black/90"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.span
@@ -87,12 +87,12 @@ export default function CraftsmanshipStory() {
               {/* Floating Atelier Badge with Logo */}
               <div className="absolute bottom-6 left-6 right-6 p-5 rounded-sm bg-black/90 backdrop-blur-md border border-blue/50 shadow-blue-glow">
                 <div className="flex items-center gap-3.5">
-                  <div className="relative w-12 h-12 rounded-sm overflow-hidden border border-blue/60 shrink-0 bg-black shadow-blue-glow">
+                  <div className="relative w-14 h-14 rounded-md overflow-hidden border border-blue/60 shrink-0 bg-black shadow-blue-glow p-1">
                     <Image
-                      src="/images/ms-tailors-logo.jpg"
-                      alt="MS Tailors Logo"
+                      src="/logo.jpg"
+                      alt="MS Tailors — Wear Your Dreams"
                       fill
-                      className="object-cover"
+                      className="object-contain"
                     />
                   </div>
                   <div>

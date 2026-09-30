@@ -24,6 +24,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mstailors.lk"),
   title: "MS Tailors — Luxury Bespoke Tailoring & Suit Rentals | Panadura, Sri Lanka",
   description:
     "Mastery in every stitch. Panadura's premier bespoke tailoring house, crafting hand-canvassed suits, wedding ensembles, luxury tuxedo rentals, and corporate uniforms from fine European fabrics.",
@@ -44,6 +45,19 @@ export const metadata: Metadata = {
     siteName: "MS Tailors",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/logo.jpg",
+        width: 600,
+        height: 600,
+        alt: "MS Tailors — Wear Your Dreams",
+      },
+    ],
+  },
+  icons: {
+    icon: "/logo.jpg",
+    shortcut: "/logo.jpg",
+    apple: "/logo.jpg",
   },
 };
 

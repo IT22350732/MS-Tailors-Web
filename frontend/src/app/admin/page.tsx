@@ -95,7 +95,7 @@ export default function AdminPage() {
           const mockSession: UserSession = {
             token: "demo-jwt-token-mstailors",
             username: "admin",
-            email: "atelier@mstailors.lk",
+            email: "Mstailorspdura@gmail.com",
             fullName: "Master Tailor — MS Tailors",
             role: "Admin",
           };
@@ -123,7 +123,7 @@ export default function AdminPage() {
         const mockSession: UserSession = {
           token: "demo-jwt-token-mstailors",
           username: "admin",
-          email: "atelier@mstailors.lk",
+          email: "Mstailorspdura@gmail.com",
           fullName: "Master Tailor — MS Tailors",
           role: "Admin",
         };
@@ -248,12 +248,12 @@ export default function AdminPage() {
       <div className="min-h-screen bg-black flex items-center justify-center p-4">
         <div className="card-luxury w-full max-w-md p-8 rounded-sm border border-blue/40 shadow-blue-glow relative">
           <div className="text-center mb-8">
-            <div className="relative w-20 h-20 rounded-sm overflow-hidden border border-blue/50 mx-auto mb-4 shadow-blue-glow bg-black">
+            <div className="relative w-24 h-24 rounded-lg overflow-hidden border border-blue/50 mx-auto mb-4 shadow-blue-glow bg-black p-1.5">
               <Image
-                src="/images/ms-tailors-logo.jpg"
-                alt="MS Tailors Logo"
+                src="/logo.jpg"
+                alt="MS Tailors — Wear Your Dreams"
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
               />
             </div>
@@ -337,12 +337,12 @@ export default function AdminPage() {
       <header className="bg-black border-b border-obsidian-border px-6 py-3 flex items-center justify-between sticky top-0 z-30">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-9 h-9 rounded-sm overflow-hidden border border-blue/50 shadow-blue-glow shrink-0 bg-black">
+            <div className="relative w-11 h-11 rounded-md overflow-hidden border border-blue/50 shadow-blue-glow shrink-0 bg-black p-0.5">
               <Image
-                src="/images/ms-tailors-logo.jpg"
-                alt="MS Tailors Logo"
+                src="/logo.jpg"
+                alt="MS Tailors — Wear Your Dreams"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <div>

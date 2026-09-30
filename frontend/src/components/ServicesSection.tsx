@@ -46,7 +46,7 @@ export default function ServicesSection({ services, onOpenBookingWithService }: 
         overlayGradient="from-black/85 via-black/55 to-black/90"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
           <div>

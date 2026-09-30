@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { X, Calendar, Clock, CheckCircle2, MessageCircle } from "lucide-react";
 import { createAppointment, getWhatsAppInquiryUrl } from "@/lib/api";
@@ -96,13 +97,24 @@ export default function AppointmentModal({
       >
         {/* Header Bar */}
         <div className="p-6 border-b border-obsidian-border flex items-center justify-between sticky top-0 bg-obsidian-card z-10">
-          <div>
-            <span className="text-[10px] tracking-[0.25em] text-blue uppercase font-bold block mb-1">
-              Atelier Private Fitting
-            </span>
-            <h3 className="font-display font-bold text-xl sm:text-2xl text-white">
-              Book Your Sartorial Consultation
-            </h3>
+          <div className="flex items-center gap-3.5">
+            <div className="relative w-12 h-12 rounded-md overflow-hidden border border-blue/40 shadow-blue-glow shrink-0 bg-black p-0.5">
+              <Image
+                src="/logo.jpg"
+                alt="MS Tailors Logo"
+                width={48}
+                height={48}
+                className="object-contain w-full h-full"
+              />
+            </div>
+            <div>
+              <span className="text-[10px] tracking-[0.25em] text-blue uppercase font-bold block mb-1">
+                Atelier Private Fitting
+              </span>
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-white">
+                Book Your Sartorial Consultation
+              </h3>
+            </div>
           </div>
           <button
             onClick={handleReset}
@@ -252,7 +264,7 @@ export default function AppointmentModal({
                     />
                     <div>
                       <div className="text-xs font-bold text-white">Panadura Studio Atelier</div>
-                      <div className="text-[11px] text-silk-muted">No. 142 Galle Road, Panadura</div>
+                      <div className="text-[11px] text-silk-muted">No. 28 Station Road, Panadura</div>
                     </div>
                   </label>
 

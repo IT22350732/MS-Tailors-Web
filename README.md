@@ -97,7 +97,7 @@ npm run dev
 
 | Role | Username | Password | Email |
 | :--- | :--- | :--- | :--- |
-| **Master Tailor (Admin)** | `admin` | `Admin@MsTailors2026` | `atelier@mstailors.lk` |
+| **Master Tailor (Admin)** | `admin` | `Admin@MsTailors2026` | `Mstailorspdura@gmail.com` |
 
 ---
 
@@ -112,7 +112,7 @@ npm run dev
 4. **Suit Rental Suite:**
    - Dedicated black-tie and groomsmen rental packages (LKR 12,500 – 15,000) with master-tailor sleeve & hem alterations and hospital-grade dry-cleaning assurance.
 5. **Direct Customer Channels:**
-   - Pre-filled WhatsApp inquiry generator with Sri Lanka hotline (`+94 77 555 1888`).
+   - Pre-filled WhatsApp inquiry generator with Sri Lanka hotline (`076 407 0182`).
    - Sticky top announcement bar and mobile floating contact bar.
 6. **Consultation & Measurement Booking Engine:**
    - Interactive modal with date picker, time slot selector, location choice (*Panadura Studio* vs *Traveling Master Tailor*), and auto-generated booking reference code (`MST-YYMM-XXXX`).
