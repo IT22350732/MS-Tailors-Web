@@ -33,10 +33,10 @@ export default function CraftsmanshipStory() {
     <section id="craftsmanship" className="py-28 bg-black relative border-t border-b border-obsidian-border overflow-hidden">
       {/* 3D PARALLAX BACKGROUND: HIGH VISIBILITY ATELIER HANDCRAFT PHOTOGRAPHY */}
       <ParallaxBackground
-        imageUrl="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=2400&q=85"
-        opacity={0.72}
-        speed={0.25}
-        overlayGradient="from-black/85 via-black/55 to-black/90"
+        imageUrl="/images/lookbook/ms_lookbook_charcoal_suit.jpg"
+        opacity={0.45}
+        speed={0.2}
+        overlayGradient="from-black/90 via-black/60 to-black/90"
       />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
@@ -78,9 +78,9 @@ export default function CraftsmanshipStory() {
           <div className="lg:col-span-5 relative">
             <Card3D intensity={12} className="relative rounded-sm overflow-hidden border border-blue/50 shadow-2xl group">
               <img
-                src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=1200&q=85"
+                src="/images/lookbook/ms_lookbook_black_tie_suit.jpg"
                 alt="MS Tailors Master Craftsmanship"
-                className="w-full h-[520px] object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-[520px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
               

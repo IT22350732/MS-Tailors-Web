@@ -24,9 +24,14 @@ public static class DbSeeder
         }
 
         // 2. Seed Services
-        var servicesCount = await context.Services.CountDocumentsAsync(FilterDefinition<ServiceItem>.Empty);
-        if (servicesCount == 0)
+        var existingServices = await context.Services.Find(FilterDefinition<ServiceItem>.Empty).ToListAsync();
+        if (existingServices.Count == 0 || existingServices.Any(s => s.ImageUrl.Contains("unsplash")))
         {
+            if (existingServices.Count > 0)
+            {
+                await context.Services.DeleteManyAsync(FilterDefinition<ServiceItem>.Empty);
+            }
+
             var services = new List<ServiceItem>
             {
                 new()
@@ -47,7 +52,7 @@ public static class DbSeeder
                     },
                     StartingPriceLkr = 85000,
                     EstimatedDays = 21,
-                    ImageUrl = "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=1200&q=80",
+                    ImageUrl = "/images/lookbook/ms_lookbook_charcoal_suit.jpg",
                     IconName = "Scissors",
                     IsActive = true,
                     Order = 1
@@ -69,7 +74,7 @@ public static class DbSeeder
                     },
                     StartingPriceLkr = 95000,
                     EstimatedDays = 28,
-                    ImageUrl = "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+                    ImageUrl = "/images/lookbook/ms_lookbook_black_tie_suit.jpg",
                     IconName = "Gem",
                     IsActive = true,
                     Order = 2
@@ -91,7 +96,7 @@ public static class DbSeeder
                     },
                     StartingPriceLkr = 12500,
                     EstimatedDays = 3,
-                    ImageUrl = "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=1200&q=80",
+                    ImageUrl = "/images/lookbook/ms_lookbook_tuxedo_profile.jpg",
                     IconName = "Sparkles",
                     IsActive = true,
                     Order = 3
@@ -113,7 +118,7 @@ public static class DbSeeder
                     },
                     StartingPriceLkr = 14500,
                     EstimatedDays = 10,
-                    ImageUrl = "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=1200&q=80",
+                    ImageUrl = "/images/lookbook/ms_lookbook_bespoke_shirt.jpg",
                     IconName = "Shirt",
                     IsActive = true,
                     Order = 4
@@ -135,7 +140,7 @@ public static class DbSeeder
                     },
                     StartingPriceLkr = 22000,
                     EstimatedDays = 14,
-                    ImageUrl = "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=1200&q=80",
+                    ImageUrl = "/images/lookbook/ms_lookbook_executive_shirt.jpg",
                     IconName = "Building2",
                     IsActive = true,
                     Order = 5
@@ -145,109 +150,124 @@ public static class DbSeeder
         }
 
         // 3. Seed Lookbook Items
-        var lookbookCount = await context.Lookbook.CountDocumentsAsync(FilterDefinition<LookbookItem>.Empty);
-        if (lookbookCount == 0)
+        var existingLookbooks = await context.Lookbook.Find(FilterDefinition<LookbookItem>.Empty).ToListAsync();
+        if (existingLookbooks.Count == 0 || existingLookbooks.Any(l => l.ImageUrl.Contains("unsplash")))
         {
+            if (existingLookbooks.Count > 0)
+            {
+                await context.Lookbook.DeleteManyAsync(FilterDefinition<LookbookItem>.Empty);
+            }
+
             var lookbooks = new List<LookbookItem>
             {
                 new()
                 {
-                    Title = "The Panadura Midnight Tuxedo",
-                    Category = "Tuxedos",
-                    Description = "Bespoke single-button black-tie tuxedo with silk grosgrain shawl lapel, jetted pockets, and matching side-stripe trousers.",
+                    Title = "The Panadura Bespoke Charcoal Suit",
+                    Category = "Bespoke",
+                    Description = "Signature handcrafted charcoal two-piece suit tailored for modern distinguished gentlemen. Cut from super-fine Italian wool with structured natural shoulders, pick stitching, and tapered trousers.",
                     FabricDetails = "Vitale Barberis Canonico Super 130s Pure Wool (260 GSM, Biella, Italy)",
-                    LapelStyle = "Shawl Lapel",
-                    FitType = "Sartorial Slim",
-                    PriceLkr = 110000,
-                    IsRental = true,
-                    RentalPricePerDayLkr = 15000,
-                    AvailableSizes = new List<string> { "38R", "40R", "42R", "44R" },
-                    ImageUrl = "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=80",
-                    Tags = new List<string> { "Black Tie", "Groom", "Silk Shawl", "Midnight Navy" },
+                    LapelStyle = "Modern Notch Lapel",
+                    FitType = "Sartorial Slim Drape",
+                    PriceLkr = 115000,
+                    IsRental = false,
+                    AvailableSizes = new List<string> { "Custom Bespoke Pattern", "38R", "40R", "42R" },
+                    ImageUrl = "/images/lookbook/ms_lookbook_charcoal_suit.jpg",
+                    GalleryUrls = new List<string>
+                    {
+                        "/images/lookbook/ms_lookbook_charcoal_suit.jpg",
+                        "/images/lookbook/ms_lookbook_tuxedo_profile.jpg",
+                        "/images/lookbook/ms_lookbook_black_tie_suit.jpg"
+                    },
+                    Tags = new List<string> { "Bespoke", "Charcoal Suit", "Panadura Atelier", "Italian Wool" },
                     IsFeatured = true,
                     Order = 1
                 },
                 new()
                 {
-                    Title = "Regent Double-Breasted Chalkstripe Suit",
-                    Category = "Bespoke",
-                    Description = "Power sartorial suit featuring wide peak lapels, 6x2 button stance, roped shoulder construction, and double forward pleats.",
+                    Title = "Black-Tie Ceremonial Evening Suit",
+                    Category = "Tuxedos",
+                    Description = "Flawless black-tie formal suit featuring hand-finished lapels, tailored slim fit, and executive necktie pairing. Available for bespoke commission or luxury rental.",
                     FabricDetails = "Scabal Savile Row Collection Super 140s Wool (280 GSM, Huddersfield, England)",
-                    LapelStyle = "Peak Lapel (11 cm)",
-                    FitType = "Classic British Drape",
-                    PriceLkr = 135000,
-                    IsRental = false,
-                    AvailableSizes = new List<string> { "Custom Bespoke Pattern" },
-                    ImageUrl = "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=1000&q=80",
-                    Tags = new List<string> { "Double Breasted", "Chalkstripe", "Savile Row", "Executive" },
+                    LapelStyle = "Narrow Notch / Peak Lapel",
+                    FitType = "Slim British Silhouette",
+                    PriceLkr = 125000,
+                    IsRental = true,
+                    RentalPricePerDayLkr = 15000,
+                    AvailableSizes = new List<string> { "38R", "40R", "42R", "44R" },
+                    ImageUrl = "/images/lookbook/ms_lookbook_black_tie_suit.jpg",
+                    GalleryUrls = new List<string>
+                    {
+                        "/images/lookbook/ms_lookbook_black_tie_suit.jpg",
+                        "/images/lookbook/ms_lookbook_tuxedo_profile.jpg"
+                    },
+                    Tags = new List<string> { "Black Tie", "Groom", "Tuxedo", "Ceremonial" },
                     IsFeatured = true,
                     Order = 2
                 },
                 new()
                 {
-                    Title = "Emerald Velvet Smoking Dinner Jacket",
-                    Category = "Wedding",
-                    Description = "Decadent deep bottle green cotton velvet evening jacket with quilted silk revers and frogging frog-closure details.",
-                    FabricDetails = "English Mill 100% Cotton Velvet (320 GSM, Lancashire, UK)",
-                    LapelStyle = "Satin Shawl Collar",
-                    FitType = "Modern Tailored",
-                    PriceLkr = 95000,
-                    IsRental = true,
-                    RentalPricePerDayLkr = 16000,
-                    AvailableSizes = new List<string> { "38R", "40R", "42R" },
-                    ImageUrl = "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=1000&q=80",
-                    Tags = new List<string> { "Velvet", "Wedding", "Smoking Jacket", "Emerald" },
+                    Title = "Executive Pure Cotton Shirt & Trousers",
+                    Category = "Bespoke",
+                    Description = "Handcrafted executive dress shirt in 100% Egyptian cotton paired with midnight bespoke tailored trousers. Designed for effortless authority and day-long breathability.",
+                    FabricDetails = "100% Giza Egyptian Cotton (120/2 Two-Ply) & English Worsted Wool",
+                    LapelStyle = "Spread Collar with Reinforced Stays",
+                    FitType = "Precision Tailored",
+                    PriceLkr = 28000,
+                    IsRental = false,
+                    AvailableSizes = new List<string> { "Custom Bespoke Pattern", "15.5", "16", "16.5" },
+                    ImageUrl = "/images/lookbook/ms_lookbook_bespoke_shirt.jpg",
+                    GalleryUrls = new List<string>
+                    {
+                        "/images/lookbook/ms_lookbook_bespoke_shirt.jpg",
+                        "/images/lookbook/ms_lookbook_executive_shirt.jpg"
+                    },
+                    Tags = new List<string> { "Bespoke Shirt", "Egyptian Cotton", "Pleated Trouser", "Executive" },
                     IsFeatured = true,
                     Order = 3
                 },
                 new()
                 {
-                    Title = "Ceylon Tropical Pure Linen Three-Piece",
+                    Title = "Sartorial Midnight Profile Dinner Suit",
                     Category = "Wedding",
-                    Description = "Relaxed yet profoundly elegant summer wedding suit crafted from breathable Irish linen with unstructured soft shoulders.",
-                    FabricDetails = "Spence Bryson 100% Irish Linen (270 GSM, Northern Ireland)",
-                    LapelStyle = "Notch Lapel with AMF Stitching",
-                    FitType = "Neapolitan Soft Drape",
-                    PriceLkr = 88000,
-                    IsRental = false,
-                    AvailableSizes = new List<string> { "Custom Bespoke" },
-                    ImageUrl = "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1000&q=80",
-                    Tags = new List<string> { "Linen", "Tropical", "Beach Wedding", "Sand Taupe" },
+                    Description = "Sleek architectural silhouette with precision-cut sleeves, horn buttons, and hand-basted canvas. Perfect for grooms and high-profile evening celebrations.",
+                    FabricDetails = "Loro Piana Tasmanian Super 150s (250 GSM, Quarona, Italy)",
+                    LapelStyle = "Slim Peak Lapel",
+                    FitType = "Modern Italian Cut",
+                    PriceLkr = 130000,
+                    IsRental = true,
+                    RentalPricePerDayLkr = 16500,
+                    AvailableSizes = new List<string> { "38R", "40R", "42R" },
+                    ImageUrl = "/images/lookbook/ms_lookbook_tuxedo_profile.jpg",
+                    GalleryUrls = new List<string>
+                    {
+                        "/images/lookbook/ms_lookbook_tuxedo_profile.jpg",
+                        "/images/lookbook/ms_lookbook_charcoal_suit.jpg"
+                    },
+                    Tags = new List<string> { "Groom Suit", "Wedding", "Sartorial", "Midnight Black" },
                     IsFeatured = true,
                     Order = 4
                 },
                 new()
                 {
-                    Title = "Diplomat Charcoal Prince of Wales Two-Piece",
-                    Category = "Bespoke",
-                    Description = "The definitive boardroom ensemble with subtle claret overcheck, Milanese hand-worked lapel boutonniere, and horn buttons.",
-                    FabricDetails = "Loro Piana Tasmanian Super 150s (250 GSM, Quarona, Italy)",
-                    LapelStyle = "Classic Notch Lapel",
-                    FitType = "Modern Slim",
-                    PriceLkr = 120000,
-                    IsRental = false,
-                    AvailableSizes = new List<string> { "Custom Bespoke" },
-                    ImageUrl = "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=1000&q=80",
-                    Tags = new List<string> { "Prince of Wales", "Corporate", "Charcoal", "Italian Wool" },
-                    IsFeatured = false,
-                    Order = 5
-                },
-                new()
-                {
-                    Title = "Royal Blue Groom Ceremonial Suit (Rental Ready)",
+                    Title = "Tailored Smart Executive Ensemble",
                     Category = "Rentals",
-                    Description = "Striking sapphire royal blue three-piece wedding suit with contrast silver-gray patterned waistcoat and matching necktie.",
-                    FabricDetails = "High-Sheen Wool Rich Blend (Crease Resistant, 270 GSM)",
-                    LapelStyle = "Peak Lapel with Satin Border",
-                    FitType = "Tailored Fit",
-                    PriceLkr = 75000,
+                    Description = "Contemporary bespoke shirting and charcoal trouser ensemble tailored to precise client anatomy. Ideal for modern wedding parties, smart-casual receptions, and executive comfort.",
+                    FabricDetails = "Egyptian Cotton Poplin & Super 120s Lightweight Wool Blend",
+                    LapelStyle = "Semi-Spread Collar",
+                    FitType = "Contemporary Tailored",
+                    PriceLkr = 32000,
                     IsRental = true,
-                    RentalPricePerDayLkr = 13500,
-                    AvailableSizes = new List<string> { "36R", "38R", "40R", "42R", "44R", "46R" },
-                    ImageUrl = "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=1000&q=80",
-                    Tags = new List<string> { "Rental", "Royal Blue", "Groom", "Three Piece" },
+                    RentalPricePerDayLkr = 12500,
+                    AvailableSizes = new List<string> { "38R", "40R", "42R", "44R" },
+                    ImageUrl = "/images/lookbook/ms_lookbook_executive_shirt.jpg",
+                    GalleryUrls = new List<string>
+                    {
+                        "/images/lookbook/ms_lookbook_executive_shirt.jpg",
+                        "/images/lookbook/ms_lookbook_bespoke_shirt.jpg"
+                    },
+                    Tags = new List<string> { "Rental Ready", "Executive", "Smart Casual", "Reception" },
                     IsFeatured = true,
-                    Order = 6
+                    Order = 5
                 }
             };
             await context.Lookbook.InsertManyAsync(lookbooks);

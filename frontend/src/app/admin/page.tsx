@@ -52,7 +52,7 @@ export default function AdminPage() {
     isRental: false,
     rentalPricePerDayLkr: 14000,
     availableSizes: ["38R", "40R", "42R"],
-    imageUrl: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=1000&q=80",
+    imageUrl: "/images/lookbook/ms_lookbook_charcoal_suit.jpg",
     tags: ["Bespoke", "New Arrival"],
     isFeatured: true,
   });

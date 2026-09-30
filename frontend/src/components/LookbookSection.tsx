@@ -15,6 +15,7 @@ interface LookbookSectionProps {
 export default function LookbookSection({ items, onOpenBookingWithLook }: LookbookSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeModalItem, setActiveModalItem] = useState<LookbookItem | null>(null);
+  const [modalActiveImage, setModalActiveImage] = useState<string | null>(null);
 
   const categories = ["All", "Bespoke", "Wedding", "Tuxedos", "Rentals"];
 
@@ -26,9 +27,9 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
     <section id="lookbook" className="py-28 bg-black relative overflow-hidden border-t border-b border-obsidian-border">
       {/* 3D Visible Parallax Sartorial Background */}
       <ParallaxBackground
-        imageUrl="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=2200&q=85"
+        imageUrl="/images/lookbook/ms_lookbook_tuxedo_profile.jpg"
         alt="MS Tailors Atelier Lookbook"
-        opacity={0.65}
+        opacity={0.5}
         speed={0.16}
       />
 
@@ -81,14 +82,17 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                   className="card-luxury rounded-sm overflow-hidden group cursor-pointer hover:border-blue/80 hover:shadow-blue-glow h-full flex flex-col justify-between bg-black/85 backdrop-blur-md"
-                  onClick={() => setActiveModalItem(item)}
+                  onClick={() => {
+                    setActiveModalItem(item);
+                    setModalActiveImage(item.imageUrl);
+                  }}
                 >
                   {/* Image Container with High Visibility */}
                   <div className="relative h-96 overflow-hidden bg-obsidian-elevated">
                     <img
                       src={item.imageUrl}
                       alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-70 group-hover:opacity-40 transition-opacity" />
 
@@ -156,25 +160,55 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
             >
               {/* Close Button */}
               <button
-                onClick={() => setActiveModalItem(null)}
+                onClick={() => {
+                  setActiveModalItem(null);
+                  setModalActiveImage(null);
+                }}
                 className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-obsidian-card border border-blue/40 text-silk-silver hover:text-white flex items-center justify-center transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-8">
-                {/* Modal Image */}
-                <div className="relative rounded-sm overflow-hidden h-80 sm:h-full min-h-[350px]">
-                  <img
-                    src={activeModalItem.imageUrl}
-                    alt={activeModalItem.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-black/90 backdrop-blur-md border border-blue/40 text-blue text-xs font-bold uppercase tracking-wider rounded-sm shadow-blue-glow">
-                      {activeModalItem.category}
-                    </span>
+                {/* Modal Image + Gallery View */}
+                <div className="flex flex-col gap-3">
+                  <div className="relative rounded-sm overflow-hidden h-80 sm:h-[420px]">
+                    <img
+                      src={modalActiveImage || activeModalItem.imageUrl}
+                      alt={activeModalItem.title}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-black/90 backdrop-blur-md border border-blue/40 text-blue text-xs font-bold uppercase tracking-wider rounded-sm shadow-blue-glow">
+                        {activeModalItem.category}
+                      </span>
+                    </div>
                   </div>
+
+                  {/* Thumbnail gallery if multiple photos */}
+                  {activeModalItem.galleryUrls && activeModalItem.galleryUrls.length > 1 && (
+                    <div className="flex items-center gap-2 overflow-x-auto py-1">
+                      {activeModalItem.galleryUrls.map((url, gIdx) => {
+                        const isCurrent = (modalActiveImage || activeModalItem.imageUrl) === url;
+                        return (
+                          <button
+                            key={gIdx}
+                            type="button"
+                            onClick={() => setModalActiveImage(url)}
+                            className={`relative w-14 h-18 rounded-sm overflow-hidden border-2 transition-all shrink-0 ${
+                              isCurrent ? "border-blue shadow-blue-glow scale-105" : "border-white/20 opacity-60 hover:opacity-100"
+                            }`}
+                          >
+                            <img
+                              src={url}
+                              alt={`View angle ${gIdx + 1}`}
+                              className="w-full h-full object-cover object-top"
+                            />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
 
                 {/* Modal Details */}

@@ -40,10 +40,10 @@ export default function ServicesSection({ services, onOpenBookingWithService }: 
     <section id="services" className="py-28 bg-black relative overflow-hidden">
       {/* 3D PARALLAX BACKGROUND: HIGH VISIBILITY ATELIER SUITING WORKSHOP */}
       <ParallaxBackground
-        imageUrl="https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=2400&q=85"
-        opacity={0.72}
-        speed={0.25}
-        overlayGradient="from-black/85 via-black/55 to-black/90"
+        imageUrl="/images/lookbook/ms_lookbook_tuxedo_profile.jpg"
+        opacity={0.45}
+        speed={0.2}
+        overlayGradient="from-black/90 via-black/60 to-black/90"
       />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
@@ -120,7 +120,7 @@ export default function ServicesSection({ services, onOpenBookingWithService }: 
                     <img
                       src={service.imageUrl}
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter contrast-105 brightness-100"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 filter contrast-105 brightness-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
                     

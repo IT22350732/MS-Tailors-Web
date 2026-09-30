@@ -56,10 +56,10 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
     <section id="rentals" className="py-28 bg-black relative overflow-hidden">
       {/* 3D PARALLAX BACKGROUND: HIGH VISIBILITY EVENING BLACK-TIE & SARTORIAL PHOTOGRAPHY */}
       <ParallaxBackground
-        imageUrl="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=2400&q=85"
-        opacity={0.72}
-        speed={0.25}
-        overlayGradient="from-black/85 via-black/55 to-black/90"
+        imageUrl="/images/lookbook/ms_lookbook_black_tie_suit.jpg"
+        opacity={0.45}
+        speed={0.2}
+        overlayGradient="from-black/90 via-black/60 to-black/90"
       />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
