@@ -139,7 +139,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             {/* Primary Outlined Button matching Mr. Murphy [ SHOP NOW ] */}
             <button
               onClick={onOpenBooking}
-              className="group relative px-9 sm:px-12 py-3.5 sm:py-4 border-2 border-blue bg-black/40 hover:bg-blue text-white text-xs sm:text-sm font-bold uppercase tracking-[0.28em] transition-all duration-300 backdrop-blur-md shadow-blue-glow hover:shadow-blue-glow-lg hover:scale-105"
+              className="group relative px-9 sm:px-12 py-3.5 sm:py-4 border-2 border-blue bg-black/40 hover:bg-blue text-white text-xs sm:text-sm font-bold uppercase tracking-[0.28em] transition-all duration-300 backdrop-blur-md shadow-blue-glow hover:shadow-blue-glow-lg hover:scale-105 rounded-full"
             >
               <span className="flex items-center gap-2">
                 <span>{HERO_CONTENT.buttonText}</span>
@@ -150,7 +150,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             {/* Secondary Outlined Button */}
             <a
               href="#lookbook"
-              className="px-8 sm:px-10 py-3.5 sm:py-4 border border-white/40 hover:border-white bg-black/30 hover:bg-white/10 text-white/90 hover:text-white text-xs sm:text-sm font-medium uppercase tracking-[0.25em] transition-all duration-300 backdrop-blur-sm"
+              className="px-8 sm:px-10 py-3.5 sm:py-4 border border-white/40 hover:border-white bg-black/30 hover:bg-white/10 text-white/90 hover:text-white text-xs sm:text-sm font-medium uppercase tracking-[0.25em] transition-all duration-300 backdrop-blur-sm rounded-full"
             >
               VIEW LOOKBOOK
             </a>

@@ -90,7 +90,7 @@ export default function TestimonialsSection() {
               <Card3D
                 zoomScale={1.05}
                 popY={-8}
-                className="card-luxury p-8 rounded-sm flex flex-col justify-between h-full bg-black/85 backdrop-blur-xl border border-white/10 hover:border-blue/80 hover:shadow-blue-glow group"
+                className="card-luxury p-8 rounded-2xl flex flex-col justify-between h-full bg-black/85 backdrop-blur-xl border border-white/10 hover:border-blue/80 hover:shadow-blue-glow group"
               >
                 <div>
                   {/* Rating Stars & Quote Icon */}
@@ -100,7 +100,7 @@ export default function TestimonialsSection() {
                         <Star key={i} className="w-4 h-4 fill-blue text-blue" />
                       ))}
                     </div>
-                    <div className="w-9 h-9 rounded-sm bg-obsidian-surface border border-blue/30 flex items-center justify-center text-blue group-hover:border-blue transition-colors">
+                    <div className="w-9 h-9 rounded-lg bg-obsidian-surface border border-blue/30 flex items-center justify-center text-blue group-hover:border-blue transition-colors">
                       <Quote className="w-4 h-4" />
                     </div>
                   </div>

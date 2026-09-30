@@ -76,7 +76,7 @@ export default function CraftsmanshipStory() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Visual Storytelling with 3D Tilt Card */}
           <div className="lg:col-span-5 relative">
-            <Card3D intensity={12} className="relative rounded-sm overflow-hidden border border-blue/50 shadow-2xl group">
+            <Card3D intensity={12} className="relative rounded-2xl overflow-hidden border border-blue/50 shadow-2xl group">
               <img
                 src="/images/lookbook/ms_lookbook_black_tie_suit.jpg"
                 alt="MS Tailors Master Craftsmanship"
@@ -85,7 +85,7 @@ export default function CraftsmanshipStory() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
               
               {/* Floating Atelier Badge with Logo */}
-              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-sm bg-black/90 backdrop-blur-md border border-blue/50 shadow-blue-glow">
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-xl bg-black/90 backdrop-blur-md border border-blue/50 shadow-blue-glow">
                 <div className="flex items-center gap-3.5">
                   <div className="relative w-14 h-14 rounded-md overflow-hidden border border-blue/60 shrink-0 bg-black shadow-blue-glow p-1">
                     <Image
@@ -119,9 +119,9 @@ export default function CraftsmanshipStory() {
                   <Card3D
                     zoomScale={1.05}
                     popY={-8}
-                    className="card-luxury p-7 rounded-sm relative overflow-hidden group hover:border-blue/80 hover:shadow-blue-glow bg-black/85 backdrop-blur-md"
+                    className="card-luxury p-7 rounded-2xl relative overflow-hidden group hover:border-blue/80 hover:shadow-blue-glow bg-black/85 backdrop-blur-md"
                   >
-                    <div className="w-12 h-12 rounded-sm bg-obsidian-elevated border border-blue/40 flex items-center justify-center text-blue mb-5 group-hover:border-blue group-hover:bg-blue group-hover:text-white transition-all shadow-blue-glow">
+                    <div className="w-12 h-12 rounded-xl bg-obsidian-elevated border border-blue/40 flex items-center justify-center text-blue mb-5 group-hover:border-blue group-hover:bg-blue group-hover:text-white transition-all shadow-blue-glow">
                       <Icon className="w-5 h-5" />
                     </div>
                     <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-blue transition-colors">

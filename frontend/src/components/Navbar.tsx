@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Scissors, ShieldCheck, MapPin, ChevronDown, Menu, X } from "lucide-react";
+import { Scissors, ShieldCheck, MapPin, Menu, X } from "lucide-react";
 import { MS_TAILORS_CONTACT } from "@/lib/api";
 
 interface NavbarProps {
@@ -112,14 +112,14 @@ export default function Navbar({ onOpenBooking, isSidebarOpen = true, onToggleSi
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#", hasDropdown: true, key: "home" },
-    { name: "Features", href: "#services", hasDropdown: true, key: "services" },
-    { name: "About Me", href: "#craftsmanship", hasDropdown: false, key: "craftsmanship" },
-    { name: "Services", href: "#services", hasDropdown: true, key: "services-list" },
-    { name: "My Works", href: "#lookbook", hasDropdown: true, key: "lookbook" },
-    { name: "News", href: "#testimonials", hasDropdown: true, key: "testimonials" },
-    { name: "Shop", href: "#rentals", hasDropdown: false, key: "rentals" },
-    { name: "Contacts", href: "#contact", hasDropdown: false, key: "contact" },
+    { name: "Home", href: "#", key: "home" },
+    { name: "Features", href: "#services", key: "services" },
+    { name: "About Me", href: "#craftsmanship", key: "craftsmanship" },
+    { name: "Services", href: "#services", key: "services-list" },
+    { name: "My Works", href: "#lookbook", key: "lookbook" },
+    { name: "News", href: "#testimonials", key: "testimonials" },
+    { name: "Shop", href: "#rentals", key: "rentals" },
+    { name: "Contacts", href: "#contact", key: "contact" },
   ];
 
   return (
@@ -134,13 +134,13 @@ export default function Navbar({ onOpenBooking, isSidebarOpen = true, onToggleSi
       >
         <button
           aria-label="Open Navigation Menu"
-          className="w-8 h-8 rounded-sm bg-obsidian-surface border border-blue/50 flex items-center justify-center text-blue shadow-blue-glow hover:scale-105 transition-all"
+          className="w-8 h-8 rounded-lg bg-obsidian-surface border border-blue/50 flex items-center justify-center text-blue shadow-blue-glow hover:scale-105 transition-all"
         >
           <Menu className="w-4 h-4 text-blue" />
         </button>
 
         {/* Small thumbnail logo in the collapsed strip */}
-        <div className="w-8 h-8 rounded overflow-hidden border border-blue/40 my-3 shadow-blue-glow bg-black p-0.5">
+        <div className="w-8 h-8 rounded-lg overflow-hidden border border-blue/40 my-3 shadow-blue-glow bg-black p-0.5">
           <Image
             src="/logo.jpg"
             alt="MS Tailors Logo"
@@ -216,16 +216,13 @@ export default function Navbar({ onOpenBooking, isSidebarOpen = true, onToggleSi
                 onClick={() => {
                   if (window.innerWidth < 1024) toggleSidebar();
                 }}
-                className={`flex items-center justify-between px-5 py-2 rounded-sm text-xs font-display font-medium tracking-wider uppercase transition-all ${
+                className={`flex items-center px-5 py-2.5 rounded-xl text-xs font-display font-medium tracking-wider uppercase transition-all ${
                   isActive
                     ? "bg-blue text-white font-bold shadow-blue-glow border-l-2 border-white"
                     : "text-white/80 hover:bg-white/5 hover:text-blue hover:pl-6"
                 }`}
               >
                 <span>{link.name}</span>
-                {link.hasDropdown && (
-                  <ChevronDown className={`w-3 h-3 opacity-70 ${isActive ? "text-white" : "text-blue"}`} />
-                )}
               </a>
             );
           })}
@@ -235,7 +232,7 @@ export default function Navbar({ onOpenBooking, isSidebarOpen = true, onToggleSi
         <div className="shrink-0 p-4 border-t border-white/10 space-y-2.5 bg-[#080b10]">
           <button
             onClick={onOpenBooking}
-            className="w-full py-2.5 bg-blue-gradient text-white text-[11px] font-bold uppercase tracking-widest rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all flex items-center justify-center gap-2 hover:scale-[1.02]"
+            className="w-full py-2.5 bg-blue-gradient text-white text-[11px] font-bold uppercase tracking-widest rounded-xl shadow-blue-glow hover:shadow-blue-glow-lg transition-all flex items-center justify-center gap-2 hover:scale-[1.02]"
           >
             <Scissors className="w-3.5 h-3.5" />
             <span>Book Appointment</span>

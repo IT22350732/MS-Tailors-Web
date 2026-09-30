@@ -32,7 +32,7 @@ export default function FloatingHotlineBar({ onOpenBooking }: FloatingHotlineBar
         <div className="flex items-center justify-between gap-2 max-w-lg mx-auto">
           <a
             href={`tel:${MS_TAILORS_CONTACT.hotlineMobileRaw}`}
-            className="flex-1 py-2 px-2.5 rounded-sm bg-obsidian-surface border border-blue/40 text-white text-center text-xs font-semibold flex items-center justify-center gap-1.5 hover:border-blue transition-colors"
+            className="flex-1 py-2 px-2.5 rounded-xl bg-obsidian-surface border border-blue/40 text-white text-center text-xs font-semibold flex items-center justify-center gap-1.5 hover:border-blue transition-colors"
           >
             <Phone className="w-3.5 h-3.5 text-blue" />
             <span>Call</span>
@@ -42,7 +42,7 @@ export default function FloatingHotlineBar({ onOpenBooking }: FloatingHotlineBar
             href={getWhatsAppInquiryUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-2 px-2.5 rounded-sm bg-emerald-950/60 border border-emerald-500/50 text-emerald-400 text-center text-xs font-semibold flex items-center justify-center gap-1.5 hover:bg-emerald-900/60 transition-colors"
+            className="flex-1 py-2 px-2.5 rounded-xl bg-emerald-950/60 border border-emerald-500/50 text-emerald-400 text-center text-xs font-semibold flex items-center justify-center gap-1.5 hover:bg-emerald-900/60 transition-colors"
           >
             <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
             <span>WhatsApp</span>
@@ -50,7 +50,7 @@ export default function FloatingHotlineBar({ onOpenBooking }: FloatingHotlineBar
 
           <button
             onClick={onOpenBooking}
-            className="flex-1 py-2 px-2.5 rounded-sm bg-blue-gradient text-white text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-blue-glow"
+            className="flex-1 py-2 px-2.5 rounded-xl bg-blue-gradient text-white text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-blue-glow"
           >
             <Calendar className="w-3.5 h-3.5" />
             <span>Book</span>

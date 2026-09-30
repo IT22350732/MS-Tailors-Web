@@ -108,13 +108,13 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
               <Card3D
                 zoomScale={1.05}
                 popY={-8}
-                className={`card-luxury rounded-sm p-8 flex flex-col justify-between relative group hover:border-blue/80 hover:shadow-blue-glow-lg bg-black/85 backdrop-blur-xl h-full ${
+                className={`card-luxury rounded-2xl p-8 flex flex-col justify-between relative group hover:border-blue/80 hover:shadow-blue-glow-lg bg-black/85 backdrop-blur-xl h-full ${
                   idx === 0 ? "border-blue/60 shadow-blue-glow" : ""
                 }`}
               >
                 {/* Badge */}
                 <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1 bg-blue/20 border border-blue/50 text-blue text-[10px] font-bold uppercase tracking-wider rounded-sm shadow-blue-glow">
+                  <span className="px-3 py-1 bg-blue/20 border border-blue/50 text-blue text-[10px] font-bold uppercase tracking-wider rounded-full shadow-blue-glow">
                     {pkg.badge}
                   </span>
                 </div>
@@ -127,7 +127,7 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
                     {pkg.desc}
                   </p>
 
-                  <div className="mb-6 p-4 rounded-sm bg-obsidian-surface/90 border border-obsidian-border">
+                  <div className="mb-6 p-4 rounded-xl bg-obsidian-surface/90 border border-obsidian-border">
                     <div className="text-xs text-silk-muted mb-0.5">Package Rate</div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-3xl font-display font-bold text-blue">
@@ -152,7 +152,7 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
                 <div className="space-y-2.5 pt-4 border-t border-obsidian-border">
                   <button
                     onClick={onOpenBooking}
-                    className="w-full py-3.5 bg-blue-gradient text-white text-xs font-bold uppercase tracking-wider rounded-sm hover:shadow-blue-glow-lg transition-all"
+                    className="w-full py-3.5 bg-blue-gradient text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:shadow-blue-glow-lg transition-all"
                   >
                     Reserve Fitting Date
                   </button>
@@ -162,7 +162,7 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 border border-emerald-500/50 bg-emerald-950/30 text-emerald-400 hover:bg-emerald-900/40 text-xs font-semibold rounded-sm flex items-center justify-center gap-1.5 transition-all"
+                    className="w-full py-2.5 border border-emerald-500/50 bg-emerald-950/30 text-emerald-400 hover:bg-emerald-900/40 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 transition-all"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     <span>WhatsApp Reservation</span>
@@ -174,9 +174,9 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
         </div>
 
         {/* 3 Promises Bar with 3D Depth */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 rounded-sm bg-black/85 backdrop-blur-xl border border-blue/30 shadow-blue-glow">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 rounded-2xl bg-black/85 backdrop-blur-xl border border-blue/30 shadow-blue-glow">
           <div className="flex items-center gap-4">
-            <div className="w-11 h-11 rounded-sm bg-black border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-black border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow shrink-0">
               <ShieldCheck className="w-5 h-5 text-blue" />
             </div>
             <div>
@@ -186,7 +186,7 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="w-11 h-11 rounded-sm bg-black border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-black border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow shrink-0">
               <Sparkles className="w-5 h-5 text-blue" />
             </div>
             <div>
@@ -196,7 +196,7 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="w-11 h-11 rounded-sm bg-black border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-black border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow shrink-0">
               <Users className="w-5 h-5 text-blue" />
             </div>
             <div>

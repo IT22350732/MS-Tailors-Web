@@ -118,7 +118,7 @@ export function Card3D({
         damping: 24,
         mass: 0.6,
       }}
-      className={`relative rounded-sm cursor-pointer will-change-transform ${className}`}
+      className={`relative rounded-2xl cursor-pointer will-change-transform ${className}`}
       style={{
         boxShadow: isHovered
           ? "0 22px 45px -12px rgba(0, 0, 0, 0.95), 0 0 30px -4px rgba(56, 119, 246, 0.45)"
@@ -129,7 +129,7 @@ export function Card3D({
       {/* Dynamic Glare Specular Light on Zoom */}
       {glare && (
         <div
-          className="absolute inset-0 rounded-sm pointer-events-none transition-opacity duration-300 z-20"
+          className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300 z-20"
           style={{
             background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, 0.18) 0%, transparent 65%)`,
             opacity: isHovered ? 1 : 0,
@@ -139,7 +139,7 @@ export function Card3D({
 
       {/* Electric Blue Pop-Up Ambient Glow */}
       <div
-        className="absolute -inset-0.5 rounded-sm blur-md -z-10 transition-opacity duration-300 pointer-events-none"
+        className="absolute -inset-0.5 rounded-2xl blur-md -z-10 transition-opacity duration-300 pointer-events-none"
         style={{
           background: glowColor,
           opacity: isHovered ? 0.9 : 0,

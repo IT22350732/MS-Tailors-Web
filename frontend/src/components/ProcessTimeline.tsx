@@ -104,7 +104,7 @@ export default function ProcessTimeline() {
                   <Card3D
                     zoomScale={1.06}
                     popY={-8}
-                    className="card-luxury p-6 rounded-sm flex flex-col justify-between relative group hover:border-blue/80 hover:shadow-blue-glow bg-black/85 backdrop-blur-xl h-full"
+                    className="card-luxury p-6 rounded-2xl flex flex-col justify-between relative group hover:border-blue/80 hover:shadow-blue-glow bg-black/85 backdrop-blur-xl h-full"
                   >
                     <div>
                       {/* Step Number & Icon */}
@@ -112,7 +112,7 @@ export default function ProcessTimeline() {
                         <span className="font-display font-bold text-3xl text-blue/40 group-hover:text-blue transition-colors">
                           {step.num}
                         </span>
-                        <div className="w-10 h-10 rounded-sm bg-obsidian-elevated border border-blue/40 flex items-center justify-center text-blue group-hover:bg-blue group-hover:text-white transition-all shadow-blue-glow">
+                        <div className="w-10 h-10 rounded-xl bg-obsidian-elevated border border-blue/40 flex items-center justify-center text-blue group-hover:bg-blue group-hover:text-white transition-all shadow-blue-glow">
                           <Icon className="w-5 h-5" />
                         </div>
                       </div>

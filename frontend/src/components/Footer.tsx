@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand Info & Official Logo */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-4">
-              <div className="relative w-16 h-16 rounded-lg overflow-hidden border border-blue/40 shadow-blue-glow shrink-0 bg-black p-1">
+              <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-blue/40 shadow-blue-glow shrink-0 bg-black p-1">
                 <Image
                   src="/logo.jpg"
                   alt="MS Tailors — Wear Your Dreams"
@@ -40,14 +40,14 @@ export default function Footer() {
                 href={getWhatsAppInquiryUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-sm bg-obsidian-surface border border-emerald-500/40 text-emerald-400 flex items-center justify-center hover:bg-emerald-950/40 transition-colors"
+                className="w-8 h-8 rounded-xl bg-obsidian-surface border border-emerald-500/40 text-emerald-400 flex items-center justify-center hover:bg-emerald-950/40 transition-colors"
                 title={`WhatsApp (${MS_TAILORS_CONTACT.hotlineMobileDisplay})`}
               >
                 <MessageCircle className="w-4 h-4" />
               </a>
               <a
                 href={`tel:${MS_TAILORS_CONTACT.hotlineMobileRaw}`}
-                className="w-8 h-8 rounded-sm bg-obsidian-surface border border-blue/40 text-blue flex items-center justify-center hover:bg-blue hover:text-white transition-colors shadow-blue-glow"
+                className="w-8 h-8 rounded-xl bg-obsidian-surface border border-blue/40 text-blue flex items-center justify-center hover:bg-blue hover:text-white transition-colors shadow-blue-glow"
                 title={`Hotline: ${MS_TAILORS_CONTACT.hotlineMobileDisplay}`}
               >
                 <Phone className="w-4 h-4" />
@@ -56,7 +56,7 @@ export default function Footer() {
                 href={MS_TAILORS_CONTACT.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-sm bg-obsidian-surface border border-blue/40 text-blue flex items-center justify-center hover:bg-blue hover:text-white transition-colors shadow-blue-glow"
+                className="w-8 h-8 rounded-xl bg-obsidian-surface border border-blue/40 text-blue flex items-center justify-center hover:bg-blue hover:text-white transition-colors shadow-blue-glow"
                 title="Facebook"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -67,7 +67,7 @@ export default function Footer() {
                 href={MS_TAILORS_CONTACT.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-sm bg-obsidian-surface border border-pink-500/40 text-pink-400 flex items-center justify-center hover:bg-pink-900/40 hover:text-pink-300 transition-colors"
+                className="w-8 h-8 rounded-xl bg-obsidian-surface border border-pink-500/40 text-pink-400 flex items-center justify-center hover:bg-pink-900/40 hover:text-pink-300 transition-colors"
                 title="Instagram"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">

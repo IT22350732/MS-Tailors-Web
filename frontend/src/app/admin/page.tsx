@@ -246,9 +246,9 @@ export default function AdminPage() {
   if (!session) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center p-4">
-        <div className="card-luxury w-full max-w-md p-8 rounded-sm border border-blue/40 shadow-blue-glow relative">
+        <div className="card-luxury w-full max-w-md p-8 rounded-2xl border border-blue/40 shadow-blue-glow relative">
           <div className="text-center mb-8">
-            <div className="relative w-24 h-24 rounded-lg overflow-hidden border border-blue/50 mx-auto mb-4 shadow-blue-glow bg-black p-1.5">
+            <div className="relative w-24 h-24 rounded-2xl overflow-hidden border border-blue/50 mx-auto mb-4 shadow-blue-glow bg-black p-1.5">
               <Image
                 src="/logo.jpg"
                 alt="MS Tailors — Wear Your Dreams"
@@ -272,7 +272,7 @@ export default function AdminPage() {
           </div>
 
           {loginError && (
-            <div className="p-3 bg-red-950/40 border border-red-500/40 text-red-300 text-xs rounded-sm mb-6">
+            <div className="p-3 bg-red-950/40 border border-red-500/40 text-red-300 text-xs rounded-xl mb-6">
               {loginError}
             </div>
           )}
@@ -287,7 +287,7 @@ export default function AdminPage() {
                 required
                 value={loginForm.username}
                 onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
-                className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
+                className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
               />
             </div>
 
@@ -300,11 +300,11 @@ export default function AdminPage() {
                 required
                 value={loginForm.password}
                 onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-                className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-sm text-sm text-white outline-none transition-colors"
+                className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
               />
             </div>
 
-            <div className="p-3 rounded-sm bg-obsidian-surface border border-blue/30 text-[11px] text-silk-muted">
+            <div className="p-3 rounded-xl bg-obsidian-surface border border-blue/30 text-[11px] text-silk-muted">
               <span className="text-blue font-semibold block mb-0.5">Default Admin Credentials:</span>
               Username: <span className="text-white font-mono">admin</span> | Password: <span className="text-white font-mono">Admin@MsTailors2026</span>
             </div>
@@ -312,7 +312,7 @@ export default function AdminPage() {
             <button
               type="submit"
               disabled={loginLoading}
-              className="w-full py-3.5 bg-blue-gradient text-white font-bold tracking-widest uppercase text-xs rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg transition-all disabled:opacity-50"
+              className="w-full py-3.5 bg-blue-gradient text-white font-bold tracking-widest uppercase text-xs rounded-xl shadow-blue-glow hover:shadow-blue-glow-lg transition-all disabled:opacity-50"
             >
               {loginLoading ? "Authenticating Master Key..." : "Enter Atelier CMS"}
             </button>
@@ -337,7 +337,7 @@ export default function AdminPage() {
       <header className="bg-black border-b border-obsidian-border px-6 py-3 flex items-center justify-between sticky top-0 z-30">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 rounded-md overflow-hidden border border-blue/50 shadow-blue-glow shrink-0 bg-black p-0.5">
+            <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-blue/50 shadow-blue-glow shrink-0 bg-black p-0.5">
               <Image
                 src="/logo.jpg"
                 alt="MS Tailors — Wear Your Dreams"
@@ -364,7 +364,7 @@ export default function AdminPage() {
           <Link
             href="/"
             target="_blank"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-obsidian-surface border border-blue/30 text-xs text-silk-silver hover:text-blue transition-colors"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-obsidian-surface border border-blue/30 text-xs text-silk-silver hover:text-blue transition-colors"
           >
             <span>Live Site</span>
             <ExternalLink className="w-3.5 h-3.5" />
@@ -372,7 +372,7 @@ export default function AdminPage() {
 
           <button
             onClick={fetchAdminData}
-            className="p-2 rounded-sm bg-obsidian-surface border border-obsidian-border text-silk-silver hover:text-blue transition-colors"
+            className="p-2 rounded-xl bg-obsidian-surface border border-obsidian-border text-silk-silver hover:text-blue transition-colors"
             title="Refresh Data"
           >
             <RefreshCw className={`w-4 h-4 ${loadingData ? "animate-spin text-blue" : ""}`} />
@@ -380,7 +380,7 @@ export default function AdminPage() {
 
           <button
             onClick={handleLogout}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-red-950/30 border border-red-500/40 text-red-300 text-xs hover:bg-red-900/40 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-950/30 border border-red-500/40 text-red-300 text-xs hover:bg-red-900/40 transition-colors"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Logout</span>
@@ -394,7 +394,7 @@ export default function AdminPage() {
         <div className="flex flex-wrap gap-2 border-b border-obsidian-border pb-4 mb-8">
           <button
             onClick={() => setActiveTab("overview")}
-            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "overview"
                 ? "bg-blue text-white shadow-blue-glow"
                 : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
@@ -406,7 +406,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab("appointments")}
-            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "appointments"
                 ? "bg-blue text-white shadow-blue-glow"
                 : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
@@ -418,7 +418,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab("lookbook")}
-            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "lookbook"
                 ? "bg-blue text-white shadow-blue-glow"
                 : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
@@ -430,7 +430,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab("fabrics")}
-            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "fabrics"
                 ? "bg-blue text-white shadow-blue-glow"
                 : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
@@ -442,7 +442,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab("inquiries")}
-            className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
               activeTab === "inquiries"
                 ? "bg-blue text-white shadow-blue-glow"
                 : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
@@ -458,7 +458,7 @@ export default function AdminPage() {
           <div className="space-y-8">
             {/* KPI Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="card-luxury p-6 rounded-sm border-l-4 border-l-blue">
+              <div className="card-luxury p-6 rounded-2xl border-l-4 border-l-blue">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs uppercase text-silk-muted tracking-wider">Bookings</span>
                   <Calendar className="w-5 h-5 text-blue" />
@@ -471,7 +471,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="card-luxury p-6 rounded-sm border-l-4 border-l-emerald-500">
+              <div className="card-luxury p-6 rounded-2xl border-l-4 border-l-emerald-500">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs uppercase text-silk-muted tracking-wider">Inquiries</span>
                   <Inbox className="w-5 h-5 text-emerald-400" />
@@ -484,7 +484,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="card-luxury p-6 rounded-sm border-l-4 border-l-blue-500">
+              <div className="card-luxury p-6 rounded-2xl border-l-4 border-l-blue-500">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs uppercase text-silk-muted tracking-wider">Lookbook Items</span>
                   <Layers className="w-5 h-5 text-blue-400" />
@@ -497,7 +497,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="card-luxury p-6 rounded-sm border-l-4 border-l-purple-500">
+              <div className="card-luxury p-6 rounded-2xl border-l-4 border-l-purple-500">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs uppercase text-silk-muted tracking-wider">European Fabrics</span>
                   <Scissors className="w-5 h-5 text-purple-400" />
@@ -514,7 +514,7 @@ export default function AdminPage() {
             {/* Recent Appointments & Inquiries Quick View */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Recent Bookings */}
-              <div className="card-luxury p-6 rounded-sm">
+              <div className="card-luxury p-6 rounded-2xl">
                 <div className="flex items-center justify-between mb-4 border-b border-obsidian-border pb-3">
                   <h3 className="font-display font-bold text-lg text-white">
                     Recent Consultation Requests
@@ -537,7 +537,7 @@ export default function AdminPage() {
                     {appointments.slice(0, 5).map((app) => (
                       <div
                         key={app.id || app.referenceCode}
-                        className="p-3 rounded-sm bg-obsidian-surface border border-obsidian-border flex items-center justify-between text-xs"
+                        className="p-3 rounded-xl bg-obsidian-surface border border-obsidian-border flex items-center justify-between text-xs"
                       >
                         <div>
                           <div className="font-semibold text-white">{app.customerName}</div>
@@ -546,7 +546,7 @@ export default function AdminPage() {
                           </div>
                         </div>
                         <span
-                          className={`px-2 py-0.5 rounded-sm font-semibold text-[10px] uppercase ${
+                          className={`px-2.5 py-0.5 rounded-full font-semibold text-[10px] uppercase ${
                             app.status === "Confirmed"
                               ? "bg-emerald-950/60 border border-emerald-500/40 text-emerald-400"
                               : app.status === "Completed"
@@ -563,7 +563,7 @@ export default function AdminPage() {
               </div>
 
               {/* Recent Inquiries */}
-              <div className="card-luxury p-6 rounded-sm">
+              <div className="card-luxury p-6 rounded-2xl">
                 <div className="flex items-center justify-between mb-4 border-b border-obsidian-border pb-3">
                   <h3 className="font-display font-bold text-lg text-white">
                     Customer Inquiries Feed
@@ -586,7 +586,7 @@ export default function AdminPage() {
                     {inquiries.slice(0, 5).map((inq) => (
                       <div
                         key={inq.id}
-                        className="p-3 rounded-sm bg-obsidian-surface border border-obsidian-border flex items-center justify-between text-xs"
+                        className="p-3 rounded-xl bg-obsidian-surface border border-obsidian-border flex items-center justify-between text-xs"
                       >
                         <div>
                           <div className="font-semibold text-silk-ivory">{inq.customerName}</div>
@@ -598,7 +598,7 @@ export default function AdminPage() {
                           href={getWhatsAppInquiryUrl(`Hello ${inq.customerName}, regarding your inquiry with MS Tailors:`)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-2 py-1 bg-emerald-950/40 border border-emerald-500/40 text-emerald-400 text-[10px] rounded-sm flex items-center gap-1"
+                          className="px-2.5 py-1 bg-emerald-950/40 border border-emerald-500/40 text-emerald-400 text-[10px] rounded-xl flex items-center gap-1"
                         >
                           <MessageCircle className="w-3 h-3" />
                           <span>WhatsApp</span>
@@ -631,7 +631,7 @@ export default function AdminPage() {
                   <button
                     key={status}
                     onClick={() => setAppointmentFilter(status)}
-                    className={`px-3 py-1.5 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all ${
+                    className={`px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all ${
                       appointmentFilter === status
                         ? "bg-blue text-white font-bold shadow-blue-glow"
                         : "bg-obsidian-surface border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white"
@@ -644,7 +644,7 @@ export default function AdminPage() {
             </div>
 
             {/* Appointments Table */}
-            <div className="card-luxury rounded-sm overflow-x-auto">
+            <div className="card-luxury rounded-2xl overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead className="bg-obsidian-elevated border-b border-obsidian-border text-silk-muted uppercase tracking-wider">
                   <tr>
@@ -686,7 +686,7 @@ export default function AdminPage() {
                         </td>
                         <td className="p-3.5">
                           <span
-                            className={`px-2.5 py-1 rounded-sm text-[10px] uppercase font-bold tracking-wider inline-block ${
+                            className={`px-2.5 py-1 rounded-full text-[10px] uppercase font-bold tracking-wider inline-block ${
                               app.status === "Confirmed"
                                 ? "bg-emerald-950/60 border border-emerald-500/40 text-emerald-400"
                                 : app.status === "Completed"
@@ -703,7 +703,7 @@ export default function AdminPage() {
                           {app.id && app.status !== "Confirmed" && (
                             <button
                               onClick={() => handleUpdateAppointmentStatus(app.id!, "Confirmed")}
-                              className="px-2.5 py-1 bg-emerald-950/60 border border-emerald-500/50 text-emerald-400 hover:bg-emerald-900/60 rounded-sm font-semibold"
+                              className="px-2.5 py-1 bg-emerald-950/60 border border-emerald-500/50 text-emerald-400 hover:bg-emerald-900/60 rounded-xl font-semibold"
                             >
                               Confirm
                             </button>
@@ -711,7 +711,7 @@ export default function AdminPage() {
                           {app.id && app.status === "Confirmed" && (
                             <button
                               onClick={() => handleUpdateAppointmentStatus(app.id!, "Completed")}
-                              className="px-2.5 py-1 bg-blue-950/60 border border-blue-500/50 text-blue-400 hover:bg-blue-900/60 rounded-sm font-semibold"
+                              className="px-2.5 py-1 bg-blue-950/60 border border-blue-500/50 text-blue-400 hover:bg-blue-900/60 rounded-xl font-semibold"
                             >
                               Complete
                             </button>
@@ -719,7 +719,7 @@ export default function AdminPage() {
                           {app.id && app.status !== "Cancelled" && (
                             <button
                               onClick={() => handleUpdateAppointmentStatus(app.id!, "Cancelled")}
-                              className="px-2.5 py-1 bg-red-950/40 border border-red-500/40 text-red-400 hover:bg-red-900/40 rounded-sm"
+                              className="px-2.5 py-1 bg-red-950/40 border border-red-500/40 text-red-400 hover:bg-red-900/40 rounded-xl"
                             >
                               Cancel
                             </button>
@@ -730,7 +730,7 @@ export default function AdminPage() {
                             )}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-block px-2 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded-sm"
+                            className="inline-block px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl"
                             title="Direct WhatsApp Client"
                           >
                             <MessageCircle className="w-3 h-3" />
@@ -759,7 +759,7 @@ export default function AdminPage() {
               </div>
               <button
                 onClick={() => setShowAddLookbook(true)}
-                className="px-4 py-2 bg-blue-gradient text-white text-xs font-bold uppercase tracking-wider rounded-sm shadow-blue-glow hover:shadow-blue-glow-lg flex items-center gap-1.5 transition-all"
+                className="px-4 py-2 bg-blue-gradient text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-blue-glow hover:shadow-blue-glow-lg flex items-center gap-1.5 transition-all"
               >
                 <Plus className="w-4 h-4" />
                 <span>Add New Look</span>
@@ -769,21 +769,21 @@ export default function AdminPage() {
             {/* Lookbook Items Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {lookbookItems.map((item) => (
-                <div key={item.id || item.title} className="card-luxury rounded-sm overflow-hidden flex flex-col justify-between hover:border-blue/50 hover:shadow-blue-glow">
-                  <div className="relative h-56 bg-obsidian-elevated">
+                <div key={item.id || item.title} className="card-luxury rounded-2xl overflow-hidden flex flex-col justify-between hover:border-blue/50 hover:shadow-blue-glow p-3">
+                  <div className="relative h-56 rounded-xl overflow-hidden bg-obsidian-elevated border border-white/10">
                     <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover" />
                     <div className="absolute top-3 left-3 flex gap-2">
-                      <span className="px-2 py-0.5 rounded-sm bg-black/90 text-blue text-[10px] font-bold uppercase border border-blue/40">
+                      <span className="px-2.5 py-0.5 rounded-full bg-black/90 text-blue text-[10px] font-bold uppercase border border-blue/40">
                         {item.category}
                       </span>
                       {item.isRental && (
-                        <span className="px-2 py-0.5 rounded-sm bg-blue-950/90 text-blue-300 text-[10px] font-bold uppercase border border-blue-500/40">
+                        <span className="px-2.5 py-0.5 rounded-full bg-blue-950/90 text-blue-300 text-[10px] font-bold uppercase border border-blue-500/40">
                           Rental
                         </span>
                       )}
                     </div>
                   </div>
-                  <div className="p-4">
+                  <div className="p-3">
                     <h3 className="font-display font-bold text-white text-base mb-1">{item.title}</h3>
                     <p className="text-xs text-silk-muted line-clamp-2 mb-3">{item.description}</p>
                     <div className="flex items-center justify-between pt-3 border-t border-obsidian-border text-xs">
@@ -798,7 +798,7 @@ export default function AdminPage() {
             {/* Add Lookbook Modal */}
             {showAddLookbook && (
               <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-                <div className="card-luxury w-full max-w-lg p-6 rounded-sm border border-blue/40 shadow-blue-glow relative">
+                <div className="card-luxury w-full max-w-lg p-6 rounded-2xl border border-blue/40 shadow-blue-glow relative">
                   <h3 className="font-display font-bold text-xl text-white mb-4 border-b border-obsidian-border pb-3">
                     Add Lookbook Item
                   </h3>
@@ -811,7 +811,7 @@ export default function AdminPage() {
                         value={newLook.title}
                         onChange={(e) => setNewLook({ ...newLook, title: e.target.value })}
                         placeholder="e.g. Sovereign Black Tie Dinner Suit"
-                        className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
+                        className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-xl text-white outline-none focus:border-blue"
                       />
                     </div>
 
@@ -821,7 +821,7 @@ export default function AdminPage() {
                         <select
                           value={newLook.category}
                           onChange={(e) => setNewLook({ ...newLook, category: e.target.value })}
-                          className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
+                          className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-xl text-white outline-none focus:border-blue"
                         >
                           <option value="Bespoke">Bespoke</option>
                           <option value="Wedding">Wedding</option>
@@ -838,7 +838,7 @@ export default function AdminPage() {
                           value={newLook.priceLkr || ""}
                           onChange={(e) => setNewLook({ ...newLook, priceLkr: Number(e.target.value) })}
                           placeholder="e.g. 110000"
-                          className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
+                          className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-xl text-white outline-none focus:border-blue"
                         />
                       </div>
                     </div>
@@ -850,7 +850,7 @@ export default function AdminPage() {
                         required
                         value={newLook.imageUrl}
                         onChange={(e) => setNewLook({ ...newLook, imageUrl: e.target.value })}
-                        className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
+                        className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-xl text-white outline-none focus:border-blue"
                       />
                     </div>
 
@@ -860,7 +860,7 @@ export default function AdminPage() {
                         rows={2}
                         value={newLook.description}
                         onChange={(e) => setNewLook({ ...newLook, description: e.target.value })}
-                        className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-sm text-white outline-none focus:border-blue"
+                        className="w-full bg-black border border-obsidian-border px-3 py-2 rounded-xl text-white outline-none focus:border-blue"
                       />
                     </div>
 
@@ -878,13 +878,13 @@ export default function AdminPage() {
                       <button
                         type="button"
                         onClick={() => setShowAddLookbook(false)}
-                        className="flex-1 py-2.5 bg-obsidian-surface border border-obsidian-border text-silk-silver hover:text-white rounded-sm"
+                        className="flex-1 py-2.5 bg-obsidian-surface border border-obsidian-border text-silk-silver hover:text-white rounded-xl"
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
-                        className="flex-1 py-2.5 bg-blue-gradient text-white font-bold rounded-sm shadow-blue-glow"
+                        className="flex-1 py-2.5 bg-blue-gradient text-white font-bold rounded-xl shadow-blue-glow"
                       >
                         Publish Look
                       </button>
@@ -910,11 +910,11 @@ export default function AdminPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {fabrics.map((fab) => (
-                <div key={fab.code} className="card-luxury p-5 rounded-sm flex flex-col justify-between">
+                <div key={fab.code} className="card-luxury p-5 rounded-2xl flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-mono text-blue font-bold text-xs">{fab.code}</span>
-                      <span className="text-[10px] text-silk-muted uppercase bg-black px-2 py-0.5 rounded-sm border border-obsidian-border">
+                      <span className="text-[10px] text-silk-muted uppercase bg-black px-2.5 py-0.5 rounded-full border border-obsidian-border">
                         {fab.country}
                       </span>
                     </div>
@@ -944,7 +944,7 @@ export default function AdminPage() {
               </p>
             </div>
 
-            <div className="card-luxury rounded-sm overflow-x-auto">
+            <div className="card-luxury rounded-2xl overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead className="bg-obsidian-elevated border-b border-obsidian-border text-silk-muted uppercase tracking-wider">
                   <tr>
@@ -982,7 +982,7 @@ export default function AdminPage() {
                             )}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-700 hover:bg-emerald-600 text-white rounded-sm text-xs font-semibold"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl text-xs font-semibold"
                           >
                             <MessageCircle className="w-3.5 h-3.5" />
                             <span>WhatsApp Client</span>
