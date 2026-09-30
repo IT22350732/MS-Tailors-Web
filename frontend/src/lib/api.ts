@@ -177,6 +177,7 @@ export const FALLBACK_LOOKBOOK: LookbookItem[] = [
     imageUrl: "/images/lookbook/ms_lookbook_black_tie_suit.jpg",
     galleryUrls: [
       "/images/lookbook/ms_lookbook_black_tie_suit.jpg",
+      "/images/hero/ms_hero_spotlight_bw.jpg",
       "/images/lookbook/ms_lookbook_tuxedo_profile.jpg"
     ],
     tags: ["Black Tie", "Groom", "Tuxedo", "Ceremonial"],
@@ -197,6 +198,7 @@ export const FALLBACK_LOOKBOOK: LookbookItem[] = [
     imageUrl: "/images/lookbook/ms_lookbook_bespoke_shirt.jpg",
     galleryUrls: [
       "/images/lookbook/ms_lookbook_bespoke_shirt.jpg",
+      "/images/hero/ms_hero_arms_crossed.jpg",
       "/images/lookbook/ms_lookbook_executive_shirt.jpg"
     ],
     tags: ["Bespoke Shirt", "Egyptian Cotton", "Pleated Trouser", "Executive"],

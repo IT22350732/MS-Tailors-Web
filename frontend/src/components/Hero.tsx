@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -17,8 +17,28 @@ const HERO_CONTENT = {
   buttonText: "SHOP NOW",
 };
 
+const HERO_BACKGROUNDS = [
+  {
+    url: "/images/hero/ms_hero_spotlight_bw.jpg",
+    alt: "MS Tailors Atelier - Spotlight Bespoke Portrait",
+  },
+  {
+    url: "/images/hero/ms_hero_arms_crossed.jpg",
+    alt: "MS Tailors Atelier - Executive Handcrafted Shirt",
+  },
+];
+
 export default function Hero({ onOpenBooking }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [currentBg, setCurrentBg] = useState(0);
+
+  // Auto-cycle through the background photos every 6.5s
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBg((prev) => (prev + 1) % HERO_BACKGROUNDS.length);
+    }, 6500);
+    return () => clearInterval(timer);
+  }, []);
 
   // 3D Parallax & Depth transforms
   const { scrollYProgress } = useScroll({
@@ -28,7 +48,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
 
   const springScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 20 });
   const bgY = useTransform(springScroll, [0, 1], ["0%", "20%"]);
-  const bgScale = useTransform(springScroll, [0, 1], [1, 1.1]);
+  const bgScale = useTransform(springScroll, [0, 1], [1, 1.08]);
   const heroContentY = useTransform(springScroll, [0, 1], ["0%", "14%"]);
   const heroContentOpacity = useTransform(springScroll, [0, 0.8], [1, 0.15]);
 
@@ -37,23 +57,35 @@ export default function Hero({ onOpenBooking }: HeroProps) {
       ref={containerRef}
       className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-black text-white"
     >
-      {/* FULL-BLEED MR. MURPHY BACKGROUND (GENTLEMAN IN BESPOKE COAT & RUSTIC WOOD) */}
+      {/* FULL-BLEED BESPOKE PHOTOS (AUTHENTIC MS TAILORS PHOTOSHOOT BACKGROUNDS) */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <motion.div
           style={{ y: bgY, scale: bgScale }}
-          className="absolute -inset-10 bg-cover bg-center transition-all duration-300"
+          className="absolute -inset-10 transition-all duration-300"
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center filter contrast-110 brightness-[0.88]"
-            style={{
-              backgroundImage: `url('/images/mr_murphy_hero_bg.jpg')`,
-            }}
-          />
+          {HERO_BACKGROUNDS.map((bg, idx) => (
+            <motion.div
+              key={bg.url}
+              initial={false}
+              animate={{
+                opacity: currentBg === idx ? 1 : 0,
+                scale: currentBg === idx ? 1.04 : 1,
+              }}
+              transition={{
+                opacity: { duration: 1.6, ease: "easeInOut" },
+                scale: { duration: 7, ease: "easeOut" },
+              }}
+              className="absolute inset-0 bg-cover bg-[center_20%] sm:bg-center filter contrast-110 brightness-[0.82]"
+              style={{
+                backgroundImage: `url('${bg.url}')`,
+              }}
+            />
+          ))}
         </motion.div>
 
         {/* Cinematic Dark Vignette & Subtle Blue Ambient Tones */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-black/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/20 to-black/85" />
 
         {/* Ambient Royal Blue Light Pools */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34rem] h-[34rem] bg-blue/20 rounded-full blur-[140px] pointer-events-none" />
@@ -125,6 +157,22 @@ export default function Hero({ onOpenBooking }: HeroProps) {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Subtle Background Photo Switcher Dots */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5">
+        {HERO_BACKGROUNDS.map((bg, idx) => (
+          <button
+            key={bg.url}
+            onClick={() => setCurrentBg(idx)}
+            aria-label={`Switch to background photo ${idx + 1}`}
+            className={`h-1.5 transition-all duration-500 rounded-full cursor-pointer ${
+              currentBg === idx
+                ? "w-8 bg-blue shadow-blue-glow"
+                : "w-2.5 bg-white/30 hover:bg-white/70"
+            }`}
+          />
+        ))}
+      </div>
     </section>
   );
 }

@@ -198,6 +198,7 @@ public static class DbSeeder
                     GalleryUrls = new List<string>
                     {
                         "/images/lookbook/ms_lookbook_black_tie_suit.jpg",
+                        "/images/hero/ms_hero_spotlight_bw.jpg",
                         "/images/lookbook/ms_lookbook_tuxedo_profile.jpg"
                     },
                     Tags = new List<string> { "Black Tie", "Groom", "Tuxedo", "Ceremonial" },
@@ -219,6 +220,7 @@ public static class DbSeeder
                     GalleryUrls = new List<string>
                     {
                         "/images/lookbook/ms_lookbook_bespoke_shirt.jpg",
+                        "/images/hero/ms_hero_arms_crossed.jpg",
                         "/images/lookbook/ms_lookbook_executive_shirt.jpg"
                     },
                     Tags = new List<string> { "Bespoke Shirt", "Egyptian Cotton", "Pleated Trouser", "Executive" },
