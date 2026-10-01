@@ -87,7 +87,7 @@ export default function AppointmentModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/90 backdrop-blur-md">
       <motion.div
         initial={{ opacity: 0, scale: 0.88, y: 25 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -96,9 +96,9 @@ export default function AppointmentModal({
         className="card-luxury w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-2xl border border-blue/50 shadow-blue-glow-lg relative bg-black/95 backdrop-blur-2xl"
       >
         {/* Header Bar */}
-        <div className="p-6 border-b border-obsidian-border flex items-center justify-between sticky top-0 bg-obsidian-card z-10">
-          <div className="flex items-center gap-3.5">
-            <div className="relative w-12 h-12 rounded-md overflow-hidden border border-blue/40 shadow-blue-glow shrink-0 bg-black p-0.5">
+        <div className="p-4 sm:p-6 border-b border-obsidian-border flex items-center justify-between sticky top-0 bg-obsidian-card z-10">
+          <div className="flex items-center gap-3">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-md overflow-hidden border border-blue/40 shadow-blue-glow shrink-0 bg-black p-0.5">
               <Image
                 src="/logo.jpg"
                 alt="MS Tailors Logo"
@@ -108,24 +108,24 @@ export default function AppointmentModal({
               />
             </div>
             <div>
-              <span className="text-[10px] tracking-[0.25em] text-blue uppercase font-bold block mb-1">
+              <span className="text-[9px] sm:text-[10px] tracking-[0.25em] text-blue uppercase font-bold block mb-0.5">
                 Atelier Private Fitting
               </span>
-              <h3 className="font-display font-bold text-xl sm:text-2xl text-white">
+              <h3 className="font-display font-bold text-lg sm:text-2xl text-white leading-tight">
                 Book Your Sartorial Consultation
               </h3>
             </div>
           </div>
           <button
             onClick={handleReset}
-            className="w-8 h-8 rounded-full bg-obsidian-elevated border border-obsidian-border text-silk-silver hover:text-white flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-obsidian-elevated border border-obsidian-border text-silk-silver hover:text-white flex items-center justify-center transition-colors shrink-0 ml-2"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Content Body */}
-        <div className="p-6 sm:p-8">
+        <div className="p-4 sm:p-7">
           {submittedRef ? (
             /* Success State */
             <div className="text-center py-8">
@@ -191,7 +191,7 @@ export default function AppointmentModal({
                     value={formData.customerName}
                     onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
                     placeholder="e.g. Ruwan Mendis"
-                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                   />
                 </div>
 
@@ -205,7 +205,7 @@ export default function AppointmentModal({
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="e.g. +94 77 123 4567"
-                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -219,7 +219,7 @@ export default function AppointmentModal({
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="e.g. client@example.com"
-                  className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                  className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                 />
               </div>
 
@@ -231,7 +231,7 @@ export default function AppointmentModal({
                 <select
                   value={formData.serviceType}
                   onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                  className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                  className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                 >
                   {serviceOptions.map((opt) => (
                     <option key={opt} value={opt} className="bg-obsidian-card">
@@ -303,7 +303,7 @@ export default function AppointmentModal({
                     required
                     value={formData.appointmentDate}
                     onChange={(e) => setFormData({ ...formData, appointmentDate: e.target.value })}
-                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                   />
                 </div>
 
@@ -315,7 +315,7 @@ export default function AppointmentModal({
                   <select
                     value={formData.preferredTimeSlot}
                     onChange={(e) => setFormData({ ...formData, preferredTimeSlot: e.target.value })}
-                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                    className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                   >
                     {timeSlots.map((slot) => (
                       <option key={slot} value={slot} className="bg-obsidian-card">
@@ -336,7 +336,7 @@ export default function AppointmentModal({
                   value={formData.specialNotes}
                   onChange={(e) => setFormData({ ...formData, specialNotes: e.target.value })}
                   placeholder="e.g. Upcoming wedding on December 15th, looking for a double-breasted tuxedo in Vitale Barberis wool..."
-                  className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2 rounded-xl text-sm text-white outline-none transition-colors"
+                  className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                 />
               </div>
 

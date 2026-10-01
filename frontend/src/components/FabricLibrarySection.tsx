@@ -22,7 +22,7 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
     : fabrics.filter((f) => f.colorFamily.toLowerCase() === selectedColor.toLowerCase());
 
   return (
-    <section id="fabrics" className="py-28 bg-black relative overflow-hidden border-t border-b border-obsidian-border">
+    <section id="fabrics" className="py-16 sm:py-24 lg:py-28 bg-black relative overflow-hidden border-t border-b border-obsidian-border">
       {/* 3D Visible Parallax Fabric & Mill Background */}
       <ParallaxBackground
         imageUrl="https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=2200&q=85"
@@ -31,28 +31,28 @@ export default function FabricLibrarySection({ fabrics, onOpenBooking }: FabricL
         speed={0.16}
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
-            <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3">
+            <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-2 sm:mb-3">
               European Mill Partnerships
             </span>
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-white drop-shadow-md">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-white drop-shadow-md leading-tight">
               The Fabric & Mill Library
             </h2>
-            <p className="mt-4 text-silk-silver max-w-xl text-sm sm:text-base font-light">
+            <p className="mt-3 sm:mt-4 text-silk-silver max-w-xl text-xs sm:text-base font-light">
               We import directly from Biella, Huddersfield, and Belfast. Experience Super 110s to 150s virgin wools, Irish linens, and velvet weaves curated for elegance and tropical drape.
             </p>
           </div>
 
-          {/* Color Family Filters */}
-          <div className="flex flex-wrap gap-2">
+          {/* Color Family Filters (Smooth Touch Horizontal Scroll on Mobile) */}
+          <div className="flex overflow-x-auto no-scrollbar gap-2 pb-1 sm:pb-0 sm:flex-wrap max-w-full -mx-4 px-4 sm:mx-0 sm:px-0">
             {colorFilters.map((col) => (
               <button
                 key={col}
                 onClick={() => setSelectedColor(col)}
-                className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition-all ${
+                className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition-all shrink-0 ${
                   selectedColor === col
                     ? "bg-blue text-white shadow-blue-glow font-bold"
                     : "bg-black/80 backdrop-blur-md border border-white/20 text-silk-silver hover:border-blue hover:text-white"

@@ -53,7 +53,7 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
   ];
 
   return (
-    <section id="rentals" className="py-28 bg-black relative overflow-hidden">
+    <section id="rentals" className="py-16 sm:py-24 lg:py-28 bg-black relative overflow-hidden">
       {/* 3D PARALLAX BACKGROUND: HIGH VISIBILITY EVENING BLACK-TIE & SARTORIAL PHOTOGRAPHY */}
       <ParallaxBackground
         imageUrl="/images/lookbook/ms_lookbook_black_tie_suit.jpg"
@@ -62,14 +62,14 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
         overlayGradient="from-black/90 via-black/60 to-black/90"
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
           <motion.span
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3"
+            className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-2 sm:mb-3"
           >
             Prestige Rental Service
           </motion.span>
@@ -78,12 +78,12 @@ export default function SuitRentalSection({ onOpenBooking }: SuitRentalSectionPr
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-display font-bold text-white"
+            className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight"
           >
             Luxury Suit Rentals <br />
             <span className="text-blue-gradient italic font-serif">Tailored to Your Frame</span>
           </motion.h2>
-          <div className="w-24 h-0.5 bg-blue mx-auto mt-6 shadow-blue-glow" />
+          <div className="w-20 sm:w-24 h-0.5 bg-blue mx-auto mt-4 sm:mt-6 shadow-blue-glow" />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

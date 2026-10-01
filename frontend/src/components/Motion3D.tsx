@@ -121,7 +121,7 @@ export function Card3D({
       className={`relative rounded-2xl cursor-pointer will-change-transform ${className}`}
       style={{
         boxShadow: isHovered
-          ? "0 22px 45px -12px rgba(0, 0, 0, 0.95), 0 0 30px -4px rgba(56, 119, 246, 0.45)"
+          ? `0 22px 45px -12px rgba(0, 0, 0, 0.95), 0 0 ${intensity * 2}px -4px rgba(56, 119, 246, 0.45)`
           : "0 4px 15px -3px rgba(0, 0, 0, 0.7)",
       }}
       {...(props as any)}

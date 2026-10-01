@@ -24,7 +24,7 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
     : items.filter((item) => item.category.toLowerCase() === selectedCategory.toLowerCase());
 
   return (
-    <section id="lookbook" className="py-28 bg-black relative overflow-hidden border-t border-b border-obsidian-border">
+    <section id="lookbook" className="py-16 sm:py-24 lg:py-28 bg-black relative overflow-hidden border-t border-b border-obsidian-border">
       {/* 3D Visible Parallax Sartorial Background */}
       <ParallaxBackground
         imageUrl="/images/lookbook/ms_lookbook_tuxedo_profile.jpg"
@@ -33,28 +33,28 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
         speed={0.16}
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
-            <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3">
+            <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-2 sm:mb-3">
               Curated Sartorial Portfolio
             </span>
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-white drop-shadow-md">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-white drop-shadow-md leading-tight">
               The Lookbook Collection
             </h2>
-            <p className="mt-4 text-silk-silver max-w-xl text-sm sm:text-base font-light">
+            <p className="mt-3 sm:mt-4 text-silk-silver max-w-xl text-xs sm:text-base font-light">
               Explore bespoke commissions, wedding party attire, black-tie dinner suits, and designer rentals crafted at our Panadura atelier.
             </p>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2">
+          {/* Category Tabs (Smooth Touch Horizontal Scroll on Mobile) */}
+          <div className="flex overflow-x-auto no-scrollbar gap-2 pb-1 sm:pb-0 sm:flex-wrap max-w-full -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition-all ${
+                className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition-all shrink-0 ${
                   selectedCategory === cat
                     ? "bg-blue text-white shadow-blue-glow font-bold"
                     : "bg-black/80 backdrop-blur-md border border-white/20 text-silk-silver hover:border-blue hover:text-white"
@@ -150,13 +150,13 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
       {/* Look Detail Modal */}
       <AnimatePresence>
         {activeModalItem && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/90 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.88, y: 25 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 15 }}
               transition={{ type: "spring", stiffness: 380, damping: 25, mass: 0.7 }}
-              className="card-luxury w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border border-blue/50 shadow-blue-glow-lg relative bg-black/95 backdrop-blur-2xl"
+              className="card-luxury w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl border border-blue/50 shadow-blue-glow-lg relative bg-black/95 backdrop-blur-2xl"
             >
               {/* Close Button */}
               <button
@@ -164,15 +164,15 @@ export default function LookbookSection({ items, onOpenBookingWithLook }: Lookbo
                   setActiveModalItem(null);
                   setModalActiveImage(null);
                 }}
-                className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-obsidian-card border border-blue/40 text-silk-silver hover:text-white flex items-center justify-center transition-colors"
+                className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 w-8 h-8 rounded-full bg-obsidian-card border border-blue/40 text-silk-silver hover:text-white flex items-center justify-center transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 p-4 sm:p-8">
                 {/* Modal Image + Gallery View */}
                 <div className="flex flex-col gap-3">
-                  <div className="relative rounded-2xl overflow-hidden h-80 sm:h-[420px] border border-white/10 shadow-lg">
+                  <div className="relative rounded-2xl overflow-hidden h-72 sm:h-[420px] border border-white/10 shadow-lg">
                     <img
                       src={modalActiveImage || activeModalItem.imageUrl}
                       alt={activeModalItem.title}

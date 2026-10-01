@@ -124,10 +124,51 @@ export default function Navbar({ onOpenBooking, isSidebarOpen = true, onToggleSi
 
   return (
     <>
-      {/* 1. COLLAPSED VERTICAL TAB STRIP (Visible only when sidebar is collapsed) */}
+      {/* 1. MOBILE TOP STICKY HEADER (Visible ONLY on mobile/tablet < lg) */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-xl border-b border-blue/40 px-4 py-2.5 flex items-center justify-between shadow-2xl safe-area-inset-top">
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-blue/40 bg-black shadow-blue-glow p-0.5 shrink-0">
+            <Image
+              src="/logo.jpg"
+              alt="MS Tailors Logo"
+              width={36}
+              height={36}
+              className="object-contain w-full h-full"
+            />
+          </div>
+          <div>
+            <span className="font-display tracking-[0.2em] text-white font-bold text-xs sm:text-sm block uppercase leading-none">
+              MS TAILORS
+            </span>
+            <span className="text-[8px] sm:text-[9px] tracking-[0.3em] uppercase text-blue font-bold block mt-0.5">
+              PANADURA • BESPOKE
+            </span>
+          </div>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onOpenBooking}
+            className="px-3 py-1.5 bg-blue-gradient text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-lg shadow-blue-glow flex items-center gap-1.5"
+          >
+            <Scissors className="w-3 h-3" />
+            <span>Book</span>
+          </button>
+
+          <button
+            onClick={toggleSidebar}
+            aria-label="Open Navigation Menu"
+            className="w-9 h-9 rounded-lg bg-obsidian-surface border border-blue/40 flex items-center justify-center text-blue shadow-blue-glow hover:bg-blue/20 transition-all"
+          >
+            <Menu className="w-4 h-4 text-blue" />
+          </button>
+        </div>
+      </header>
+
+      {/* 2. DESKTOP COLLAPSED VERTICAL TAB STRIP (Visible ONLY on desktop lg:flex when collapsed) */}
       <aside
         onClick={toggleSidebar}
-        className={`fixed top-0 bottom-0 left-0 z-40 w-12 bg-black/95 border-r border-blue/40 text-white shadow-2xl flex flex-col items-center justify-between py-6 cursor-pointer hover:bg-black transition-all duration-300 ${
+        className={`hidden lg:flex fixed top-0 bottom-0 left-0 z-40 w-12 bg-black/95 border-r border-blue/40 text-white shadow-2xl flex-col items-center justify-between py-6 cursor-pointer hover:bg-black transition-all duration-300 ${
           sidebarOpen ? "-translate-x-full opacity-0 pointer-events-none" : "translate-x-0 opacity-100"
         }`}
         title="Open Navigation Menu"
@@ -159,9 +200,9 @@ export default function Navbar({ onOpenBooking, isSidebarOpen = true, onToggleSi
         <Scissors className="w-4 h-4 text-blue rotate-45" />
       </aside>
 
-      {/* 2. FULL EXPANDED SIDEBAR DRAWER (When open) */}
+      {/* 3. FULL EXPANDED SIDEBAR DRAWER (Slide-over on mobile, pinned or collapsible on desktop) */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-72 bg-[#0c1017] text-white border-r border-white/10 shadow-2xl transition-transform duration-300 flex flex-col h-full select-none ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-72 max-w-[85vw] bg-[#0c1017] text-white border-r border-white/10 shadow-2xl transition-transform duration-300 flex flex-col h-full select-none ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

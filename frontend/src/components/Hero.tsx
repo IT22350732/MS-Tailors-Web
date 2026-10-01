@@ -94,63 +94,61 @@ export default function Hero({ onOpenBooking }: HeroProps) {
       {/* CENTER-STAGED FOREGROUND CONTENT (EXACT MATCH FOR MR. MURPHY THEME) */}
       <motion.div
         style={{ y: heroContentY, opacity: heroContentOpacity }}
-        className="relative z-10 max-w-5xl mx-auto px-6 py-20 flex flex-col items-center justify-center text-center w-full"
+        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20 flex flex-col items-center justify-center text-center w-full"
       >
         <motion.div
           initial={{ opacity: 0, y: 24, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center justify-center text-center"
+          className="flex flex-col items-center justify-center text-center w-full"
         >
           {/* 1. Official MS Tailors Logo Emblem */}
-          <div className="mb-6 drop-shadow-[0_8px_32px_rgba(0,0,0,0.95)] hover:scale-105 transition-transform duration-500 flex flex-col items-center">
-            <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-2xl overflow-hidden border-2 border-blue/50 shadow-blue-glow-lg bg-black/95 p-2 backdrop-blur-md">
+          <div className="mb-4 sm:mb-6 drop-shadow-[0_8px_32px_rgba(0,0,0,0.95)] hover:scale-105 transition-transform duration-500 flex flex-col items-center">
+            <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-2xl overflow-hidden border-2 border-blue/50 shadow-blue-glow-lg bg-black/95 p-1.5 sm:p-2 backdrop-blur-md">
               <Image
                 src="/logo.jpg"
                 alt="MS Tailors — Wear Your Dreams"
-                width={220}
-                height={220}
+                width={200}
+                height={200}
                 priority
                 className="object-contain w-full h-full"
               />
             </div>
-            <span className="text-[10px] sm:text-xs tracking-[0.35em] uppercase text-blue font-bold mt-3 block font-sans">
+            <span className="text-[9px] sm:text-xs tracking-[0.35em] uppercase text-blue font-bold mt-2.5 sm:mt-3 block font-sans">
               {HERO_CONTENT.crestSubtitle}
             </span>
           </div>
 
           {/* 2. Cursive / Italic Serif Greeting */}
-          <p className="font-serif italic text-blue-light/95 text-xl sm:text-2xl lg:text-3xl tracking-wide font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] mb-2">
+          <p className="font-serif italic text-blue-light/95 text-lg sm:text-2xl lg:text-3xl tracking-wide font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] mb-1.5 sm:mb-2">
             {HERO_CONTENT.welcome}
           </p>
 
           {/* 3. Majestic Grand Serif Headline */}
-          <h1 className="font-display font-semibold sm:font-bold text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] max-w-3xl drop-shadow-[0_6px_28px_rgba(0,0,0,0.95)]">
+          <h1 className="font-display font-semibold sm:font-bold text-3xl sm:text-5xl lg:text-7xl text-white tracking-tight leading-[1.1] max-w-3xl drop-shadow-[0_6px_28px_rgba(0,0,0,0.95)] px-2">
             {HERO_CONTENT.title}
           </h1>
 
           {/* Tagline / Subtitle */}
-          <p className="mt-3 text-xs sm:text-sm md:text-base text-silk-silver/90 font-light tracking-[0.2em] uppercase max-w-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          <p className="mt-2.5 sm:mt-3 text-[11px] sm:text-sm md:text-base text-silk-silver/90 font-light tracking-[0.18em] sm:tracking-[0.2em] uppercase max-w-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] px-4">
             {HERO_CONTENT.tagline}
           </p>
 
           {/* 4. Rectangular Outlined Action Buttons */}
-          <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+          <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 w-full max-w-xs sm:max-w-none">
             {/* Primary Outlined Button matching Mr. Murphy [ SHOP NOW ] */}
             <button
               onClick={onOpenBooking}
-              className="group relative px-9 sm:px-12 py-3.5 sm:py-4 border-2 border-blue bg-black/40 hover:bg-blue text-white text-xs sm:text-sm font-bold uppercase tracking-[0.28em] transition-all duration-300 backdrop-blur-md shadow-blue-glow hover:shadow-blue-glow-lg hover:scale-105 rounded-full"
+              className="w-full sm:w-auto group relative px-8 sm:px-12 py-3.5 sm:py-4 border-2 border-blue bg-black/40 hover:bg-blue text-white text-xs sm:text-sm font-bold uppercase tracking-[0.28em] transition-all duration-300 backdrop-blur-md shadow-blue-glow hover:shadow-blue-glow-lg hover:scale-105 rounded-full flex items-center justify-center gap-2"
             >
-              <span className="flex items-center gap-2">
-                <span>{HERO_CONTENT.buttonText}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
+              <span>{HERO_CONTENT.buttonText}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
             {/* Secondary Outlined Button */}
             <a
               href="#lookbook"
-              className="px-8 sm:px-10 py-3.5 sm:py-4 border border-white/40 hover:border-white bg-black/30 hover:bg-white/10 text-white/90 hover:text-white text-xs sm:text-sm font-medium uppercase tracking-[0.25em] transition-all duration-300 backdrop-blur-sm rounded-full"
+              className="w-full sm:w-auto px-7 sm:px-10 py-3.5 sm:py-4 border border-white/40 hover:border-white bg-black/30 hover:bg-white/10 text-white/90 hover:text-white text-xs sm:text-sm font-medium uppercase tracking-[0.25em] transition-all duration-300 backdrop-blur-sm rounded-full text-center"
             >
               VIEW LOOKBOOK
             </a>

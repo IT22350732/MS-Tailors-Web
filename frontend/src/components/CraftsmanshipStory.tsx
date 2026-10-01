@@ -30,7 +30,7 @@ export default function CraftsmanshipStory() {
   ];
 
   return (
-    <section id="craftsmanship" className="py-28 bg-black relative border-t border-b border-obsidian-border overflow-hidden">
+    <section id="craftsmanship" className="py-16 sm:py-24 lg:py-28 bg-black relative border-t border-b border-obsidian-border overflow-hidden">
       {/* 3D PARALLAX BACKGROUND: HIGH VISIBILITY ATELIER HANDCRAFT PHOTOGRAPHY */}
       <ParallaxBackground
         imageUrl="/images/lookbook/ms_lookbook_charcoal_suit.jpg"
@@ -39,14 +39,14 @@ export default function CraftsmanshipStory() {
         overlayGradient="from-black/90 via-black/60 to-black/90"
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
           <motion.span
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3"
+            className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-2 sm:mb-3"
           >
             The Bespoke Philosophy
           </motion.span>
@@ -55,37 +55,37 @@ export default function CraftsmanshipStory() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-display font-bold text-white"
+            className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight"
           >
             Where Savile Row Tradition <br />
             <span className="text-blue-gradient italic font-serif">Meets Panadura Artistry</span>
           </motion.h2>
-          <div className="w-24 h-0.5 bg-blue mx-auto mt-6 shadow-blue-glow" />
+          <div className="w-20 sm:w-24 h-0.5 bg-blue mx-auto mt-4 sm:mt-6 shadow-blue-glow" />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-6 text-silk-silver text-base sm:text-lg leading-relaxed font-light"
+            className="mt-4 sm:mt-6 text-silk-silver text-sm sm:text-base lg:text-lg leading-relaxed font-light"
           >
             True bespoke is not merely tailored clothing—it is an intimate architectural dialogue between the master craftsman and the patron.
           </motion.p>
         </div>
 
         {/* Dual Split Showcase with 3D Depth */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Visual Storytelling with 3D Tilt Card */}
           <div className="lg:col-span-5 relative">
-            <Card3D intensity={12} className="relative rounded-2xl overflow-hidden border border-blue/50 shadow-2xl group">
+            <Card3D className="relative rounded-2xl overflow-hidden border border-blue/50 shadow-2xl group">
               <img
                 src="/images/lookbook/ms_lookbook_black_tie_suit.jpg"
                 alt="MS Tailors Master Craftsmanship"
-                className="w-full h-[520px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-80 sm:h-[420px] lg:h-[520px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
               
               {/* Floating Atelier Badge with Logo */}
-              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-xl bg-black/90 backdrop-blur-md border border-blue/50 shadow-blue-glow">
+              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 p-3.5 sm:p-5 rounded-xl bg-black/90 backdrop-blur-md border border-blue/50 shadow-blue-glow">
                 <div className="flex items-center gap-3.5">
                   <div className="relative w-14 h-14 rounded-md overflow-hidden border border-blue/60 shrink-0 bg-black shadow-blue-glow p-1">
                     <Image

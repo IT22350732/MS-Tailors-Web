@@ -10,8 +10,8 @@ interface FloatingHotlineBarProps {
 export default function FloatingHotlineBar({ onOpenBooking }: FloatingHotlineBarProps) {
   return (
     <>
-      {/* MR. MURPHY ICONIC FLOATING "Chat with us!" PILL (BOTTOM-RIGHT) */}
-      <aside aria-label="Floating WhatsApp Inquiry" className="fixed bottom-6 right-6 z-50">
+      {/* MR. MURPHY ICONIC FLOATING "Chat with us!" PILL (BOTTOM-RIGHT - Hidden on mobile where bottom bar is visible) */}
+      <aside aria-label="Floating WhatsApp Inquiry" className="fixed bottom-6 right-6 z-50 hidden sm:block">
         <a
           href={getWhatsAppInquiryUrl()}
           target="_blank"
@@ -27,8 +27,8 @@ export default function FloatingHotlineBar({ onOpenBooking }: FloatingHotlineBar
         </a>
       </aside>
 
-      {/* MOBILE BOTTOM HOTLINE BAR */}
-      <div aria-label="Quick contact hotline bar" className="fixed bottom-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-md border-t border-blue/40 px-4 py-2.5 shadow-2xl sm:hidden">
+      {/* MOBILE BOTTOM HOTLINE BAR (iOS Notch Safe, Instant Access) */}
+      <div aria-label="Quick contact hotline bar" className="fixed bottom-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-md border-t border-blue/40 px-3 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-2xl sm:hidden">
         <div className="flex items-center justify-between gap-2 max-w-lg mx-auto">
           <a
             href={`tel:${MS_TAILORS_CONTACT.hotlineMobileRaw}`}

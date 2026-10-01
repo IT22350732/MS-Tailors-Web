@@ -60,22 +60,29 @@ export default function Home() {
     setIsBookingOpen(true);
   };
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    // Open sidebar by default on large desktop screens (>= 1024px)
+    if (typeof window !== "undefined" && window.innerWidth >= 1024) {
+      setIsSidebarOpen(true);
+    }
+  }, []);
 
   return (
-    <main className="min-h-screen bg-obsidian text-silk-pearl selection:bg-blue/30 selection:text-white">
+    <main className="min-h-screen bg-obsidian text-silk-pearl selection:bg-blue/30 selection:text-white overflow-x-hidden w-full max-w-full">
       {/* 3D Global Laser Scroll Progress Bar */}
       <ScrollProgressBar />
 
-      {/* Mr. Murphy Iconic Left Navigation Bar */}
+      {/* Mr. Murphy Iconic Navigation Bar (Sticky header on mobile, left bar on desktop) */}
       <Navbar
         onOpenBooking={handleOpenBooking}
         isSidebarOpen={isSidebarOpen}
         onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
       />
 
-      {/* Main Content Area — Smoothly shifts when sidebar opens/closes */}
-      <div className={`transition-all duration-300 ${isSidebarOpen ? "lg:pl-72" : "lg:pl-12"}`}>
+      {/* Main Content Area — Smoothly shifts when sidebar opens/closes with mobile top & bottom bar clearance */}
+      <div className={`transition-all duration-300 pt-14 lg:pt-0 pb-16 sm:pb-0 ${isSidebarOpen ? "lg:pl-72" : "lg:pl-12"}`}>
         {/* Hero Section */}
         <Hero onOpenBooking={handleOpenBooking} />
 

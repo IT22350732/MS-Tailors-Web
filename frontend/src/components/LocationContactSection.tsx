@@ -34,7 +34,7 @@ export default function LocationContactSection() {
   };
 
   return (
-    <section id="contact" className="py-28 bg-black relative overflow-hidden border-t border-obsidian-border">
+    <section id="contact" className="py-16 sm:py-24 lg:py-28 bg-black relative overflow-hidden border-t border-obsidian-border">
       {/* 3D Visible Parallax Atelier Architecture Background */}
       <ParallaxBackground
         imageUrl="https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?auto=format&fit=crop&w=2200&q=85"
@@ -43,17 +43,17 @@ export default function LocationContactSection() {
         speed={0.16}
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <span className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-2 sm:mb-3">
             Visit Our Atelier
           </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white drop-shadow-md">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-white drop-shadow-md leading-tight">
             The Panadura Showroom & Atelier
           </h2>
-          <div className="w-20 h-0.5 bg-blue mx-auto mt-6 shadow-blue-glow" />
-          <p className="mt-6 text-silk-silver text-base sm:text-lg font-light">
+          <div className="w-20 sm:w-24 h-0.5 bg-blue mx-auto mt-4 sm:mt-6 shadow-blue-glow" />
+          <p className="mt-4 sm:mt-6 text-silk-silver text-sm sm:text-base lg:text-lg font-light">
             Conveniently situated at Station Road in Panadura, welcoming clients from Moratuwa, Wadduwa, Kalutara, Colombo, and across Sri Lanka.
           </p>
         </div>
@@ -256,7 +256,7 @@ export default function LocationContactSection() {
                       value={inquiryForm.customerName}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, customerName: e.target.value })}
                       placeholder="e.g. Priyantha Fernando"
-                      className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                      className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                     />
                   </div>
 
@@ -271,7 +271,7 @@ export default function LocationContactSection() {
                         value={inquiryForm.phone}
                         onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
                         placeholder="+94 7X XXX XXXX"
-                        className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                        className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                       />
                     </div>
 
@@ -284,7 +284,7 @@ export default function LocationContactSection() {
                         value={inquiryForm.email}
                         onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
                         placeholder="client@example.com"
-                        className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                        className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -298,7 +298,7 @@ export default function LocationContactSection() {
                       value={inquiryForm.subject}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, subject: e.target.value })}
                       placeholder="e.g. Wedding Suit Consultation / Corporate Uniforms"
-                      className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-sm text-white outline-none transition-colors"
+                      className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2.5 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                     />
                   </div>
 
@@ -312,7 +312,7 @@ export default function LocationContactSection() {
                       value={inquiryForm.message}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
                       placeholder="Share your requirements, date of your occasion, or any specific styling nuances..."
-                      className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2 rounded-xl text-sm text-white outline-none transition-colors"
+                      className="w-full bg-black border border-obsidian-border focus:border-blue px-3.5 py-2 rounded-xl text-base sm:text-sm text-white outline-none transition-colors"
                     />
                   </div>
 

@@ -37,7 +37,7 @@ export default function ServicesSection({ services, onOpenBookingWithService }: 
   };
 
   return (
-    <section id="services" className="py-28 bg-black relative overflow-hidden">
+    <section id="services" className="py-16 sm:py-24 lg:py-28 bg-black relative overflow-hidden">
       {/* 3D PARALLAX BACKGROUND: HIGH VISIBILITY ATELIER SUITING WORKSHOP */}
       <ParallaxBackground
         imageUrl="/images/lookbook/ms_lookbook_tuxedo_profile.jpg"
@@ -46,15 +46,15 @@ export default function ServicesSection({ services, onOpenBookingWithService }: 
         overlayGradient="from-black/90 via-black/60 to-black/90"
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 lg:mb-20 gap-6">
           <div>
             <motion.span
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-3"
+              className="text-blue tracking-[0.25em] text-xs font-bold uppercase block mb-2 sm:mb-3"
             >
               Atelier Commissions & Services
             </motion.span>
@@ -63,7 +63,7 @@ export default function ServicesSection({ services, onOpenBookingWithService }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl sm:text-5xl font-display font-bold text-white"
+              className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight"
             >
               Tailored For Distinction
             </motion.h2>
@@ -72,19 +72,19 @@ export default function ServicesSection({ services, onOpenBookingWithService }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="mt-4 text-silk-muted max-w-xl text-sm sm:text-base font-light"
+              className="mt-3 sm:mt-4 text-silk-muted max-w-xl text-xs sm:text-base font-light"
             >
               From one-of-a-kind wedding suits to ceremonial rentals and institutional attire, every garment is crafted with uncompromising sartorial discipline.
             </motion.p>
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-2">
+          {/* Category Filter Pills (Smooth Touch Horizontal Scroll on Mobile) */}
+          <div className="flex overflow-x-auto no-scrollbar gap-2 pb-1 sm:pb-0 sm:flex-wrap max-w-full -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition-all ${
+                className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition-all shrink-0 ${
                   selectedCategory === cat
                     ? "bg-blue text-white shadow-blue-glow font-bold"
                     : "bg-black/80 border border-obsidian-border text-silk-silver hover:border-blue/50 hover:text-white backdrop-blur-md"
