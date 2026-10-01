@@ -56,6 +56,7 @@ builder.Services.AddCors(options =>
             "https://localhost:3000",
             "http://localhost:3001"
         )
+        .SetIsOriginAllowed(origin => true) // Allows Vercel preview and production domains
         .AllowAnyHeader()
         .AllowAnyMethod()
         .AllowCredentials();
