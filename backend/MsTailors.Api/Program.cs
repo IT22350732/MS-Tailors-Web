@@ -8,6 +8,13 @@ using MsTailors.Api.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Bind to dynamic PORT environment variable (Railway / Cloud deployment)
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(port))
+{
+    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+}
+
 // Configure Settings
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
