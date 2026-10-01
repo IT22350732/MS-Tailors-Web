@@ -1,6 +1,19 @@
 import { ServiceItem, LookbookItem, FabricSwatch, Appointment, Inquiry } from "./types";
 
-export const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+function getApiBaseUrl(): string {
+  let url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+  url = url.trim().replace(/^["']|["']$/g, ""); // strip surrounding quotes if any
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    url = `https://${url}`;
+  }
+  url = url.replace(/\/+$/, "");
+  if (!url.endsWith("/api")) {
+    url = `${url}/api`;
+  }
+  return url;
+}
+
+export const API_BASE = getApiBaseUrl();
 
 // Contact details for MS Tailors Panadura
 export const MS_TAILORS_CONTACT = {
@@ -401,7 +414,7 @@ export async function createAppointment(data: Partial<Appointment>): Promise<{ s
     });
     if (!res.ok) {
       const errData = await res.json().catch(() => ({}));
-      throw new Error(errData.message || "Failed to book appointment");
+      throw new Error(errData.message || `Failed to book appointment (${res.status} ${res.statusText || 'Error'})`);
     }
     const appointment = await res.json();
     return { success: true, data: appointment };
@@ -419,7 +432,7 @@ export async function createInquiry(data: Partial<Inquiry>): Promise<{ success: 
     });
     if (!res.ok) {
       const errData = await res.json().catch(() => ({}));
-      throw new Error(errData.message || "Failed to send inquiry");
+      throw new Error(errData.message || `Failed to send inquiry (${res.status} ${res.statusText || 'Error'})`);
     }
     const inquiry = await res.json();
     return { success: true, data: inquiry };
